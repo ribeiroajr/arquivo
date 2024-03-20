@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Pagina Inicial{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+<form method="POST" enctype="multipart/form-data">
+ 
+    <!-- Security token -->
+    {% csrf_token %}
+ 
+    <!-- Using the formset -->
+    {{ form.as_p }}
+     
+    <input type="submit" class="btn btn-success" value="Salvar">
+    <a href="{% url 'tcu_lista' %}" class="btn btn-danger">Cancelar</a>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
+

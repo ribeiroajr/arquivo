@@ -1,0 +1,78 @@
+{% comment %} {% load permission_tags %} {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
+    <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/img/favicon.png' %}">
+    <title>{% block title %}SNDO{% endblock %}</title>
+    <style>
+
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+        .navbar-text {
+            font-size: 20px; /* Define o tamanho da fonte para 20 pixels */
+        }
+
+        .centro-div {
+          width: 90%;
+          max-width: 90%; /* Limita a largura máxima para 90% */
+          margin: 0 auto; /* Centraliza a div */
+          background-color: #f0f0f0; /* Cor de fundo */
+          padding: 20px; /* Espaçamento interno */
+      }
+    </style>
+</head>
+<body style="background-color:white;">
+
+<!-- Security token -->
+<br />
+
+{% block menu %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {% comment %} {% load permission_tags %} {% endcomment %}
+                {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                <li class="nav-item">
+              <li><a class="nav-link navbar-text" href="{% url 'home' %}">Home</a></li>            
+              <li><a class="nav-link navbar-text" href="{% url 'doc_novo' %}">&nbsp;&nbsp;&nbsp;Cadastrar Documentos</a></li>            
+              <li><a class="nav-link navbar-text" href="{% url 'om_lista' %}">&nbsp;&nbsp;&nbsp;OM</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'doc_lista' %}">&nbsp;&nbsp;&nbsp;Documentos</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'tipo_lista' %}">&nbsp;&nbsp;&nbsp;Tipo</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'caixa_lista' %}">&nbsp;&nbsp;&nbsp;Caixa</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'ano_lista' %}">&nbsp;&nbsp;&nbsp;Ano</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'tcu_lista' %}">&nbsp;&nbsp;&nbsp;TCU</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'cod_lista' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Códigos</a></li>
+              <li><a class="nav-link navbar-text" href="{% url 'tipo_guarda_lista' %}">Tipo de Guarda</a></li>
+            </ul>
+          </div>
+      </div>
+  </nav>
+  {% endblock %}
+  
+  <div class="centro-div">{% block content %}{% endblock %}</div>
+	
+  {% block rodape %}
+<!-- JS-->
+
+
+  {% endblock %}
+ 
+	
+	
+</body>
+</html>

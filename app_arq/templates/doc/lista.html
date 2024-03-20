@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Pagina Inicial{% endblock %}
+{% block content %}
+
+{% csrf_token %}
+
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                <div class="alert-error alert" role="alert">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <div class="col-md-15">
+            <a href="{% url 'doc_novo' %}" class="btn btn-primary">NOVO DOC</a>
+        </div>
+        <br />
+        <div class="col-md-15">
+        <input id="gfg" type="text" placeholder="Pesquisar documento">
+        </div>
+
+
+                <table class="table" id="geeks">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="text-align: center">id</th>
+                            <th style="text-align: center">Código</th>
+                            <th style="text-align: center">Numero</th>
+                            <th style="text-align: center">Tipo</th>
+                            <th style="text-align: center">Data</th>
+                            <th style="text-align: center">NewFile/SIGAD</th>
+                            <th style="text-align: center">Origem</th>
+                            <th style="text-align: center">Destino</th>
+                            <th style="text-align: center">Fase corrente</th>
+                            <th style="text-align: center">Fase intermediária</th>
+                            <th style="text-align: center">Ano de eliminacao</th>
+                            <th style="text-align: center">Caixa</th>
+                            <th style="text-align: center">TCU</th>
+                            <th style="text-align: center">Destinação final</th>
+                            <th style="text-align: center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in dataset %}
+                        <tr>
+                            <td style="text-align: center">{{ data.id }}</td>
+                            {% comment %} <td style="text-align: center">{{ data.fk_codigo }} - {{ data.fk_codigo.descritor_do_codigo }}</td> {% endcomment %}
+                            <td style="text-align: center">{{ data.fk_codigo }}</td>
+                            <td style="text-align: center">{{ data.doc_numero }}</td>
+                            <td style="text-align: center">{{ data.fk_tipo }}</td>
+                            <td style="text-align: center">{{ data.doc_data }}</td>
+                            <td style="text-align: center">{{ data.new_file_sigad }}</td>
+                            <td style="text-align: center">{{ data.fk_doc_origem }}</td>
+                            <td style="text-align: center">{{ data.fk_doc_destino }}</td>
+                            <td style="text-align: center">{{ data.doc_corrente_ano }}</td>
+                            <td style="text-align: center">{{ data.doc_intermediario_ano }}</td>
+                            <td style="text-align: center">{{ data.doc_eliminacao_ano }}</td>
+                            <td style="text-align: center">{{ data.fk_caixa }}</td>
+                            <td style="text-align: center">{{ data.fk_tcu }}</td>
+                            <td style="text-align: center">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
+                            <td style="text-align: center">
+                                <a href="/doc_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
+                                <a href="/doc_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+    <script>
+        $(document).ready(function() {
+            $("#gfg").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#geeks tr").filter(function() {
+                    // Mantém o cabeçalho sempre visível
+                    if (!$(this).find('th').length) {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

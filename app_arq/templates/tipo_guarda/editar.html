@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Editar Registro{% endblock %}
+{% block content %}
+
+
+            <h3>Editar Registro</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <a href="{% url 'tipo_guarda_lista' %}" class="btn btn-danger">Cancelar</a>
+            </form>
+
+
+{% endblock %}

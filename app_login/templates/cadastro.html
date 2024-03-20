@@ -1,0 +1,66 @@
+{% extends 'sgc_base.html' %}
+{% block title %}Pagina Inicial{% endblock %}
+{% load permission_tags %}
+{% block content %}
+
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+        
+
+        <div class="col-md-15">
+        <form method="POST" action="{% url 'cadastro' %}" class="formLogin">
+            {% csrf_token %}
+            {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+            <h1>Cadastro</h1>
+            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            
+            <label for="username">Usuário</label><br />
+            <input type="text" name="username" placeholder="Digite o username" autofocus="true" /><br /><br />
+
+
+   
+            <table class="table">
+    
+                    {% if user|has_role:'sin' %}
+                    <tr>
+                        <td>SIN</td>
+                        <td>
+                            <input type="radio" id="tipo" name="tipo" value="sin"></td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td>Dpl Administrador</td>
+                        <td>
+                            <input type="radio" id="tipo" name="tipo" value="dpl_admin"></td>
+                    </tr>
+                    <tr>
+                        <td>Dpl</td>
+                        <td>
+                            <input type="radio" id="tipo" name="tipo" value="dpl"></td>
+                    </tr>
+                    <tr>
+                        <td>Divisões</td>
+                        <td>
+                            <input type="radio" id="tipo" name="tipo" value="div"></td>
+                    </tr>
+      
+                </table>        
+             
+            
+            <label for="password">Senha</label><br />
+            <input type="password" name="password" placeholder="Senha" /><br /><br />
+                        
+            <button type="submit" class="btn btn-warning">Cadastrar</button>
+        </form>
+    </div>
+    
+    {% endblock %}

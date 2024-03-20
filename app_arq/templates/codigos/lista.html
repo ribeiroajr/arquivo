@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Pagina Inicial{% endblock %}
+{% block content %}
+
+{% csrf_token %}
+
+    
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                <div class="alert-error alert" role="alert">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <div class="col-md-15">
+        <a href="{% url 'cod_novo' %}" class="btn btn-primary">NOVO CÓDIGO</a>
+        </div>
+        <br />
+        <div class="col-md-15">
+        <input id="gfg" type="text" placeholder="Pesquisar  ...">
+        </div>
+        <br />
+        
+            <!-- <a href="{% url 'cod_novo' %}" class="btn btn-primary">NOVO ANO</a> -->
+            
+
+
+                <table class="table" id="geeks">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="text-align: center">id</th>
+                            <th style="text-align: center">Código</th>
+                            <th style="text-align: center">Descritor do código</th>
+                            <th style="text-align: center">Fase corrente ano</th>
+                            <th style="text-align: center">Fase corrente descrição</th>
+                            <th style="text-align: center">Fase intermediária ano</th>
+                            <th style="text-align: center">Fase intermediária descrição</th>
+                            <th style="text-align: center">Tipo de Guarda</th>
+                            <th style="text-align: center">Destinação final ano</th>
+                            <th style="text-align: center">Destinação final descrição</th>
+                            <th style="text-align: center">Observações ano</th>
+                            <th style="text-align: center">Observações descrição</th>
+                            <th style="text-align: center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in dataset %}
+                        <tr>
+                            <td style="text-align: center">{{ data.id }}</td>
+                            <td style="text-align: center">{{ data.codigo }}</td>
+                            <td style="text-align: center">{{ data.descritor_do_codigo }}</td>
+                            <td style="text-align: center">{{ data.fase_corrente_ano }}</td>
+                            <td style="text-align: center">{{ data.fase_corrente_desc }}</td>
+                            <td style="text-align: center">{{ data.fase_intermediaria_ano }}</td>
+                            <td style="text-align: center">{{ data.fase_intermediaria_desc }}</td>
+                            <td style="text-align: center">{{ data.fk_tipo_guarda.tipo_guarda_descricao }}</td>
+                            <td style="text-align: center">{{ data.destinacao_final_ano }}</td>
+                            <td style="text-align: center">{{ data.destinacao_final_desc }}</td>
+                            <td style="text-align: center">{{ data.observacoes_ano }}</td>
+                            <td style="text-align: center">{{ data.observacoes_desc }}</td>
+                            <td>
+                                <a href="/cod_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
+                                <a href="/cod_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <script>
+                    $(document).ready(function() {
+                        $("#gfg").on("keyup", function() {
+                            var value = $(this).val().toLowerCase();
+                            $("#geeks tr").filter(function() {
+                                // Mantém o cabeçalho sempre visível
+                                if (!$(this).find('th').length) {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                                }
+                            });
+                        });
+                    });
+                </script>
+
+{% endblock %}

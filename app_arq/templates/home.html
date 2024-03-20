@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Sistema de Certificados Online{% endblock %}
+{% block content %}
+<!-- Security token -->
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header>
+                <h1>Bem-Vindo ao Sistema de Gerenciamento do SPADAER</h1>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Descrição:</h2>
+            <p>O Sistema de Gerenciamento do SPADAER é uma aplicação web desenvolvida para facilitar o cadastro e controle dos documentos do SPADAER. Este sistema permite que os administradores cadastrem usúarios, associem.</p>
+
+            <h2>Funcionalidades do Sistema:</h2>
+            <ol>
+                <li><strong>Cadastro de Documentos:</strong> Os .</li>
+                <li><strong>Associação de Códigos:</strong> É possível associar .</li>
+                <li><strong>Geração de Relatórios:</strong> O sistema permite a geração automática </li>
+                <li><strong>Controle de Documentos:</strong> É possível acompanhar o status de cada </li>
+                <li><strong>Visualização de :</strong> Os administradores podem visualizar e baixar os certificados gerados para cada aluno.</li>
+                <li><strong>Segurança de Dados:</strong> O sistema prioriza a segurança dos dados dos alunos e dos certificados, garantindo que apenas usuários autorizados tenham acesso às informações sensíveis.</li>
+            </ol>
+
+            <p>O Sistema de Gerenciamento do SPADAER foi desenvolvido para tornar o processo do SPADAER mais eficiente e organizado, proporcionando um ambiente seguro para o gerenciamento das informações dos Documentos.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <footer>
+                <h5>Centro de Inteligência da Aeronáutica - CIAER</h5>
+            </footer>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
