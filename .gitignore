@@ -20,7 +20,6 @@ __pycache__
 __pycache__/core\settings.py 
 __pycache__/core/settings.py 
 settings.py
-urls.py
 db.sqlite3
 C:\Users\suporte\Documents\doc\app_cert\__pycache__
 app_cert\__pycache__
@@ -29,3 +28,5 @@ app_cert\__pycache__
 requirements.txt
 media\qrcode
 **/media/qrcode
+venv
+C:\Users\suporte\Desktop\dev\app_arq\venv
