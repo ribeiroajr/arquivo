@@ -1,11 +1,13 @@
 from django.shortcuts import get_object_or_404, redirect, render
-
+from django.contrib.auth.decorators import login_required
+from .views_log import registrar_acao_usuario, registrar_acao_usuario_deletar
 from ..forms import DocsForm
 from ..models import Docs, Codigos
 from django.http import JsonResponse
 from django.contrib import messages
 # Create your views here.
 
+@login_required
 def doc_lista(request):
     dataset = Docs.objects.all()
     context = {"dataset": dataset}
@@ -13,6 +15,7 @@ def doc_lista(request):
     return render(request, 'doc/lista.html', context)
 
 ## ok
+# @login_required
 # def doc_novo(request):
 #     if request.method == 'POST':
 #         form = DocsForm(request.POST)
@@ -82,6 +85,7 @@ def doc_lista(request):
 # views.py
 
 
+#@login_required
 def get_codigo_details(request):
     codigo_id = request.GET.get('codigo_id', None)
     if codigo_id:
@@ -97,19 +101,29 @@ def get_codigo_details(request):
 
 
 
-
+@login_required
 def doc_novo(request):
+
+    # Obtendo o ID do usuário logado
+    user_id = request.user.id
+    user = request.user
+    print(request.POST)
     if request.method == 'POST':
         form = DocsForm(request.POST)
         if form.is_valid():
-            form.save()
+            # form.save()
+            instance = form.save()
+            registrar_acao_usuario(request, instance, f'cadastrou')  # Passa a instância do objeto Ano e a ação
+    
             messages.success(request, 'Doc cadastrado com sucesso.')
             return redirect('doc_novo')  # Redirecione para a lista após criar
         else:
             print("Erros de validação no formulário:")
             print(form.errors)  # Exibir erros de validação no console
     else:
-        form = DocsForm()
+        # form = DocsForm()
+        # Passando o ID do usuário logado para o formulário
+        form = DocsForm(initial={'fk_user': user_id})
     
     print("Renderizando o formulário...")
     print(request.method)  # Verificar se a página está sendo acessada com o método POST
@@ -120,31 +134,48 @@ def doc_novo(request):
 
 
 
+# @login_required
 # def doc_detalhes(request, pk):
 #     doc_ob = get_object_or_404(AnoForm, pk=pk)
 #     return render(request, 'ano/detalhes.html', {'doc_ob': doc_ob})
 
+@login_required
 def doc_editar(request, id):
+    user_id = request.user.id
+    user = request.user
+
     context ={}
     doc_ob = get_object_or_404(Docs, id=id)
     if request.method == 'POST':
         form = DocsForm(request.POST, instance=doc_ob)
         if form.is_valid():
-            form.save()
+            # form.save()
+            instance = form.save()
+            registrar_acao_usuario(request, instance, f'editou')  # Passa a instância do objeto Ano e a ação
+      
             return redirect('doc_lista')
     else:
-        form = DocsForm(instance=doc_ob)
+        # form = DocsForm(instance=doc_ob)
+        form = DocsForm(instance=doc_ob, initial={'fk_user': user_id})
     context = {
         'form': form,
         'doc_ob': doc_ob
     }
     return render(request, 'doc/editar.html', context)
 
+@login_required
 def doc_delete(request, id):
     context ={}
     doc_ob = get_object_or_404(Docs, id=id)
     if request.method == 'POST':
+        # doc_ob.delete()
+        instance = doc_ob  # Salva a instância antes de excluir
+        doc_id = instance.id  # Obtém o ID do objeto Ano antes de excluir
+
         doc_ob.delete()
+        # registrar_acao_usuario(request, instance, 'deletou')  # Passa a instância do objeto Ano
+        registrar_acao_usuario_deletar(request, f'Docs', doc_id) 
+
         # messages.success(request, 'Registro excluído com sucesso.')
         return redirect('doc_lista')
     

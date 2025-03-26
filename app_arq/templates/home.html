@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Sistema de Certificados Online{% endblock %}
+{% load permission_tags %}
+{% block title %}SARQ{% endblock %}
 {% block content %}
 <!-- Security token -->
 {% csrf_token %}

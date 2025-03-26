@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', include('app_login.urls')),#sitenma de gerenciamento de força, posto, quadro
+    path('', include('login.urls')),#sitenma de gerenciamento de força, posto, quadro
 
     path('admin/', admin.site.urls),
     path('', include('app_arq.urls')),#sistema de gerenciamento de certificados

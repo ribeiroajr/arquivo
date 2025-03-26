@@ -1,0 +1,506 @@
+[
+    {
+     "model": "app_arq.Tipo",
+     "pk": 1,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "1º DESPACHO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 2,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "2º DESPACHO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 3,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "3º DESPACHO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 4,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "4º DESPACHO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 5,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ALTERAÇÃO DE DADOS BANCÁRIOS"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 6,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ANEXO DA LEI Nº 11.526"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 7,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ATESTADO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 8,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "AUX TRANSPORTE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 9,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "AVISO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 10,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "CALENDÁRIO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 11,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "CARTA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 12,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "CIRCULAR"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 13,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "COMPROVAÇÃO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 14,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "COMUNICAÇÃO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 15,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "DECLARAÇÃO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 16,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "DESPACHO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 17,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "DISPENSÁRIO MÉDICO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 18,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "E-MAIL"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 19,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ENCAMINHAMENTO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 20,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ENCAMINHAMENTO DE OCORRÊNCIA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 21,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "FAC-SÍMILE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 22,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "FICHA DE ALTERAÇÃO DE DADOS BANCÁRIOS"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 23,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "FOLHA DE ENCAMINHAMENTO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 24,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "FORMULÁRIO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 25,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "FORMULÁRIO DE SOLICITAÇÃO DE AUXÍLIO TRANSPORTE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 26,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "GUIA DE MORADIA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 27,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "GUIA DE REMESSA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 28,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "HOMOLOGAÇÃO DE DISPENSA MÉDICA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 29,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "LISTA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 30,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MAPA DE COMPATIBILIZAÇÃO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 31,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MEMORANDO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 32,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MEMORANDO CIRCULAR"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 33,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM DIRETA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 34,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 35,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM CIRCULAR"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 36,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM DIRETA CIRCULAR"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 37,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM FAX"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 38,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM DE RÁDIO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 39,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "MENSAGEM TELEGRÁFICA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 40,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "NC SIAFI"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 41,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "NOTA DE SERVIÇO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 42,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "NS"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 43,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "OFÍCIO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 44,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "OFÍCIO CIRCULAR"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 45,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ORDEM DE INSPEÇÃO DE SAÚDE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 46,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "ORDEM DE SERVIÇO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 47,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "PARTE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 48,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "PARTE CIRCULAR"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 49,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "PARTE PESSOAL"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 50,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "PARTE S\/N°"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 51,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "PARTE SIMPLES"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 52,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "PLANILHA DE CÁLCULO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 53,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "QTS"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 54,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "RÁDIO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 55,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "RADIOGRAMA"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 56,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "RECIBO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 57,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "RECIBO DE CARTA PATENTE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 58,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "REQUERIMENTO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 59,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "REQUERIMENTO EXTERNO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 60,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "REQUERIMENTO INTERNO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 61,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "SOLICITAÇÃO DE AUXÍLIO TRANSPORTE"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 62,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "SOLICITAÇÃO DE DECLARAÇÃO"
+    }
+      },
+    {
+     "model": "app_arq.Tipo",
+     "pk": 63,
+     "fields": {
+	"fk_user_id": 1,
+     "tipo": "TERMO DE PASSAGEM E RECEBIMENTO DE CARGO"
+    }
+}
+   ]

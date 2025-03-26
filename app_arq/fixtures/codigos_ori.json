@@ -1,20 +1,18 @@
 [
-    {
-        "model": "app_arq.TipoGuarda",
-        "pk": "1",
-        "fields": {
-          
+  {
+      "model": "app_arq.TipoGuarda",
+      "pk": 1,
+      "fields": {
           "tipo_guarda_descricao": "Eliminação"
-        }
-      },
-      {
-        "model": "app_arq.TipoGuarda",
-        "pk": "2",
-        "fields": {
-          
+      }
+  },
+  {
+      "model": "app_arq.TipoGuarda",
+      "pk": 2,
+      "fields": {
           "tipo_guarda_descricao": "Guarda permanente"
-        }
-      },
+      }
+  },
   {
     "model": "app_arq.Codigos",
     "pk": 1,
@@ -8067,7 +8065,7 @@
     "model": "app_arq.Codigos",
     "pk": 504,
     "fields": {
-      "codigo": "80",
+      "codigo": "080",
       "descritor_do_codigo": "PESSOAL MILITAR",
       
       "destinacao_final_desc": null,
@@ -8083,7 +8081,7 @@
     "model": "app_arq.Codigos",
     "pk": 505,
     "fields": {
-      "codigo": "80.1",
+      "codigo": "080.1",
       "descritor_do_codigo": "LEGISLA\u00c7\u00c3O normas,  avisos,  portarias  (de  car\u00e1ter  geral),  boletins  (adminis- trativo, de pessoal e de servi\u00e7o), diretrizes, procedimentos, pare- ceres, estudos e/ou decis\u00f5es de car\u00e1ter geral",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -8099,7 +8097,7 @@
     "model": "app_arq.Codigos",
     "pk": 506,
     "fields": {
-      "codigo": "80.2",
+      "codigo": "080.2",
       "descritor_do_codigo": "IDENTIFICA\u00c7\u00c3O MILITAR",
       
       "destinacao_final_desc": null,
@@ -8115,7 +8113,7 @@
     "model": "app_arq.Codigos",
     "pk": 507,
     "fields": {
-      "codigo": "80.21",
+      "codigo": "080.21",
       "descritor_do_codigo": "IDENTIDADE MILITAR. CARTEIRA. CART\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8131,7 +8129,7 @@
     "model": "app_arq.Codigos",
     "pk": 508,
     "fields": {
-      "codigo": "80.21/2",
+      "codigo": "080.21/2",
       "descritor_do_codigo": "ficha de identidade grande ficha individual datilosc\u00f3pica cart\u00e3o \u00edndice ficha de dados cadastrais",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8147,7 +8145,7 @@
     "model": "app_arq.Codigos",
     "pk": 509,
     "fields": {
-      "codigo": "80.21/3",
+      "codigo": "080.21/3",
       "descritor_do_codigo": "guia de remessa de material de identifica\u00e7\u00e3o mapa mensal do material t\u00e9cnico",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8163,7 +8161,7 @@
     "model": "app_arq.Codigos",
     "pk": 510,
     "fields": {
-      "codigo": "80.21/4",
+      "codigo": "080.21/4",
       "descritor_do_codigo": "mapa mensal do material t\u00e9cnico",
       
       "destinacao_final_desc": null,
@@ -8195,7 +8193,7 @@
     "model": "app_arq.Codigos",
     "pk": 512,
     "fields": {
-      "codigo": "80.22",
+      "codigo": "080.22",
       "descritor_do_codigo": "CONCESS\u00c3O DE PASSAPORTE: DIPLOM\u00c1TICO E / OU OFICIAL",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8211,7 +8209,7 @@
     "model": "app_arq.Codigos",
     "pk": 513,
     "fields": {
-      "codigo": "80.3",
+      "codigo": "080.3",
       "descritor_do_codigo": "ASSENTAMENTOS INDIVIDUAIS. CADASTRO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8227,7 +8225,7 @@
     "model": "app_arq.Codigos",
     "pk": 514,
     "fields": {
-      "codigo": "80.3/2",
+      "codigo": "080.3/2",
       "descritor_do_codigo": "folhas de altera\u00e7\u00f5es caderneta registro cadastro caderneta sanit\u00e1ria declara\u00e7\u00e3o / cadastro de dependentes ficha individual declara\u00e7\u00e3o / altera\u00e7\u00e3o de benefici\u00e1rios termo de op\u00e7\u00e3o ou de retifica\u00e7\u00e3o da licen\u00e7a especial termo de ren\u00fancia de pens\u00e3o militar",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -8243,7 +8241,7 @@
     "model": "app_arq.Codigos",
     "pk": 515,
     "fields": {
-      "codigo": "80.3/3",
+      "codigo": "080.3/3",
       "descritor_do_codigo": "ficha de apresenta\u00e7\u00e3o contagem de tempo de servi\u00e7o ficha padr\u00e3o PASEP ficha de c\u00f3digo de especialidade concess\u00e3o e cessa\u00e7\u00e3o de porte de arma",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8259,7 +8257,7 @@
     "model": "app_arq.Codigos",
     "pk": 516,
     "fields": {
-      "codigo": "81",
+      "codigo": "081",
       "descritor_do_codigo": "INGRESSO NAS FOR\u00c7AS ARMADAS",
       
       "destinacao_final_desc": null,
@@ -8275,7 +8273,7 @@
     "model": "app_arq.Codigos",
     "pk": 517,
     "fields": {
-      "codigo": "81.1",
+      "codigo": "081.1",
       "descritor_do_codigo": "RECRUTAMENTO. SELE\u00c7\u00c3O inscri\u00e7\u00e3o para concurso cronograma de realiza\u00e7\u00e3o de provas controle da aplica\u00e7\u00e3o das provas",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8291,7 +8289,7 @@
     "model": "app_arq.Codigos",
     "pk": 518,
     "fields": {
-      "codigo": "81.1/2",
+      "codigo": "081.1/2",
       "descritor_do_codigo": "edital de concursos e orienta\u00e7\u00f5es espec\u00edficas material de divulga\u00e7\u00e3o* relat\u00f3rios e atas dos processos seletivos provas escritas, pr\u00e1ticas e orais * gabaritos* instru\u00e7\u00f5es complementares de convoca\u00e7\u00e3o e de sistema de servi\u00e7o militar *",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -8307,7 +8305,7 @@
     "model": "app_arq.Codigos",
     "pk": 519,
     "fields": {
-      "codigo": "81.1/3",
+      "codigo": "081.1/3",
       "descritor_do_codigo": "sele\u00e7\u00e3o e designa\u00e7\u00e3o para incorpora\u00e7\u00e3o e matr\u00edcula nomea\u00e7\u00e3o e termo de compromisso de banca de provas lista de candidatos question\u00e1rio biogr\u00e1fico simplificado cart\u00f5es respostas de testes ou provas do candidato testes provas de t\u00edtulos resultados das provas rela\u00e7\u00e3o dos candidatos aprovados recursos sele\u00e7\u00e3o para ingresso na carreira militar",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8323,7 +8321,7 @@
     "model": "app_arq.Codigos",
     "pk": 520,
     "fields": {
-      "codigo": "81.2",
+      "codigo": "081.2",
       "descritor_do_codigo": "INCORPORA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8339,7 +8337,7 @@
     "model": "app_arq.Codigos",
     "pk": 521,
     "fields": {
-      "codigo": "81.2/2",
+      "codigo": "081.2/2",
       "descritor_do_codigo": "atos de convoca\u00e7\u00e3o \u00e0 incorpora\u00e7\u00e3o alistamento est\u00e1gios dispensa ou isen\u00e7\u00e3o do servi\u00e7o militar convoca\u00e7\u00e3o \u00e0 incorpora\u00e7\u00e3o para prestar o servi\u00e7o militar obrigat\u00f3rio (servi\u00e7o militar inicial ou outras formas posteriores)",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8355,7 +8353,7 @@
     "model": "app_arq.Codigos",
     "pk": 522,
     "fields": {
-      "codigo": "81.3",
+      "codigo": "081.3",
       "descritor_do_codigo": "MATR\u00cdCULA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8371,7 +8369,7 @@
     "model": "app_arq.Codigos",
     "pk": 523,
     "fields": {
-      "codigo": "81.3/2",
+      "codigo": "081.3/2",
       "descritor_do_codigo": "admiss\u00e3o em escolas, centros e cursos de forma\u00e7\u00e3o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8387,7 +8385,7 @@
     "model": "app_arq.Codigos",
     "pk": 524,
     "fields": {
-      "codigo": "81.4",
+      "codigo": "081.4",
       "descritor_do_codigo": "NOMEA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8403,7 +8401,7 @@
     "model": "app_arq.Codigos",
     "pk": 525,
     "fields": {
-      "codigo": "81.4/2",
+      "codigo": "081.4/2",
       "descritor_do_codigo": "ingresso nos corpos e/ou quadros de carreira de oficiais, nos postos iniciais ou nos corpos/ quadros de oficiais da reserva",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8419,7 +8417,7 @@
     "model": "app_arq.Codigos",
     "pk": 526,
     "fields": {
-      "codigo": "81.5",
+      "codigo": "081.5",
       "descritor_do_codigo": "EXERC\u00cdCIOS DE MOBILIZA\u00c7\u00c3O / APRESENTA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8435,7 +8433,7 @@
     "model": "app_arq.Codigos",
     "pk": 527,
     "fields": {
-      "codigo": "81.5/2",
+      "codigo": "081.5/2",
       "descritor_do_codigo": "campanhas de convoca\u00e7\u00e3o mapas de encargos de mobiliza\u00e7\u00e3o relat\u00f3rios sobre o exerc\u00edcio de apresenta\u00e7\u00e3o da reserva controle de efetivo de militares tempor\u00e1rios (m\u00e9dicos, farmac\u00eauticos, dentistas, veterin\u00e1rios) tiros de guerra",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8451,7 +8449,7 @@
     "model": "app_arq.Codigos",
     "pk": 528,
     "fields": {
-      "codigo": "81.9",
+      "codigo": "081.9",
       "descritor_do_codigo": "OUTROS ASSUNTOS REFERENTES A INGRESSO NAS FOR\u00c7AS ARMADAS",
       
       "destinacao_final_desc": null,
@@ -8467,7 +8465,7 @@
     "model": "app_arq.Codigos",
     "pk": 529,
     "fields": {
-      "codigo": "82",
+      "codigo": "082",
       "descritor_do_codigo": "PLANO DE CARREIRA",
       
       "destinacao_final_desc": null,
@@ -8483,7 +8481,7 @@
     "model": "app_arq.Codigos",
     "pk": 530,
     "fields": {
-      "codigo": "82.1",
+      "codigo": "082.1",
       "descritor_do_codigo": "PROMO\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8499,7 +8497,7 @@
     "model": "app_arq.Codigos",
     "pk": 531,
     "fields": {
-      "codigo": "82.1/2",
+      "codigo": "082.1/2",
       "descritor_do_codigo": "contagem de antig\u00fcidade propostas de posicionamento no quadro de acesso faixa de cogita\u00e7\u00e3o cogita\u00e7\u00e3o/inclus\u00e3o no quadro de acesso lista de escolha ato de promo\u00e7\u00e3o ressarcimento e reconsidera\u00e7\u00e3o de ato recontagem de pontos corre\u00e7\u00e3o de posi\u00e7\u00e3o hier\u00e1rquica retifica\u00e7\u00e3o de promo\u00e7\u00e3o lista de m\u00e9ritos relativos informa\u00e7\u00f5es sobre a exist\u00eancia de inqu\u00e9ritos e a\u00e7\u00f5es judiciais envolvendo os avaliados promo\u00e7\u00e3o post-mortem promo\u00e7\u00e3o por motivo de justi\u00e7a",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8515,7 +8513,7 @@
     "model": "app_arq.Codigos",
     "pk": 532,
     "fields": {
-      "codigo": "82.2",
+      "codigo": "082.2",
       "descritor_do_codigo": "CURSOS",
       
       "destinacao_final_desc": null,
@@ -8531,7 +8529,7 @@
     "model": "app_arq.Codigos",
     "pk": 533,
     "fields": {
-      "codigo": "82.21",
+      "codigo": "082.21",
       "descritor_do_codigo": "FORMA\u00c7\u00c3O. ADAPTA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8547,7 +8545,7 @@
     "model": "app_arq.Codigos",
     "pk": 534,
     "fields": {
-      "codigo": "82.21/2",
+      "codigo": "082.21/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8563,7 +8561,7 @@
     "model": "app_arq.Codigos",
     "pk": 535,
     "fields": {
-      "codigo": "82.22",
+      "codigo": "082.22",
       "descritor_do_codigo": "APERFEI\u00c7OAMENTO. ESPECIALIZA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8579,7 +8577,7 @@
     "model": "app_arq.Codigos",
     "pk": 536,
     "fields": {
-      "codigo": "82.22/2",
+      "codigo": "082.22/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8595,7 +8593,7 @@
     "model": "app_arq.Codigos",
     "pk": 537,
     "fields": {
-      "codigo": "82.23",
+      "codigo": "082.23",
       "descritor_do_codigo": "ESTADO-MAIOR",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8611,7 +8609,7 @@
     "model": "app_arq.Codigos",
     "pk": 538,
     "fields": {
-      "codigo": "82.23/2",
+      "codigo": "082.23/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8627,7 +8625,7 @@
     "model": "app_arq.Codigos",
     "pk": 539,
     "fields": {
-      "codigo": "82.24",
+      "codigo": "082.24",
       "descritor_do_codigo": "ALTOS ESTUDOS MILITARES",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8643,7 +8641,7 @@
     "model": "app_arq.Codigos",
     "pk": 540,
     "fields": {
-      "codigo": "82.21/2",
+      "codigo": "082.21/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o,matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8659,7 +8657,7 @@
     "model": "app_arq.Codigos",
     "pk": 541,
     "fields": {
-      "codigo": "82.3",
+      "codigo": "082.3",
       "descritor_do_codigo": "AVALIA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8675,7 +8673,7 @@
     "model": "app_arq.Codigos",
     "pk": 542,
     "fields": {
-      "codigo": "82.3/2",
+      "codigo": "082.3/2",
       "descritor_do_codigo": "fichas /folhas de avalia\u00e7\u00e3o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8691,7 +8689,7 @@
     "model": "app_arq.Codigos",
     "pk": 543,
     "fields": {
-      "codigo": "82.4",
+      "codigo": "082.4",
       "descritor_do_codigo": "REQUISITOS ESPEC\u00cdFICOS DE CARREIRA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8707,7 +8705,7 @@
     "model": "app_arq.Codigos",
     "pk": 544,
     "fields": {
-      "codigo": "82.4/2",
+      "codigo": "082.4/2",
       "descritor_do_codigo": "manobra tempo de tropa tempo de embapp_arque viv\u00eancia nacional dias de mar atividade b\u00e9lica horas de v\u00f4o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8723,7 +8721,7 @@
     "model": "app_arq.Codigos",
     "pk": 545,
     "fields": {
-      "codigo": "82.5",
+      "codigo": "082.5",
       "descritor_do_codigo": "CURSOS COMPLEMENTARES",
       
       "destinacao_final_desc": null,
@@ -8739,7 +8737,7 @@
     "model": "app_arq.Codigos",
     "pk": 546,
     "fields": {
-      "codigo": "82.51",
+      "codigo": "082.51",
       "descritor_do_codigo": "ADESTRAMENTO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8755,7 +8753,7 @@
     "model": "app_arq.Codigos",
     "pk": 547,
     "fields": {
-      "codigo": "82.51/2",
+      "codigo": "082.51/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos diversos tipos de adestramentos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8771,7 +8769,7 @@
     "model": "app_arq.Codigos",
     "pk": 548,
     "fields": {
-      "codigo": "82.52",
+      "codigo": "082.52",
       "descritor_do_codigo": "P\u00d3S-GRADUA\u00c7\u00c3O LATO SENSU (Aperfei\u00e7oamento e Especializa\u00e7\u00e3o)",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8787,7 +8785,7 @@
     "model": "app_arq.Codigos",
     "pk": 549,
     "fields": {
-      "codigo": "82.52/2",
+      "codigo": "082.52/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8803,7 +8801,7 @@
     "model": "app_arq.Codigos",
     "pk": 550,
     "fields": {
-      "codigo": "82.53",
+      "codigo": "082.53",
       "descritor_do_codigo": "QUALIFICA\u00c7\u00c3O T\u00c9CNICA ESPECIAL",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8819,7 +8817,7 @@
     "model": "app_arq.Codigos",
     "pk": 551,
     "fields": {
-      "codigo": "82.53/2",
+      "codigo": "082.53/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8835,7 +8833,7 @@
     "model": "app_arq.Codigos",
     "pk": 552,
     "fields": {
-      "codigo": "82.54",
+      "codigo": "082.54",
       "descritor_do_codigo": "P\u00d3S-GRADUA\u00c7\u00c3O STRICTO SENSU (Mestrado e Doutorado)",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8851,7 +8849,7 @@
     "model": "app_arq.Codigos",
     "pk": 553,
     "fields": {
-      "codigo": "82.54/2",
+      "codigo": "082.54/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8867,7 +8865,7 @@
     "model": "app_arq.Codigos",
     "pk": 554,
     "fields": {
-      "codigo": "82.55",
+      "codigo": "082.55",
       "descritor_do_codigo": "P\u00d3S-DOUTORADO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8883,7 +8881,7 @@
     "model": "app_arq.Codigos",
     "pk": 555,
     "fields": {
-      "codigo": "82.55/2",
+      "codigo": "082.55/2",
       "descritor_do_codigo": "designa\u00e7\u00e3o, matr\u00edcula, conclus\u00e3o, cancelamento, trancamento e/ou desligamento dos cursos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8899,7 +8897,7 @@
     "model": "app_arq.Codigos",
     "pk": 556,
     "fields": {
-      "codigo": "82.6",
+      "codigo": "082.6",
       "descritor_do_codigo": "PRORROGA\u00c7\u00c3O DE TEMPO DE SERVI\u00c7O. REENGAJAMENTO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8915,7 +8913,7 @@
     "model": "app_arq.Codigos",
     "pk": 557,
     "fields": {
-      "codigo": "82.6/2",
+      "codigo": "082.6/2",
       "descritor_do_codigo": "requerimentos, avalia\u00e7\u00f5es, pareceres e despachos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8931,7 +8929,7 @@
     "model": "app_arq.Codigos",
     "pk": 558,
     "fields": {
-      "codigo": "82.7",
+      "codigo": "082.7",
       "descritor_do_codigo": "TRANSPOSI\u00c7\u00c3O DE QUADRO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8947,7 +8945,7 @@
     "model": "app_arq.Codigos",
     "pk": 559,
     "fields": {
-      "codigo": "82.7/2",
+      "codigo": "082.7/2",
       "descritor_do_codigo": "requerimentos, avalia\u00e7\u00f5es, pareceres e despachos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8963,7 +8961,7 @@
     "model": "app_arq.Codigos",
     "pk": 560,
     "fields": {
-      "codigo": "82.9",
+      "codigo": "082.9",
       "descritor_do_codigo": "OUTROS ASSUNTOS REFERENTES A PLANO DE CARREIRA",
       
       "destinacao_final_desc": null,
@@ -8979,7 +8977,7 @@
     "model": "app_arq.Codigos",
     "pk": 561,
     "fields": {
-      "codigo": "83",
+      "codigo": "083",
       "descritor_do_codigo": "MOVIMENTA\u00c7\u00c3O. DESTAQUE. ADI\u00c7\u00c3O. EXCLUS\u00c3O DO SERVI\u00c7O ATIVO mapas de lota\u00e7\u00e3o de oficiais e pra\u00e7as",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -8995,7 +8993,7 @@
     "model": "app_arq.Codigos",
     "pk": 562,
     "fields": {
-      "codigo": "83/2",
+      "codigo": "083/2",
       "descritor_do_codigo": "planos de movimenta\u00e7\u00e3o",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -9011,7 +9009,7 @@
     "model": "app_arq.Codigos",
     "pk": 563,
     "fields": {
-      "codigo": "83.1",
+      "codigo": "083.1",
       "descritor_do_codigo": "MOVIMENTA\u00c7\u00c3O",
       
       "destinacao_final_desc": null,
@@ -9027,7 +9025,7 @@
     "model": "app_arq.Codigos",
     "pk": 564,
     "fields": {
-      "codigo": "83.11",
+      "codigo": "083.11",
       "descritor_do_codigo": "MOTIVO DE SA\u00daDE",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9043,7 +9041,7 @@
     "model": "app_arq.Codigos",
     "pk": 565,
     "fields": {
-      "codigo": "83.11/2",
+      "codigo": "083.11/2",
       "descritor_do_codigo": "solicita\u00e7\u00e3o da movimenta\u00e7\u00e3o c\u00f3pia da ata de inspe\u00e7\u00e3o de sa\u00fade termo de inspe\u00e7\u00e3o de sa\u00fade",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9059,7 +9057,7 @@
     "model": "app_arq.Codigos",
     "pk": 566,
     "fields": {
-      "codigo": "83.12",
+      "codigo": "083.12",
       "descritor_do_codigo": "INTERESSE DO MILITAR",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9075,7 +9073,7 @@
     "model": "app_arq.Codigos",
     "pk": 567,
     "fields": {
-      "codigo": "83.12/2",
+      "codigo": "083.12/2",
       "descritor_do_codigo": "solicita\u00e7\u00e3o da movimenta\u00e7\u00e3o ordem de movimenta\u00e7\u00e3o portaria de movimenta\u00e7\u00e3o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9091,7 +9089,7 @@
     "model": "app_arq.Codigos",
     "pk": 568,
     "fields": {
-      "codigo": "83.13",
+      "codigo": "083.13",
       "descritor_do_codigo": "NECESSIDADE DO SERVI\u00c7O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9107,7 +9105,7 @@
     "model": "app_arq.Codigos",
     "pk": 569,
     "fields": {
-      "codigo": "83.13/2",
+      "codigo": "083.13/2",
       "descritor_do_codigo": "proposta de plano de movimenta\u00e7\u00e3o solicita\u00e7\u00f5es de \u00d3rg\u00e3os de Dire\u00e7\u00e3o-Geral ou Setorial incompatibilidade de posto, matr\u00edcula, t\u00e9rmino de curso, interc\u00e2mbio e a bem da disciplina",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9123,7 +9121,7 @@
     "model": "app_arq.Codigos",
     "pk": 570,
     "fields": {
-      "codigo": "83.14",
+      "codigo": "083.14",
       "descritor_do_codigo": "MOTIVO DE JUSTI\u00c7A",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9139,7 +9137,7 @@
     "model": "app_arq.Codigos",
     "pk": 571,
     "fields": {
-      "codigo": "83.14/2",
+      "codigo": "083.14/2",
       "descritor_do_codigo": "ordem judicial",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9155,7 +9153,7 @@
     "model": "app_arq.Codigos",
     "pk": 572,
     "fields": {
-      "codigo": "83.2",
+      "codigo": "083.2",
       "descritor_do_codigo": "DESTAQUE. ADI\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9171,7 +9169,7 @@
     "model": "app_arq.Codigos",
     "pk": 573,
     "fields": {
-      "codigo": "83.2/2",
+      "codigo": "083.2/2",
       "descritor_do_codigo": "pareceres despachos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9187,7 +9185,7 @@
     "model": "app_arq.Codigos",
     "pk": 574,
     "fields": {
-      "codigo": "83.3",
+      "codigo": "083.3",
       "descritor_do_codigo": "EXCLUS\u00c3O DO SERVI\u00c7O ATIVO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9203,7 +9201,7 @@
     "model": "app_arq.Codigos",
     "pk": 575,
     "fields": {
-      "codigo": "83.3/2",
+      "codigo": "083.3/2",
       "descritor_do_codigo": "demiss\u00e3o perda do posto e da patente licenciamento anula\u00e7\u00e3o de incorpora\u00e7\u00e3o desincorpora\u00e7\u00e3o a bem da disciplina falecimento",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9219,7 +9217,7 @@
     "model": "app_arq.Codigos",
     "pk": 576,
     "fields": {
-      "codigo": "83.3/3",
+      "codigo": "083.3/3",
       "descritor_do_codigo": "deser\u00e7\u00e3o extravio",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9235,7 +9233,7 @@
     "model": "app_arq.Codigos",
     "pk": 577,
     "fields": {
-      "codigo": "83.9",
+      "codigo": "083.9",
       "descritor_do_codigo": "OUTROS ASSUNTOS REFERENTES \u00c0 MOVIMENTA\u00c7\u00c3O. DESTAQUE. ADI\u00c7\u00c3O. EXCLUS\u00c3O DO SERVI\u00c7O ATIVO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9251,7 +9249,7 @@
     "model": "app_arq.Codigos",
     "pk": 578,
     "fields": {
-      "codigo": "83.9/2",
+      "codigo": "083.9/2",
       "descritor_do_codigo": "posse e nomea\u00e7\u00e3o para cargos p\u00fablicos",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9267,7 +9265,7 @@
     "model": "app_arq.Codigos",
     "pk": 579,
     "fields": {
-      "codigo": "84",
+      "codigo": "084",
       "descritor_do_codigo": "VIOLA\u00c7\u00c3O DAS OBRIGA\u00c7\u00d5ES E DOS DEVERES",
       
       "destinacao_final_desc": null,
@@ -9283,7 +9281,7 @@
     "model": "app_arq.Codigos",
     "pk": 580,
     "fields": {
-      "codigo": "84.1",
+      "codigo": "084.1",
       "descritor_do_codigo": "TRANSGRESS\u00d5ES E / OU CONTRAVEN\u00c7\u00d5ES DISCIPLINARES",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9299,7 +9297,7 @@
     "model": "app_arq.Codigos",
     "pk": 581,
     "fields": {
-      "codigo": "84.1/2",
+      "codigo": "084.1/2",
       "descritor_do_codigo": "sindic\u00e2ncia acarea\u00e7\u00e3o e apura\u00e7\u00e3o das transgress\u00f5es e/ou contraven\u00e7\u00f5es aplica\u00e7\u00e3o das puni\u00e7\u00f5es disciplinares.",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9315,7 +9313,7 @@
     "model": "app_arq.Codigos",
     "pk": 582,
     "fields": {
-      "codigo": "84.2",
+      "codigo": "084.2",
       "descritor_do_codigo": "CRIMES MILITARES",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9331,7 +9329,7 @@
     "model": "app_arq.Codigos",
     "pk": 583,
     "fields": {
-      "codigo": "84.2/2",
+      "codigo": "084.2/2",
       "descritor_do_codigo": "portaria de nomea\u00e7\u00e3o do encarregado e escriv\u00e3o do IPM solu\u00e7\u00e3o do IPM oficio de remessa do IPM \u00e0 Justi\u00e7a Militar",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -9347,7 +9345,7 @@
     "model": "app_arq.Codigos",
     "pk": 584,
     "fields": {
-      "codigo": "84.3",
+      "codigo": "084.3",
       "descritor_do_codigo": "CONSELHOS",
       
       "destinacao_final_desc": null,
@@ -9363,7 +9361,7 @@
     "model": "app_arq.Codigos",
     "pk": 585,
     "fields": {
-      "codigo": "84.31",
+      "codigo": "084.31",
       "descritor_do_codigo": "DE DISCIPLINA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9379,7 +9377,7 @@
     "model": "app_arq.Codigos",
     "pk": 586,
     "fields": {
-      "codigo": "84.31/2",
+      "codigo": "084.31/2",
       "descritor_do_codigo": "nomea\u00e7\u00e3o dos membros do conselho, atos de afastamento do acusado, autos do conselho, conclus\u00f5es e decis\u00f5es",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9395,7 +9393,7 @@
     "model": "app_arq.Codigos",
     "pk": 587,
     "fields": {
-      "codigo": "84.32",
+      "codigo": "084.32",
       "descritor_do_codigo": "DE JUSTIFICA\u00c7\u00c3O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9411,7 +9409,7 @@
     "model": "app_arq.Codigos",
     "pk": 588,
     "fields": {
-      "codigo": "84.32/2",
+      "codigo": "084.32/2",
       "descritor_do_codigo": "nomea\u00e7\u00e3o dos membros do conselho, atos de afastamento do justificante, autos do conselho, conclus\u00f5es e decis\u00f5es",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9427,7 +9425,7 @@
     "model": "app_arq.Codigos",
     "pk": 589,
     "fields": {
-      "codigo": "85",
+      "codigo": "085",
       "descritor_do_codigo": "DIREITOS E PRERROGATIVAS",
       
       "destinacao_final_desc": null,
@@ -9443,7 +9441,7 @@
     "model": "app_arq.Codigos",
     "pk": 590,
     "fields": {
-      "codigo": "85.1",
+      "codigo": "085.1",
       "descritor_do_codigo": "RECOMPENSAS. DISTIN\u00c7\u00d5ES. HONRARIAS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9459,7 +9457,7 @@
     "model": "app_arq.Codigos",
     "pk": 591,
     "fields": {
-      "codigo": "85.1/2",
+      "codigo": "085.1/2",
       "descritor_do_codigo": "pr\u00eamios de honra ao m\u00e9rito elogios louvores refer\u00eancias elogiosas distintivos dispensas de servi\u00e7o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9475,7 +9473,7 @@
     "model": "app_arq.Codigos",
     "pk": 592,
     "fields": {
-      "codigo": "85.1/3",
+      "codigo": "085.1/3",
       "descritor_do_codigo": "rela\u00e7\u00f5es de agraciados com as condecora\u00e7\u00f5es rela\u00e7\u00f5es daqueles que tiveram as condecora\u00e7\u00f5es cassadas",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -9491,7 +9489,7 @@
     "model": "app_arq.Codigos",
     "pk": 593,
     "fields": {
-      "codigo": "85.2",
+      "codigo": "085.2",
       "descritor_do_codigo": "LICEN\u00c7AS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9507,7 +9505,7 @@
     "model": "app_arq.Codigos",
     "pk": 594,
     "fields": {
-      "codigo": "85.2/2",
+      "codigo": "085.2/2",
       "descritor_do_codigo": "adotante para acompanhar o c\u00f4njuge / companheiro(a) candidato a cargo eletivo especial gestante paternidade para tratar de interesse particular para tratamento de sa\u00fade de pessoa da fam\u00edlia para tratamento de sa\u00fade pr\u00f3pria",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9523,7 +9521,7 @@
     "model": "app_arq.Codigos",
     "pk": 595,
     "fields": {
-      "codigo": "85.3",
+      "codigo": "085.3",
       "descritor_do_codigo": "AFASTAMENTOS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9539,7 +9537,7 @@
     "model": "app_arq.Codigos",
     "pk": 596,
     "fields": {
-      "codigo": "85.3/2",
+      "codigo": "085.3/2",
       "descritor_do_codigo": "instala\u00e7\u00e3o (no Brasil e no exterior) luto n\u00fapcias tr\u00e2nsito (no Brasil e no exterior)",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9555,7 +9553,7 @@
     "model": "app_arq.Codigos",
     "pk": 597,
     "fields": {
-      "codigo": "85.4",
+      "codigo": "085.4",
       "descritor_do_codigo": "DISPENSAS DE SERVI\u00c7O",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9571,7 +9569,7 @@
     "model": "app_arq.Codigos",
     "pk": 598,
     "fields": {
-      "codigo": "85.4/2",
+      "codigo": "085.4/2",
       "descritor_do_codigo": "para desconto em f\u00e9rias por prescri\u00e7\u00e3o m\u00e9dica",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9587,7 +9585,7 @@
     "model": "app_arq.Codigos",
     "pk": 599,
     "fields": {
-      "codigo": "85.5",
+      "codigo": "085.5",
       "descritor_do_codigo": "F\u00c9RIAS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9603,7 +9601,7 @@
     "model": "app_arq.Codigos",
     "pk": 600,
     "fields": {
-      "codigo": "85.5/2",
+      "codigo": "085.5/2",
       "descritor_do_codigo": "planejamento, solicita\u00e7\u00e3o, concess\u00e3o, cancelamento e publica\u00e7\u00e3o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9619,7 +9617,7 @@
     "model": "app_arq.Codigos",
     "pk": 601,
     "fields": {
-      "codigo": "85.6",
+      "codigo": "085.6",
       "descritor_do_codigo": "REMUNERA\u00c7\u00c3O.PROVENTOS",
       
       "destinacao_final_desc": null,
@@ -9635,7 +9633,7 @@
     "model": "app_arq.Codigos",
     "pk": 602,
     "fields": {
-      "codigo": "85.61",
+      "codigo": "085.61",
       "descritor_do_codigo": "REMUNERA\u00c7\u00c3O NA ATIVA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9651,7 +9649,7 @@
     "model": "app_arq.Codigos",
     "pk": 603,
     "fields": {
-      "codigo": "85.61/2",
+      "codigo": "085.61/2",
       "descritor_do_codigo": "fichas financeiras e folhas de pagamento",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9667,7 +9665,7 @@
     "model": "app_arq.Codigos",
     "pk": 604,
     "fields": {
-      "codigo": "85.611",
+      "codigo": "085.611",
       "descritor_do_codigo": "ADICIONAIS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9683,7 +9681,7 @@
     "model": "app_arq.Codigos",
     "pk": 605,
     "fields": {
-      "codigo": "85.611/2",
+      "codigo": "085.611/2",
       "descritor_do_codigo": "militar de habilita\u00e7\u00e3o de tempo de servi\u00e7o de compensa\u00e7\u00e3o org\u00e2nica de perman\u00eancia",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9699,7 +9697,7 @@
     "model": "app_arq.Codigos",
     "pk": 606,
     "fields": {
-      "codigo": "85.612",
+      "codigo": "085.612",
       "descritor_do_codigo": "GRATIFICA\u00c7\u00d5ES",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9715,7 +9713,7 @@
     "model": "app_arq.Codigos",
     "pk": 607,
     "fields": {
-      "codigo": "85.612/2",
+      "codigo": "085.612/2",
       "descritor_do_codigo": "de localidade especial de representa\u00e7\u00e3o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9731,7 +9729,7 @@
     "model": "app_arq.Codigos",
     "pk": 608,
     "fields": {
-      "codigo": "85.619",
+      "codigo": "085.619",
       "descritor_do_codigo": "OUTROS DIREITOS REMUNERAT\u00d3RIOS NA ATIVA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9747,7 +9745,7 @@
     "model": "app_arq.Codigos",
     "pk": 609,
     "fields": {
-      "codigo": "85.619/2",
+      "codigo": "085.619/2",
       "descritor_do_codigo": "adicional de f\u00e9rias adicional natalino ajuda de custo assist\u00eancia pr\u00e9-escolar aux\u00edlios: fardamento, alimenta\u00e7\u00e3o, natalidade, invalidez, funeral e transporte compensa\u00e7\u00e3o pecuni\u00e1ria di\u00e1rias sal\u00e1rio-fam\u00edlia transporte de pessoal e bagagens por mudan\u00e7a de localidade remunera\u00e7\u00e3o /adiantamento de f\u00e9rias retribui\u00e7\u00e3o no exterior",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9763,7 +9761,7 @@
     "model": "app_arq.Codigos",
     "pk": 610,
     "fields": {
-      "codigo": "85.62",
+      "codigo": "085.62",
       "descritor_do_codigo": "PROVENTOS NA INATIVIDADE",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9779,7 +9777,7 @@
     "model": "app_arq.Codigos",
     "pk": 611,
     "fields": {
-      "codigo": "85.62/2",
+      "codigo": "085.62/2",
       "descritor_do_codigo": "fichas financeiras e folhas de pagamento",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9795,7 +9793,7 @@
     "model": "app_arq.Codigos",
     "pk": 612,
     "fields": {
-      "codigo": "85.621",
+      "codigo": "085.621",
       "descritor_do_codigo": "ADICIONAIS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9811,7 +9809,7 @@
     "model": "app_arq.Codigos",
     "pk": 613,
     "fields": {
-      "codigo": "85.621/2",
+      "codigo": "085.621/2",
       "descritor_do_codigo": "militar de habilita\u00e7\u00e3o de tempo de servi\u00e7o de compensa\u00e7\u00e3o org\u00e2nica de perman\u00eancia",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9827,7 +9825,7 @@
     "model": "app_arq.Codigos",
     "pk": 614,
     "fields": {
-      "codigo": "85.629",
+      "codigo": "085.629",
       "descritor_do_codigo": "OUTROS DIREITOS PECUNI\u00c1RIOS NA INATIVIDADE",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9843,7 +9841,7 @@
     "model": "app_arq.Codigos",
     "pk": 615,
     "fields": {
-      "codigo": "85.629/2",
+      "codigo": "085.629/2",
       "descritor_do_codigo": "adicional natalno assist\u00eancia pr\u00e9-escolar aux\u00edlios: invalidez, natalidade e funeral sal\u00e1rio-fam\u00edlia adicional por designa\u00e7\u00e3o para o servi\u00e7o ativo pro-labore para tarefa por tempo certo ajuda de transporte por baixa/alta em organiza\u00e7\u00e3o hospitalar",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9859,7 +9857,7 @@
     "model": "app_arq.Codigos",
     "pk": 616,
     "fields": {
-      "codigo": "85.63",
+      "codigo": "085.63",
       "descritor_do_codigo": "DESCONTOS",
       
       "destinacao_final_desc": null,
@@ -9875,7 +9873,7 @@
     "model": "app_arq.Codigos",
     "pk": 617,
     "fields": {
-      "codigo": "85.631",
+      "codigo": "085.631",
       "descritor_do_codigo": "OBRIGAT\u00d3RIOS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9891,7 +9889,7 @@
     "model": "app_arq.Codigos",
     "pk": 618,
     "fields": {
-      "codigo": "85.631/2",
+      "codigo": "085.631/2",
       "descritor_do_codigo": "contribui\u00e7\u00e3o para a assist\u00eancia m\u00e9dico-hospitalar e social (prestada por entidade militar) impostos incidentes sobre a remunera\u00e7\u00e3o ou proventos indeniza\u00e7\u00e3o pela assist\u00eancia m\u00e9dico-hospitalar (prestada por entidade militar) indeniza\u00e7\u00e3o \u00e0 Fazenda Nacional multa por ocupa\u00e7\u00e3o irregular de pr\u00f3prio nacional residencial pens\u00e3o aliment\u00edcia ou judicial contribui\u00e7\u00e3o para a pens\u00e3o militar taxa de uso por ocupa\u00e7\u00e3o de pr\u00f3prio nacional residencial",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9907,7 +9905,7 @@
     "model": "app_arq.Codigos",
     "pk": 619,
     "fields": {
-      "codigo": "85.632",
+      "codigo": "085.632",
       "descritor_do_codigo": "AUTORIZADOS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9923,7 +9921,7 @@
     "model": "app_arq.Codigos",
     "pk": 620,
     "fields": {
-      "codigo": "85.632/2",
+      "codigo": "085.632/2",
       "descritor_do_codigo": "descontos em favor de entidades consignat\u00e1rias, de terceiros ou benef\u00edcio fam\u00edlia",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -9939,7 +9937,7 @@
     "model": "app_arq.Codigos",
     "pk": 621,
     "fields": {
-      "codigo": "86",
+      "codigo": "086",
       "descritor_do_codigo": "INATIVOS E PENSIONISTAS",
       
       "destinacao_final_desc": null,
@@ -9955,7 +9953,7 @@
     "model": "app_arq.Codigos",
     "pk": 622,
     "fields": {
-      "codigo": "86.1",
+      "codigo": "086.1",
       "descritor_do_codigo": "INATIVOS",
       
       "destinacao_final_desc": null,
@@ -9971,7 +9969,7 @@
     "model": "app_arq.Codigos",
     "pk": 623,
     "fields": {
-      "codigo": "86.11",
+      "codigo": "086.11",
       "descritor_do_codigo": "RESERVA",
       
       "destinacao_final_desc": null,
@@ -9987,7 +9985,7 @@
     "model": "app_arq.Codigos",
     "pk": 624,
     "fields": {
-      "codigo": "86.111",
+      "codigo": "086.111",
       "descritor_do_codigo": "REMUNERADA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10003,7 +10001,7 @@
     "model": "app_arq.Codigos",
     "pk": 625,
     "fields": {
-      "codigo": "86.111/2",
+      "codigo": "086.111/2",
       "descritor_do_codigo": "processo de transfer\u00eancia para a reserva remunerada",
       
       "destinacao_final_desc": "*",
@@ -10019,7 +10017,7 @@
     "model": "app_arq.Codigos",
     "pk": 626,
     "fields": {
-      "codigo": "86.112",
+      "codigo": "086.112",
       "descritor_do_codigo": "N\u00c3O REMUNERADA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10035,7 +10033,7 @@
     "model": "app_arq.Codigos",
     "pk": 627,
     "fields": {
-      "codigo": "86.112/2",
+      "codigo": "086.112/2",
       "descritor_do_codigo": "processo de transfer\u00eancia para a reserva n\u00e3o remunerada",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10051,7 +10049,7 @@
     "model": "app_arq.Codigos",
     "pk": 628,
     "fields": {
-      "codigo": "86.12",
+      "codigo": "086.12",
       "descritor_do_codigo": "REFORMA",
       
       "destinacao_final_desc": null,
@@ -10067,7 +10065,7 @@
     "model": "app_arq.Codigos",
     "pk": 629,
     "fields": {
-      "codigo": "86.121",
+      "codigo": "086.121",
       "descritor_do_codigo": "POR INVALIDEZ",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10083,7 +10081,7 @@
     "model": "app_arq.Codigos",
     "pk": 630,
     "fields": {
-      "codigo": "86.121/2",
+      "codigo": "086.121/2",
       "descritor_do_codigo": "processo de reforma por invalidez",
       
       "destinacao_final_desc": null,
@@ -10099,7 +10097,7 @@
     "model": "app_arq.Codigos",
     "pk": 631,
     "fields": {
-      "codigo": "86.122",
+      "codigo": "086.122",
       "descritor_do_codigo": "POR IDADES-LIMITE",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10115,7 +10113,7 @@
     "model": "app_arq.Codigos",
     "pk": 632,
     "fields": {
-      "codigo": "86.122/2",
+      "codigo": "086.122/2",
       "descritor_do_codigo": "processo de reforma por idades-limite",
       
       "destinacao_final_desc": null,
@@ -10131,7 +10129,7 @@
     "model": "app_arq.Codigos",
     "pk": 633,
     "fields": {
-      "codigo": "86.13",
+      "codigo": "086.13",
       "descritor_do_codigo": "DESIGNA\u00c7\u00c3O PARA O SERVI\u00c7O ATIVO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10147,7 +10145,7 @@
     "model": "app_arq.Codigos",
     "pk": 634,
     "fields": {
-      "codigo": "86.13/2",
+      "codigo": "086.13/2",
       "descritor_do_codigo": "processo de designa\u00e7\u00e3o para o servi\u00e7o ativo",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10163,7 +10161,7 @@
     "model": "app_arq.Codigos",
     "pk": 635,
     "fields": {
-      "codigo": "86.14",
+      "codigo": "086.14",
       "descritor_do_codigo": "TAREFA POR TEMPO CERTO",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10179,7 +10177,7 @@
     "model": "app_arq.Codigos",
     "pk": 636,
     "fields": {
-      "codigo": "86.14/2",
+      "codigo": "086.14/2",
       "descritor_do_codigo": "processo de designa\u00e7\u00e3o para tarefa por tempo certo",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10195,7 +10193,7 @@
     "model": "app_arq.Codigos",
     "pk": 637,
     "fields": {
-      "codigo": "86.2",
+      "codigo": "086.2",
       "descritor_do_codigo": "PENSIONISTAS",
       
       "destinacao_final_desc": null,
@@ -10211,7 +10209,7 @@
     "model": "app_arq.Codigos",
     "pk": 638,
     "fields": {
-      "codigo": "86.21",
+      "codigo": "086.21",
       "descritor_do_codigo": "PENS\u00d5ES",
       
       "destinacao_final_desc": null,
@@ -10227,7 +10225,7 @@
     "model": "app_arq.Codigos",
     "pk": 639,
     "fields": {
-      "codigo": "86.211",
+      "codigo": "086.211",
       "descritor_do_codigo": "TEMPOR\u00c1RIA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10243,7 +10241,7 @@
     "model": "app_arq.Codigos",
     "pk": 640,
     "fields": {
-      "codigo": "86.211/2",
+      "codigo": "086.211/2",
       "descritor_do_codigo": "processos de solicita\u00e7\u00e3o /concess\u00e3o de pens\u00e3o militar tempor\u00e1ria",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10259,7 +10257,7 @@
     "model": "app_arq.Codigos",
     "pk": 641,
     "fields": {
-      "codigo": "86.212",
+      "codigo": "086.212",
       "descritor_do_codigo": "VITAL\u00cdCIA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10275,7 +10273,7 @@
     "model": "app_arq.Codigos",
     "pk": 642,
     "fields": {
-      "codigo": "86.212/2",
+      "codigo": "086.212/2",
       "descritor_do_codigo": "processos de solicita\u00e7\u00e3o /concess\u00e3o de pens\u00e3o militar vital\u00edcia",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10291,7 +10289,7 @@
     "model": "app_arq.Codigos",
     "pk": 643,
     "fields": {
-      "codigo": "86.213",
+      "codigo": "086.213",
       "descritor_do_codigo": "ESPECIAL",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10307,7 +10305,7 @@
     "model": "app_arq.Codigos",
     "pk": 644,
     "fields": {
-      "codigo": "86.213/2",
+      "codigo": "086.213/2",
       "descritor_do_codigo": "processos de solicita\u00e7\u00e3o /concess\u00e3o de pens\u00e3o militar especial",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10323,7 +10321,7 @@
     "model": "app_arq.Codigos",
     "pk": 645,
     "fields": {
-      "codigo": "87",
+      "codigo": "087",
       "descritor_do_codigo": "ASSIST\u00caNCIA",
       
       "destinacao_final_desc": null,
@@ -10339,7 +10337,7 @@
     "model": "app_arq.Codigos",
     "pk": 646,
     "fields": {
-      "codigo": "87.1",
+      "codigo": "087.1",
       "descritor_do_codigo": "M\u00c9DICA",
       
       "destinacao_final_desc": null,
@@ -10355,7 +10353,7 @@
     "model": "app_arq.Codigos",
     "pk": 647,
     "fields": {
-      "codigo": "87.11",
+      "codigo": "087.11",
       "descritor_do_codigo": "HOSPITALAR",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10403,7 +10401,7 @@
     "model": "app_arq.Codigos",
     "pk": 650,
     "fields": {
-      "codigo": "87.12",
+      "codigo": "087.12",
       "descritor_do_codigo": "PERICIAL",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10419,7 +10417,7 @@
     "model": "app_arq.Codigos",
     "pk": 651,
     "fields": {
-      "codigo": "87.12/2",
+      "codigo": "087.12/2",
       "descritor_do_codigo": "controle e verifica\u00e7\u00e3o do estado de higidez (em estado saud\u00e1vel) do pessoal em servi\u00e7o ativo, inativo e a ser selecionado para ingresso nas For\u00e7as Armadas atestado sanit\u00e1rio de origem inqu\u00e9rito sanit\u00e1rio de origem resultado de exames auto de corpo de delito atas de inspe\u00e7\u00e3o de sa\u00fade processos de per\u00edcia m\u00e9dica para reforma, isen\u00e7\u00e3o de imposto de renda, melhoria de reforma e movimenta\u00e7\u00e3o por motivo de sa\u00fade",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10435,7 +10433,7 @@
     "model": "app_arq.Codigos",
     "pk": 652,
     "fields": {
-      "codigo": "87.2",
+      "codigo": "087.2",
       "descritor_do_codigo": "SOCIAL",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10451,7 +10449,7 @@
     "model": "app_arq.Codigos",
     "pk": 653,
     "fields": {
-      "codigo": "87.2/2",
+      "codigo": "087.2/2",
       "descritor_do_codigo": "programas de assist\u00eancia social com vistas \u00e0 concess\u00e3o de licen\u00e7as e benef\u00edcios atendimentos educacionais e assistenciais prestados por empresas conveniadas",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10467,7 +10465,7 @@
     "model": "app_arq.Codigos",
     "pk": 654,
     "fields": {
-      "codigo": "87.3",
+      "codigo": "087.3",
       "descritor_do_codigo": "JUR\u00cdDICA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10483,7 +10481,7 @@
     "model": "app_arq.Codigos",
     "pk": 655,
     "fields": {
-      "codigo": "87.3/2",
+      "codigo": "087.3/2",
       "descritor_do_codigo": "orienta\u00e7\u00e3o de car\u00e1ter particular atendimentos jur\u00eddicos prestados por empresas conveniadas",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10499,7 +10497,7 @@
     "model": "app_arq.Codigos",
     "pk": 656,
     "fields": {
-      "codigo": "87.4",
+      "codigo": "087.4",
       "descritor_do_codigo": "PSICOL\u00d3GICA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10515,7 +10513,7 @@
     "model": "app_arq.Codigos",
     "pk": 657,
     "fields": {
-      "codigo": "87.4/2",
+      "codigo": "087.4/2",
       "descritor_do_codigo": "triagem para encaminhamento ao servi\u00e7o de sa\u00fade espec\u00edfico orienta\u00e7\u00e3o e aconselhamento psicol\u00f3gico atendimentos psicol\u00f3gicos prestados por empresas conveniadas",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10531,7 +10529,7 @@
     "model": "app_arq.Codigos",
     "pk": 658,
     "fields": {
-      "codigo": "87.5",
+      "codigo": "087.5",
       "descritor_do_codigo": "RELIGIOSA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10547,7 +10545,7 @@
     "model": "app_arq.Codigos",
     "pk": 659,
     "fields": {
-      "codigo": "87.5/2",
+      "codigo": "087.5/2",
       "descritor_do_codigo": "censo religioso",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10563,7 +10561,7 @@
     "model": "app_arq.Codigos",
     "pk": 660,
     "fields": {
-      "codigo": "87.5/3",
+      "codigo": "087.5/3",
       "descritor_do_codigo": "processos de habilita\u00e7\u00e3o e registros de casamento, batizado e crisma livro tombo",
       
       "destinacao_final_desc": "Guarda permanente",
@@ -10579,7 +10577,7 @@
     "model": "app_arq.Codigos",
     "pk": 661,
     "fields": {
-      "codigo": "88",
+      "codigo": "088",
       "descritor_do_codigo": "(VAGA)",
       
       "destinacao_final_desc": null,
@@ -10595,7 +10593,7 @@
     "model": "app_arq.Codigos",
     "pk": 662,
     "fields": {
-      "codigo": "89",
+      "codigo": "089",
       "descritor_do_codigo": "OUTROS ASSUNTOS REFERENTES A PESSOAL MILITAR",
       
       "destinacao_final_desc": null,
@@ -10611,7 +10609,7 @@
     "model": "app_arq.Codigos",
     "pk": 663,
     "fields": {
-      "codigo": "89.1",
+      "codigo": "089.1",
       "descritor_do_codigo": "SERVI\u00c7OS DE ESCALA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10627,7 +10625,7 @@
     "model": "app_arq.Codigos",
     "pk": 664,
     "fields": {
-      "codigo": "89.1/2",
+      "codigo": "089.1/2",
       "descritor_do_codigo": "escalas de servi\u00e7o",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10643,7 +10641,7 @@
     "model": "app_arq.Codigos",
     "pk": 665,
     "fields": {
-      "codigo": "89.2",
+      "codigo": "089.2",
       "descritor_do_codigo": "TABELAS MESTRAS",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10659,7 +10657,7 @@
     "model": "app_arq.Codigos",
     "pk": 666,
     "fields": {
-      "codigo": "89.2/2",
+      "codigo": "089.2/2",
       "descritor_do_codigo": "tabelas individuais e gerais",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10675,7 +10673,7 @@
     "model": "app_arq.Codigos",
     "pk": 667,
     "fields": {
-      "codigo": "89.3",
+      "codigo": "089.3",
       "descritor_do_codigo": "CONTROLE DE FREQU\u00caNCIA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10691,7 +10689,7 @@
     "model": "app_arq.Codigos",
     "pk": 668,
     "fields": {
-      "codigo": "89.3/2",
+      "codigo": "089.3/2",
       "descritor_do_codigo": "fichas de controle de efetivos livros de licenciados",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10707,7 +10705,7 @@
     "model": "app_arq.Codigos",
     "pk": 669,
     "fields": {
-      "codigo": "89.4",
+      "codigo": "089.4",
       "descritor_do_codigo": "DELEGA\u00c7\u00d5ES DE COMPET\u00caNCIA",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10723,7 +10721,7 @@
     "model": "app_arq.Codigos",
     "pk": 670,
     "fields": {
-      "codigo": "89.4/2",
+      "codigo": "089.4/2",
       "descritor_do_codigo": "atos de delega\u00e7\u00e3o rela\u00e7\u00f5es de encargos colaterais",
       
       "destinacao_final_desc": "Elimina\u00e7\u00e3o",
@@ -10748,773 +10746,5 @@
       "fields": {
         "status": "FECHADA"
       }
-    },
-
-      {
-        "model": "app_arq.Om",
-        "pk": "1",
-        "fields": {
-          
-          "om": "I COMAR",
-          "om_descricao": "I COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "2",
-        "fields": {
-          
-          "om": "II COMAR",
-          "om_descricao": "II COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "3",
-        "fields": {
-          
-          "om": "III COMAR",
-          "om_descricao": "III COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "4",
-        "fields": {
-          
-          "om": "IV COMAR",
-          "om_descricao": "IV COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "5",
-        "fields": {
-          
-          "om": "V COMAR",
-          "om_descricao": "V COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "6",
-        "fields": {
-          
-          "om": "VI COMAR",
-          "om_descricao": "VI COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "7",
-        "fields": {
-          
-          "om": "VII COMAR",
-          "om_descricao": "VII COMAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "8",
-        "fields": {
-          
-          "om": "1 GDA",
-          "om_descricao": "1 GDA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "9",
-        "fields": {
-          
-          "om": "1\u00aa BDAAE",
-          "om_descricao": "1\u00aa BDAAE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "10",
-        "fields": {
-          
-          "om": "1\u00ba ETA",
-          "om_descricao": "1\u00ba ETA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "11",
-        "fields": {
-          
-          "om": "1\u00ba GTT",
-          "om_descricao": "1\u00ba GTT"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "12",
-        "fields": {
-          
-          "om": "1\u00ba/9\u00ba GAV",
-          "om_descricao": "1\u00ba/9\u00ba GAV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "13",
-        "fields": {
-          
-          "om": "2\u00ba GDAAE",
-          "om_descricao": "2\u00ba GDAAE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "14",
-        "fields": {
-          
-          "om": "3\u00ba GDAAE",
-          "om_descricao": "3\u00ba GDAAE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "15",
-        "fields": {
-          
-          "om": "3\u00ba/7\u00ba GAV",
-          "om_descricao": "3\u00ba/7\u00ba GAV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "16",
-        "fields": {
-          
-          "om": "BAAN",
-          "om_descricao": "BAAN"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "17",
-        "fields": {
-          
-          "om": "BABE",
-          "om_descricao": "BABE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "18",
-        "fields": {
-          
-          "om": "BABR",
-          "om_descricao": "BABR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "19",
-        "fields": {
-          
-          "om": "BAFL",
-          "om_descricao": "BAFL"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "20",
-        "fields": {
-          
-          "om": "BAMN",
-          "om_descricao": "BAMN"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "21",
-        "fields": {
-          
-          "om": "BANT",
-          "om_descricao": "BANT"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "22",
-        "fields": {
-          
-          "om": "BAPV",
-          "om_descricao": "BAPV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "23",
-        "fields": {
-          
-          "om": "BASM",
-          "om_descricao": "BASM"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "24",
-        "fields": {
-          
-          "om": "BASP",
-          "om_descricao": "BASP"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "25",
-        "fields": {
-          
-          "om": "BAST",
-          "om_descricao": "BAST"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "26",
-        "fields": {
-          
-          "om": "CAE",
-          "om_descricao": "CAE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "27",
-        "fields": {
-          
-          "om": "CCA RJ",
-          "om_descricao": "CCA RJ"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "28",
-        "fields": {
-          
-          "om": "CCA-BR",
-          "om_descricao": "CCA-BR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "29",
-        "fields": {
-          
-          "om": "CCABR",
-          "om_descricao": "CCABR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "30",
-        "fields": {
-          
-          "om": "CENCIAR",
-          "om_descricao": "CENCIAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "31",
-        "fields": {
-          
-          "om": "CGABEG",
-          "om_descricao": "CGABEG"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "32",
-        "fields": {
-          
-          "om": "CIAAR",
-          "om_descricao": "CIAAR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "33",
-        "fields": {
-          
-          "om": "CIAER",
-          "om_descricao": "CIAER"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "34",
-        "fields": {
-          
-          "om": "CIM - MB",
-          "om_descricao": "CIM - MB"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "35",
-        "fields": {
-          
-          "om": "CIM-MB",
-          "om_descricao": "CIM-MB"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "36",
-        "fields": {
-          
-          "om": "CINDACTA II",
-          "om_descricao": "CINDACTA II"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "37",
-        "fields": {
-          
-          "om": "CISCEA",
-          "om_descricao": "CISCEA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "38",
-        "fields": {
-          
-          "om": "CLA",
-          "om_descricao": "CLA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "39",
-        "fields": {
-          
-          "om": "COMAE",
-          "om_descricao": "COMAE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "40",
-        "fields": {
-          
-          "om": "COMPREP",
-          "om_descricao": "COMPREP"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "41",
-        "fields": {
-          
-          "om": "CPBV",
-          "om_descricao": "CPBV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "42",
-        "fields": {
-          
-          "om": "CRCEA-SE",
-          "om_descricao": "CRCEA-SE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "43",
-        "fields": {
-          
-          "om": "DCTA",
-          "om_descricao": "DCTA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "44",
-        "fields": {
-          
-          "om": "DECEA",
-          "om_descricao": "DECEA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "45",
-        "fields": {
-          
-          "om": "DIRAD",
-          "om_descricao": "DIRAD"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "46",
-        "fields": {
-          
-          "om": "DT-INFRA MN",
-          "om_descricao": "DT-INFRA MN"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "47",
-        "fields": {
-          
-          "om": "DTCEAGW",
-          "om_descricao": "DTCEAGW"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "48",
-        "fields": {
-          
-          "om": "DTCEASC",
-          "om_descricao": "DTCEASC"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "49",
-        "fields": {
-          
-          "om": "DTCEASJ",
-          "om_descricao": "DTCEASJ"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "50",
-        "fields": {
-          
-          "om": "DTCEAST",
-          "om_descricao": "DTCEAST"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "51",
-        "fields": {
-          
-          "om": "DTI",
-          "om_descricao": "DTI"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "52",
-        "fields": {
-          
-          "om": "EMAER",
-          "om_descricao": "EMAER"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "53",
-        "fields": {
-          
-          "om": "FAYS",
-          "om_descricao": "FAYS"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "54",
-        "fields": {
-          
-          "om": "GABAER",
-          "om_descricao": "GABAER"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "55",
-        "fields": {
-          
-          "om": "GAP SP",
-          "om_descricao": "GAP SP"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "56",
-        "fields": {
-          
-          "om": "GAP-AF",
-          "om_descricao": "GAP-AF"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "57",
-        "fields": {
-          
-          "om": "GAP-BR",
-          "om_descricao": "GAP-BR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "58",
-        "fields": {
-          
-          "om": "GAP-CO",
-          "om_descricao": "GAP-CO"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "59",
-        "fields": {
-          
-          "om": "GAP-DF",
-          "om_descricao": "GAP-DF"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "60",
-        "fields": {
-          
-          "om": "GAP-GL",
-          "om_descricao": "GAP-GL"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "61",
-        "fields": {
-          
-          "om": "GAP-LS",
-          "om_descricao": "GAP-LS"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "62",
-        "fields": {
-          
-          "om": "GEIV",
-          "om_descricao": "GEIV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "63",
-        "fields": {
-          
-          "om": "GLOG MN",
-          "om_descricao": "GLOG MN"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "64",
-        "fields": {
-          
-          "om": "GOP-SM",
-          "om_descricao": "GOP-SM"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "65",
-        "fields": {
-          
-          "om": "GSAU-FZ",
-          "om_descricao": "GSAU-FZ"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "66",
-        "fields": {
-          
-          "om": "GSD-BE",
-          "om_descricao": "GSD-BE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "67",
-        "fields": {
-          
-          "om": "GSD-BR",
-          "om_descricao": "GSD-BR"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "68",
-        "fields": {
-          
-          "om": "GSD-GL",
-          "om_descricao": "GSD-GL"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "69",
-        "fields": {
-          
-          "om": "GSD-SM",
-          "om_descricao": "GSD-SM"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "70",
-        "fields": {
-          
-          "om": "GTE",
-          "om_descricao": "GTE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "71",
-        "fields": {
-          
-          "om": "HARF",
-          "om_descricao": "HARF"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "72",
-        "fields": {
-          
-          "om": "HFAB",
-          "om_descricao": "HFAB"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "73",
-        "fields": {
-          
-          "om": "IAOP",
-          "om_descricao": "IAOP"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "74",
-        "fields": {
-          
-          "om": "ICA",
-          "om_descricao": "ICA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "75",
-        "fields": {
-          
-          "om": "IEAV",
-          "om_descricao": "IEAV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "76",
-        "fields": {
-          
-          "om": "ILA",
-          "om_descricao": "ILA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "77",
-        "fields": {
-          
-          "om": "IPEV",
-          "om_descricao": "IPEV"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "78",
-        "fields": {
-          
-          "om": "MDEFESA",
-          "om_descricao": "MDEFESA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "79",
-        "fields": {
-          
-          "om": "MINIST\u00c9RIO P\u00daBLICO FEDERAL DO DF",
-          "om_descricao": "MINIST\u00c9RIO P\u00daBLICO FEDERAL DO DF"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "80",
-        "fields": {
-          
-          "om": "PABE",
-          "om_descricao": "PABE"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "81",
-        "fields": {
-          
-          "om": "PAGL",
-          "om_descricao": "PAGL"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "82",
-        "fields": {
-          
-          "om": "PASJ",
-          "om_descricao": "PASJ"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "83",
-        "fields": {
-          
-          "om": "POL\u00cdCIA MILITAR DE MINAS",
-          "om_descricao": "POL\u00cdCIA MILITAR DE MINAS"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "84",
-        "fields": {
-          
-          "om": "SEFA",
-          "om_descricao": "SEFA"
-        }
-      },
-      {
-        "model": "app_arq.Om",
-        "pk": "85",
-        "fields": {
-          
-          "om": "UNIFA",
-          "om_descricao": "UNIFA"
-        }
-      }
-      
-  
+    }  
 ]

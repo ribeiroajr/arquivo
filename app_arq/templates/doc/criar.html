@@ -12,7 +12,7 @@
     {% endif %}
 <div class="container">
 
-{% comment %} <form method="POST" enctype="multipart/form-data"> {% endcomment %}
+
     <form id="docsForm" data-related-url="{% url 'sgc_ajax_load_related_data' %}" enctype="multipart/form-data" method="POST">
 
     <!-- Security token -->
@@ -42,35 +42,40 @@
                     $("#id_doc_intermediario_ano").val(data.doc_intermediario_ano);
                     $("#id_doc_destinacao_final_ano").val(data.doc_destinacao_final_ano);
                     $("#id_doc_obs_ano").val(data.doc_obs_ano);
+                    $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
+                    // $("#id_doc_eliminacao_ano").val(data.doc_eliminacao_ano);
+
+
+                    var idDocDataValue = parseInt($("#id_doc_data").val());
+                    // var docEliminacaoAnoValue = parseInt(data.doc_eliminacao_ano);
+                    // var soma = idDocDataValue + docEliminacaoAnoValue;
+                        
+                    // Calcula as somas adicionais
+                    var somaCorrente = idDocDataValue + parseInt($("#id_doc_corrente_ano").val());
+                    var somaIntermediaria = somaCorrente + parseInt($("#id_doc_intermediario_ano").val());
+                    var somaFinal = somaIntermediaria + parseInt($("#id_doc_destinacao_final_ano").val());
+                    var somaObs = somaFinal + parseInt($("#id_doc_obs_ano").val());
                     
                     // Verifica o valor de fk_tipo_guarda
-                    if (data.fk_tipo_guarda === 1) {
-                        // Se fk_tipo_guarda for 1, faz a soma
-                        var idDocDataValue = parseInt($("#id_doc_data").val());
-                        var docEliminacaoAnoValue = parseInt(data.doc_eliminacao_ano);
-                        var soma = idDocDataValue + docEliminacaoAnoValue;
-                    
-                        // Preenche o campo id_doc_eliminacao_ano com a soma
-                        $("#id_doc_eliminacao_ano").val(soma);
-                        $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
-                        
-                        // Calcula as somas adicionais
-                        var somaCorrente = idDocDataValue + parseInt($("#id_doc_corrente_ano").val());
-                        var somaIntermediaria = somaCorrente + parseInt($("#id_doc_intermediario_ano").val());
-                        var somaFinal = somaIntermediaria + parseInt($("#id_doc_destinacao_final_ano").val());
-                        var somaObs = somaFinal + parseInt($("#id_doc_obs_ano").val());
-                    
+                    // Se fk_tipo_guarda for 1, faz a soma
+                    if (data.fk_tipo_guarda === 1) {                  
                         // Preenche os campos com as somas adicionais
                         $("#id_doc_corrente_ano").val(somaCorrente);
                         $("#id_doc_intermediario_ano").val(somaIntermediaria);
                         $("#id_doc_destinacao_final_ano").val(somaFinal);
                         $("#id_doc_obs_ano").val(somaObs);
-                    
-                    
+
+                        // Preenche o campo id_doc_eliminacao_ano com a soma
+                        $("#id_doc_eliminacao_ano").val(somaObs);
+                        $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
                     } else if (data.fk_tipo_guarda === 2) {
                         // Se fk_tipo_guarda for 2, substitui o valor de id_doc_eliminacao_ano pelo tipo_guarda_descricao
                         $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
                         $("#id_doc_eliminacao_ano").val(0);
+                        $("#id_doc_corrente_ano").val(somaCorrente);
+                        $("#id_doc_intermediario_ano").val(somaIntermediaria);
+                        $("#id_doc_destinacao_final_ano").val(somaFinal);
+                        $("#id_doc_obs_ano").val(somaObs);
                     }
                 }
             });
@@ -84,11 +89,5 @@
         }
     });
 </script>
-
-
-
-
-
-
 {% endblock %}
 

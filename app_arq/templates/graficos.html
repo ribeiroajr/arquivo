@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Pagina Inicial{% endblock %}
+{% block content %}
+
+{% csrf_token %}
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                <div class="alert-error alert" role="alert">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <h1>Gráficos de Documentos</h1>
+    <div>
+        <h2>Distribuição de Anos Correntes</h2>
+        {{ graph_corrente|safe }}
+    </div>
+    <div>
+        <h2>Distribuição de Anos de Eliminação</h2>
+        {{ graph_eliminacao|safe }}
+    </div>
+    <div>
+        <h2>Distribuição de Anos Intermediários</h2>
+        {{ graph_intermediario|safe }}
+    </div>
+    <div>
+        <h2>Distribuição de Anos de Destinação Final</h2>
+        {{ graph_destinacao_final|safe }}
+    </div>
+
+{% endblock %}

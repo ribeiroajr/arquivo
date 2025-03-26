@@ -11,6 +11,9 @@ from app_arq.views.views_tcu import *
 from app_arq.views.views_tipo import *
 from app_arq.views.views_home import *
 from app_arq.views.views_tipo_guarada import *
+from app_arq.views.views_status import *
+from app_arq.views.views_log import *
+from app_arq.views.views_graficos import *
 from . import views
 
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -52,6 +55,11 @@ urlpatterns = [
     path('tcu_delete/<int:id>/', tcu_delete, name='tcu_delete'),
     path('tcu_novo', tcu_novo, name='tcu_novo'),
 
+    path('status_lista', status_lista, name='status_lista'),
+    path('status_editar/<int:id>/', status_editar, name='status_editar'),
+    path('status_delete/<int:id>/', status_delete, name='status_delete'),
+    path('status_novo', status_novo, name='status_novo'),
+
     path('tipo_lista', tipo_lista, name='tipo_lista'),
     path('tipo_editar/<int:id>/', tipo_editar, name='tipo_editar'),
     path('tipo_delete/<int:id>/', tipo_delete, name='tipo_delete'),
@@ -62,11 +70,15 @@ urlpatterns = [
     path('tipo_guarda_delete/<int:id>/', tipo_guarda_delete, name='tipo_guarda_delete'),
     path('tipo_guarda_novo', tipo_guarda_novo, name='tipo_guarda_novo'),
     
+    path('listar_logs', listar_logs, name='listar_logs'),
+    
     path('sgc_ajax_load_related_data/', sgc_ajax_load_related_data, name="sgc_ajax_load_related_data"),
         
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/ciaer.ico'))),
     
     path('', views.pagination, name="pagination"),
+
+    path('graficos/', gerar_graficos, name='gerar_graficos'),
 
 # ]  + statistics(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]

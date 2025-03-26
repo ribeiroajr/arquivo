@@ -27,9 +27,13 @@
                         <tr>
                             <th style="text-align: center">id</th>
                             <th style="text-align: center">OM</th>
-                            <th style="text-align: center">OM descricao</th>
+                            
 
+                            {% load permission_tags %}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <th style="text-align: center">Nome Usuario</th>
                             <th style="text-align: center">Ações</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -37,12 +41,16 @@
                         <tr>
                             <td style="text-align: center">{{ data.id }}</td>
                             <td style="text-align: center">{{ data.om }}</td>
-                            <td style="text-align: center">{{ data.om_desc }}</td>
-                            <td>
+                            
+                            {% load permission_tags %}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <td style="text-align: center">{{ data.fk_user }}</td>
+                            <td style="text-align: center">
+                                
                                 <a href="/om_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
                                 <a href="/om_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
-
                             </td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>

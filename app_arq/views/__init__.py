@@ -7,3 +7,6 @@ from .views_ano import *
 from .views_cod import *
 from .views_doc import *
 from .views_caixa import *
+from .views_status import *
+from .views_log import *
+from .views_graficos import *

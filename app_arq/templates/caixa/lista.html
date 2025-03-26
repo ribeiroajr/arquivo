@@ -30,9 +30,13 @@
                             <th style="text-align: center">Ano</th>
                             <th style="text-align: center">Status</th>
                             <th style="text-align: center">Caixa</th>
-                            <th style="text-align: center">Caixa Descrição</th>
                             
+                            
+                            {% load permission_tags %}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <th style="text-align: center">Nome Usuario</th>
                             <th style="text-align: center">Ações</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -42,13 +46,16 @@
                             <td style="text-align: center">{{ data.fk_ano }}</td>
                             <td style="text-align: center">{{ data.fk_status }}</td>
                             <td style="text-align: center">{{ data.caixa }}</td>
-                            <td style="text-align: center">{{ data.caixa_desc }}</td>
                  
-                            <td>
+                            {% load permission_tags %}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <td style="text-align: center">{{ data.fk_user }}</td>
+                            <td style="text-align: center">
+                                
                                 <a href="/caixa_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
                                 <a href="/caixa_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
-
                             </td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>

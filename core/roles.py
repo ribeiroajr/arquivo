@@ -1,6 +1,7 @@
 from rolepermissions.roles import AbstractUserRole
 
-class Sin(AbstractUserRole):
+
+class sin(AbstractUserRole):
     available_permissions = {
         'criar': True,
         'editar': True,
@@ -12,7 +13,8 @@ class Sin(AbstractUserRole):
         'reset_user': True,
     }
 
-class Dpl_admin(AbstractUserRole):
+
+class arq_admin(AbstractUserRole):
     available_permissions = {
         'criar': True,
         'editar': True,
@@ -23,7 +25,7 @@ class Dpl_admin(AbstractUserRole):
         'reset_user': True,
     }
 
-class Dpl(AbstractUserRole):
+class arq(AbstractUserRole):
     available_permissions = {
         'criar': True,
         'editar': True,
@@ -32,7 +34,7 @@ class Dpl(AbstractUserRole):
         'lista': True,
     }
 
-class Div(AbstractUserRole):
+class div(AbstractUserRole):
     available_permissions = {
         'lista': True,
     }

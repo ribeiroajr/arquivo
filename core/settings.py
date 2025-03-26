@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-
 import os
 from pathlib import Path
 import posixpath
@@ -33,7 +32,7 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://172.16.1.61', 'http://localhost', 'http://arq.ciaer.interna']
+CSRF_TRUSTED_ORIGINS = ['http://10.100.0.34', 'http://localhost', 'http://demeter.ciaer.interna',  'https://arq.ciaer.interna']
 
 # Application definition
 
@@ -44,9 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_login.apps.AppLoginConfig',
+    # 'app_login.apps.AppLoginConfig',
+    'login.apps.LoginConfig',
     'app_arq.apps.AppArqConfig',
     'rolepermissions',
+
+    
 
 ]
 
@@ -58,10 +60,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    
 ]
 
 # Configurar a expiração da sessão para 30 minutos (30 * 60 segundos)
-SESSION_COOKIE_AGE = 1800
+SESSION_COOKIE_AGE = 3800
 
 ROOT_URLCONF = 'core.urls'
 
@@ -76,8 +80,7 @@ INTERNAL_IPS = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,15 +97,57 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+from django_auth_ldap.config import *
+from django_auth_ldap.config import LDAPSearch
+
+AUTH_LDAP_SERVER_URI = "ldap://10.100.0.1:389"
+AUTH_LDAP_BIND_DN = "cn=django,ou=ciaer,dc=ciaer,dc=interna"
+AUTH_LDAP_BIND_PASSWORD = "P0rM41s7"
+
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+#            "ou=CIAER,dc=ciaer,dc=interna", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
+            "ou=CIAER,dc=ciaer,dc=interna", ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)"
+            )
+
+AUTH_LDAP_USER_ATTR_MAP = {
+            "username": "sAMAccountName",
+#            "username": "uid",
+               "first_name": "name",
+                    "last_name": "physicalDeliveryOfficeName",
+			#"posto_nome": "cn",
+#                        "email": "mail",
+}
+
+
+# AUTHENTICATION_BACKENDS = [
+#             'django_auth_ldap.backend.LDAPBackend',
+#             'django.contrib.auth.backends.ModelBackend',
+# ]
+
+AUTHENTICATION_BACKENDS = [
+            'core.backend.CustomLDAPBackend',
+                'django.contrib.auth.backends.ModelBackend',
+]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+      'default': {
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME': 'arq',
+          'USER': 'demeterdb',
+          'PASSWORD': 'S1NdemeBD@01',
+          'HOST': 'localhost',
+          'PORT': '3306'
+      }
 }
 
 
@@ -143,15 +188,24 @@ USE_TZ = True
 
 # Caminho para os arquivos estáticos coletados
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/app_arq/staticfiles/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    # '/var/www/arq_staticfiles',
+]
 
 # Caminho para os arquivos de mídia
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = '/var/www/doc/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+# Caminho para os arquivos de mídia
+#MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/var/www/doc/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 
 # Default primary key field type
@@ -161,8 +215,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ROLEPERMISSIONS_MODULE = "core.roles"
 
+LOGIN_URL = '/login/'
+
 LOGIN_REDIRECT_URL ='/'
 LOGOUT_REDIRECT_URL = "/"
-REGISTER_REDIRECT_URL='/'
-
-LOGIN_URL = 'login/'

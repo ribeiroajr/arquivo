@@ -3,8 +3,8 @@
 {% block content %}
 
 {% csrf_token %}
-
-    
+<div class="container">
+    <div class="row">
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'success' %}
@@ -14,14 +14,22 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
+    </div>
 
-        <div class="col-md-15">
+        
+
+        <div class="col-md-15" style="width: 100%;">
+            <br />     
+            {% load permission_tags %} 
+        {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+        
         <a href="{% url 'cod_novo' %}" class="btn btn-primary">NOVO CÓDIGO</a>
-        </div>
-        <br />
-        <div class="col-md-15">
+        <p>&nbsp;</p>
+        {% endif %}
+        
         <input id="gfg" type="text" placeholder="Pesquisar  ...">
-        </div>
+    </p>
+   
         <br />
         
             <!-- <a href="{% url 'cod_novo' %}" class="btn btn-primary">NOVO ANO</a> -->
@@ -43,7 +51,11 @@
                             <th style="text-align: center">Destinação final descrição</th>
                             <th style="text-align: center">Observações ano</th>
                             <th style="text-align: center">Observações descrição</th>
+                            {% load permission_tags %}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <th style="text-align: center">Nome Usuario</th>
                             <th style="text-align: center">Ações</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -61,14 +73,22 @@
                             <td style="text-align: center">{{ data.destinacao_final_desc }}</td>
                             <td style="text-align: center">{{ data.observacoes_ano }}</td>
                             <td style="text-align: center">{{ data.observacoes_desc }}</td>
-                            <td>
+                            {% load permission_tags %}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <td style="text-align: center">{{ data.fk_user }}</td>
+                            <td style="text-align: center">
+                                
                                 <a href="/cod_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
                                 <a href="/cod_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
                             </td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                </div>
+                
+                
                 
                 <script>
                     $(document).ready(function() {
@@ -82,6 +102,45 @@
                             });
                         });
                     });
+
+                    $(function () {
+
+                    $("td").dblclick(function () {
+
+                        var conteudoOriginal = $(this).text();
+
+                        $(this).addClass("celulaEmEdicao");
+
+                        $(this).html("<input type='text' value='" + conteudoOriginal + "' />");
+
+                        $(this).children().first().focus();
+
+                         $(this).children().first().keypress(function (e) {
+
+                            if (e.which == 13) {
+
+                                var novoConteudo = $(this).val();
+
+                                $(this).parent().text(novoConteudo);
+
+                                $(this).parent().removeClass("celulaEmEdicao");
+
+                            }
+
+                        });
+
+                    $(this).children().first().blur(function(){
+
+                    $(this).parent().text(conteudoOriginal);
+
+                    $(this).parent().removeClass("celulaEmEdicao");
+
+                    });
+
+                });
+
+                });
+                    
                 </script>
 
 {% endblock %}

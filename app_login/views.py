@@ -1,16 +1,19 @@
+from django.contrib.auth import authenticate, login as login_django
+from django.contrib.auth import login as login_django
+from django.contrib.auth import logout
+from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as login_django
 from django.contrib.auth.decorators import login_required
 from rolepermissions.roles import assign_role, get_user_roles
 from rolepermissions.decorators import has_permission_decorator
 from core.settings import LOGIN_REDIRECT_URL
 from django.contrib import messages
-from django.contrib.auth import logout
-from django.contrib.auth import views as auth_views
 
 
+
+@login_required
 @has_permission_decorator('cadastro_user')
 def cadastro(request):
     if request.method == "GET":
@@ -27,7 +30,9 @@ def cadastro(request):
             return redirect('cadastro')
         
         user = User.objects.create_user(username=username, password=password)
+        
         user.save()
+        
         assign_role(user, tipo)
         messages.add_message(request, messages.SUCCESS, 'Usuário cadastrado com sucesso.')
         return redirect('cadastro')
@@ -45,22 +50,21 @@ def login(request):
         
         if user:
             login_django(request, user)
-            return redirect('sgc_home')
+            return redirect('home')
         else:
             messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos.')
             return redirect('login')
 
 
-@login_required(login_url="/auth/login/")
-def plataforma(request):
-    user = request.user
-    user_roles = get_user_roles(user)
+# @login_required(login_url="/login/")
+# def plataforma(request):
+#     user = request.user
+#     user_roles = get_user_roles(user)
     
-    return render(request, 'home.html', {'user': user, 'user_roles': user_roles})
+#     return render(request, 'home.html', {'user': user, 'user_roles': user_roles})
 
 
-# @login_required(login_url="/auth/login/")
-@login_required(login_url="login")
+@login_required
 def reset(request):
     if request.method == "GET":
         users = User.objects.all()
