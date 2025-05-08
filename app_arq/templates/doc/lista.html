@@ -19,15 +19,15 @@
         <p>  <a href="{% url 'doc_novo' %}" class="btn btn-primary">NOVO DOC</a></p>
           
         <br />
-       
+       <p>Total de documentos: <strong>{{ qtd_docs }}</strong></p>
         <input id="gfg" type="text" placeholder="Pesquisar documento">
        
-<div class="col-md-15">
+
 
                 <table class="table" id="geeks">
                     <thead class="thead-dark">
                         <tr>
-                            <th style="text-align: center">id</th>
+                            <!--<th style="text-align: center">id</th>-->
                             <th style="text-align: center">Código</th>
                             <th style="text-align: center">Numero</th>
                             <th style="text-align: center">NewFile/SIGAD</th>
@@ -55,7 +55,7 @@
                     <tbody>
                         {% for data in dataset %}
                         <tr>
-                            <td style="text-align: center">{{ data.id }}</td>
+                            <!--<td style="text-align: center">{{ data.id }}</td>-->
                             <td style="text-align: center">{{ data.fk_codigo }}</td>
                             <td style="text-align: center">{{ data.doc_numero }}</td>
                             <td style="text-align: center">{{ data.new_file_sigad }}</td>
@@ -84,9 +84,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
-</div>
 
-</div>
 
     <script>
         $(document).ready(function() {
@@ -102,3 +100,4 @@
         });
     </script>
 {% endblock %}
+

@@ -10,7 +10,9 @@ from django.contrib import messages
 @login_required
 def doc_lista(request):
     dataset = Docs.objects.all()
-    context = {"dataset": dataset}
+    #qtd de docs
+    qtd_docs = dataset.count()
+    context = {"dataset": dataset, 'qtd_docs' : qtd_docs}
     print(dataset)
     return render(request, 'doc/lista.html', context)
 
