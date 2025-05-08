@@ -1,100 +1,92 @@
 {% extends 'base.html' %}
 {% load permission_tags %}
-{% block title %}Pagina Inicial{% endblock %}
-{% block content %}
 
-{% csrf_token %}
+{% block title %}Página Inicial{% endblock %}
 
+{% block inner_content %}
+    {% csrf_token %}
 
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                <div class="alert alert-success" role="alert">{{ message }}</div>
-                {% elif message.tags == 'error' %}
-                <div class="alert-error alert" role="alert">{{ message }}</div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-	<div class="container">
-        <p>  <a href="{% url 'doc_novo' %}" class="btn btn-primary">NOVO DOC</a></p>
-          
-        <br />
-       <p>Total de documentos: <strong>{{ qtd_docs }}</strong></p>
-        <input id="gfg" type="text" placeholder="Pesquisar documento">
-       
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+            <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% elif message.tags == 'error' %}
+            <div class="alert-error alert" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{% url 'doc_novo' %}" class="btn btn-primary">NOVO DOC</a>
+        <p class="mb-0">Total de documentos: <strong>{{ qtd_docs }}</strong></p>
+    </div>
 
-                <table class="table" id="geeks">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <input id="gfg" type="text" placeholder="Pesquisar documento" class="form-control mb-3">
+                
+                <table class="table table-hover" id="geeks">
                     <thead class="thead-dark">
                         <tr>
-                            <!--<th style="text-align: center">id</th>-->
-                            <th style="text-align: center">Código</th>
-                            <th style="text-align: center">Numero</th>
-                            <th style="text-align: center">NewFile/SIGAD</th>
-
-                            <th style="text-align: center">Tipo</th>
-                            <th style="text-align: center">Data</th>
+                            <th class="text-center d-none d-md-table-cell">Código</th>
+                            <th class="text-center">Número</th>
+                            <th class="text-center d-none d-lg-table-cell">NewFile/SIGAD</th>
+                            <th class="text-center">Tipo</th>
+                            <th class="text-center d-none d-md-table-cell">Data</th>
+                            <th class="text-center d-none d-lg-table-cell">Origem</th>
+                            <th class="text-center d-none d-lg-table-cell">Destino</th>
+                            <th class="text-center d-none d-xl-table-cell">Fase corrente</th>
+                            <th class="text-center d-none d-xl-table-cell">Fase intermediária</th>
+                            <th class="text-center d-none d-xl-table-cell">Ano eliminação</th>
+                            <th class="text-center d-none d-lg-table-cell">Caixa</th>
+                            <th class="text-center d-none d-xl-table-cell">TCU</th>
+                            <th class="text-center d-none d-lg-table-cell">Destinação</th>
                             
-                            <th style="text-align: center">Origem</th>
-                            <th style="text-align: center">Destino</th>
-                            <th style="text-align: center">Fase corrente</th>
-                            <th style="text-align: center">Fase intermediária</th>
-                            <th style="text-align: center">Ano de eliminacao</th>
-                            <th style="text-align: center">Caixa</th>
-                            <th style="text-align: center">TCU</th>
-                            <th style="text-align: center">Destinação final</th>
-                            <th style="text-align: center">ID Usuario</th>
-                            
-                            {% load permission_tags %}
                             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <th style="text-align: center">Nome Usuario</th>
-                            <th style="text-align: center">Ações</th>
+                            <th class="text-center d-none d-md-table-cell">Ações</th>
                             {% endif %}
                         </tr>
                     </thead>
                     <tbody>
                         {% for data in dataset %}
                         <tr>
-                            <!--<td style="text-align: center">{{ data.id }}</td>-->
-                            <td style="text-align: center">{{ data.fk_codigo }}</td>
-                            <td style="text-align: center">{{ data.doc_numero }}</td>
-                            <td style="text-align: center">{{ data.new_file_sigad }}</td>
-                            <td style="text-align: center">{{ data.fk_tipo }}</td>
-                            <td style="text-align: center">{{ data.doc_data }}</td>
-                            <td style="text-align: center">{{ data.fk_doc_origem }}</td>
-                            <td style="text-align: center">{{ data.fk_doc_destino }}</td>
-                            <td style="text-align: center">{{ data.doc_corrente_ano }}</td>
-                            <td style="text-align: center">{{ data.doc_intermediario_ano }}</td>
-                            <td style="text-align: center">{{ data.doc_eliminacao_ano }}</td>
-                            <td style="text-align: center">{{ data.fk_caixa }}</td>
-                            <td style="text-align: center">{{ data.fk_tcu }}</td>
-                            <td style="text-align: center">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
-                            <td style="text-align: center">{{ data.fk_user.id }}</td>
+                            <td class="text-center d-none d-md-table-cell">{{ data.fk_codigo|default:"-" }}</td>
+                            <td class="text-center">{{ data.doc_numero|default:"-" }}</td>
+                            <td class="text-center d-none d-lg-table-cell">{{ data.new_file_sigad|default:"-" }}</td>
+                            <td class="text-center">{{ data.fk_tipo|default:"-" }}</td>
+                            <td class="text-center d-none d-md-table-cell">{{ data.doc_data|date:"d/m/Y"|default:"-" }}</td>
+                            <td class="text-center d-none d-lg-table-cell">{{ data.fk_doc_origem|default:"-" }}</td>
+                            <td class="text-center d-none d-lg-table-cell">{{ data.fk_doc_destino|default:"-" }}</td>
+                            <td class="text-center d-none d-xl-table-cell">{{ data.doc_corrente_ano|default:"-" }}</td>
+                            <td class="text-center d-none d-xl-table-cell">{{ data.doc_intermediario_ano|default:"-" }}</td>
+                            <td class="text-center d-none d-xl-table-cell">{{ data.doc_eliminacao_ano|default:"-" }}</td>
+                            <td class="text-center d-none d-lg-table-cell">{{ data.fk_caixa|default:"-" }}</td>
+                            <td class="text-center d-none d-xl-table-cell">{{ data.fk_tcu|default:"-" }}</td>
+                            <td class="text-center d-none d-lg-table-cell">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao|default:"-" }}</td>
                             
-                            {% load permission_tags %}
                             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <td style="text-align: center">{{ data.fk_user }}</td>
-                            <td style="text-align: center">
-                                
-                                <a href="/doc_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
-                                <a href="/doc_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
+                            <td class="text-center d-none d-md-table-cell">
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/doc_editar/{{ data.id }}/" class="btn btn-primary">Editar</a>
+                                    <a href="/doc_delete/{{ data.id }}/" class="btn btn-danger">Excluir</a>
+                                </div>
                             </td>
                             {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-
+            </div>
+        </div>
+    </div>
 
     <script>
         $(document).ready(function() {
             $("#gfg").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
-                $("#geeks tr").filter(function() {
-                    // Mantém o cabeçalho sempre visível
-                    if (!$(this).find('th').length) {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                    }
+                $("#geeks tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                 });
             });
         });
