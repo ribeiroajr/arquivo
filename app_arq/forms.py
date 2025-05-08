@@ -66,6 +66,8 @@ class DocsForm(BaseForm):
     def __init__(self, *args, **kwargs):
         super(DocsForm, self).__init__(*args, **kwargs)
         self.fields["doc_data"].widget = forms.DateInput(attrs={'type': 'date'})
+        self.fields['doc_data'].widget.attrs['class'] = 'form-control'
+        
         self.fields['fk_codigo'].widget.attrs['class'] = 'form-control'
         self.fields['fk_tipo'].widget.attrs['class'] = 'form-control'
 
@@ -75,14 +77,18 @@ class DocsForm(BaseForm):
         self.fields['fk_doc_destino'].widget.attrs['class'] = 'form-control'
 
 
-	#self.fields['fk_doc_origem'].widget.attrs['class'] = 'form-control'
+	    #self.fields['fk_doc_origem'].widget.attrs['class'] = 'form-control'
         #self.fields['fk_doc_destino'].widget.attrs['class'] = 'form-control'
         self.fields['fk_caixa'].widget.attrs['class'] = 'form-control'
+        self.fields['fk_caixa'].queryset = Caixa.objects.filter(fk_status = 1)
+        
         self.fields['fk_tcu'].widget.attrs['class'] = 'form-control'
  
         self.fields['doc_numero'].widget.attrs['class'] = 'form-control'
         self.fields['doc_numero'].required = False
-        self.fields['doc_data'].widget.attrs['class'] = 'form-control'
+        self.fields['doc_numero'].widget.attrs['value'] = 'SEM NÚMERO'
+        
+        
         
         self.fields['new_file_sigad'].widget.attrs['class'] = 'form-control'
         # self.fields['new_file_sigad'].widget.attrs['placeholder'] = 'NewFile/SIGAD'
@@ -107,4 +113,4 @@ class DocsForm(BaseForm):
         self.fields['doc_destinacao_final'].widget.attrs['class'] = 'form-control'
                
         # self.fields['doc_numero'].widget.attrs['placeholder'] = 'Numero do documento'
-        self.fields['doc_numero'].widget.attrs['value'] = 'SEM NÚMERO'
+        

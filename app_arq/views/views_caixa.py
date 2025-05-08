@@ -4,6 +4,7 @@ from .views_log import registrar_acao_usuario, registrar_acao_usuario_deletar
 from ..forms import CaixaForm
 from ..models import Caixa
 
+#dataset = Caixa.objects.filter(fk_status=1)
 @login_required
 def caixa_lista(request):
     dataset = Caixa.objects.all()
