@@ -8,7 +8,13 @@ from ..models import Caixa
 @login_required
 def caixa_lista(request):
     dataset = Caixa.objects.all()
-    context = {"dataset": dataset}
+    qtd_cx_aberta = Caixa.objects.filter(fk_status = 1).count()
+    qtd_cx_fechada = Caixa.objects.filter(fk_status = 2).count()
+    qtd_cx_conferida = Caixa.objects.filter(fk_status = 3).count()
+    context = {"dataset": dataset, 
+               "qtd_cx_aberta": qtd_cx_aberta,
+               "qtd_cx_fechada": qtd_cx_fechada,
+               "qtd_cx_conferida": qtd_cx_conferida}
     # print(dataset)
     return render(request, 'caixa/lista.html', context)
 
