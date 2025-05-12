@@ -13,7 +13,7 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-
+        <div class="container">
         <h1>Logs de Ações dos Usuários</h1>
     
         {% for usuario, logs_por_dia in logs_por_usuario_por_dia.items %}
@@ -48,5 +48,5 @@
             {% endfor %}
         </ul>
     {% endfor %}
-
+    </div>
 {% endblock %}
