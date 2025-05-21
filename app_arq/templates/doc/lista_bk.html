@@ -14,7 +14,7 @@
 <div class="container">
     <div class="d-flex justify-content-between mb-3">
         <a href="{% url 'doc_novo' %}" class="btn btn-primary">NOVO DOC</a>
-        <p class="mb-0">Total de documentos: <strong>{{ qtd_docs }}</strong></p>
+        
         <!-- Filtros de pesquisa -->
         <div class="row g-2">
             <div class="col-md-6">
@@ -44,9 +44,10 @@
                     <th style="text-align: center">Caixa</th>
                     <th style="text-align: center">TCU</th>
                     <th style="text-align: center">Destinação final</th>
-                                        
+                    <th style="text-align: center">ID Usuário</th>
+                    
                     {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                    <th style="text-align: center">Usuário</th>
+                    <th style="text-align: center">Nome Usuário</th>
                     <th style="text-align: center">Ações</th>
                     {% endif %}
                 </tr>
@@ -68,7 +69,7 @@
                     <td style="text-align: center">{{ data.fk_caixa }}</td>
                     <td style="text-align: center">{{ data.fk_tcu }}</td>
                     <td style="text-align: center">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
-                    
+                    <td style="text-align: center">{{ data.fk_user.id }}</td>
                     
                     {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
                     <td style="text-align: center">{{ data.fk_user }}</td>
@@ -84,6 +85,7 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
     var linhasOriginais = $("#tabelaDocumentos tbody tr");
