@@ -64,20 +64,20 @@
                     <td>{{ data.doc_numero }}</td>
                     <td>{{ data.new_file_sigad }}</td>
                     <td>{{ data.fk_tipo }}</td>
-                    <td>{{ data.doc_data|date:"d/m/Y" }}</td>
-                    <td>{{ data.fk_doc_origem }}</td>
-                    <td>{{ data.fk_doc_destino }}</td>
-                    <td>{{ data.doc_corrente_ano }}</td>
-                    <td>{{ data.doc_intermediario_ano }}</td>
-                    <td>{{ data.doc_eliminacao_ano }}</td>
+                    <td style="text-align: center">{{ data.doc_data|date:"d/m/Y" }}</td>
+                    <td style="text-align: center">{{ data.fk_doc_origem }}</td>
+                    <td style="text-align: center">{{ data.fk_doc_destino }}</td>
+                    <td style="text-align: center">{{ data.doc_corrente_ano }}</td>
+                    <td style="text-align: center">{{ data.doc_intermediario_ano }}</td>
+                    <td style="text-align: center">{{ data.doc_eliminacao_ano }}</td>
                     <td>{{ data.fk_caixa }}</td>
                     <td>{{ data.fk_tcu }}</td>
-                    <td>{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
-                    <td>{{ data.fk_user.id }}</td>
+                    <td style="text-align: center">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
+                    <td style="text-align: center">{{ data.fk_user.id }}</td>
                     
                     {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                    <td>{{ data.fk_user }}</td>
-                    <td>
+                    <td style="text-align: center">{{ data.fk_user }}</td>
+                    <td style="text-align: center">
                         <div class="d-flex gap-1">
                             <a href="/doc_editar/{{ data.id }}/" class="btn btn-sm btn-primary">EDITAR</a>
                             <a href="/doc_delete/{{ data.id }}/" class="btn btn-sm btn-danger">EXCLUIR</a>
