@@ -91,28 +91,39 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
+$(document).ready(function () {
     var linhasOriginais = $("#tabelaDocumentos tbody tr");
-    
-    $("#pesquisaGeral").on("keyup", function() {
-        var valor = $(this).val().toLowerCase();
-        linhasOriginais.filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(valor) > -1);
+
+    function aplicarFiltros() {
+        var valorGeral = $("#pesquisaGeral").val().toLowerCase();
+        var valorAvancado = $("#pesquisaAvancada").val().toLowerCase();
+
+        linhasOriginais.each(function () {
+            var texto = $(this).text().toLowerCase();
+            var correspondeGeral = texto.indexOf(valorGeral) > -1;
+            var correspondeAvancado = texto.indexOf(valorAvancado) > -1 || valorAvancado === "";
+
+            $(this).toggle(correspondeGeral && correspondeAvancado);
         });
-        $("#pesquisaAvancada").trigger("keyup");
-    });
-    
-    $("#pesquisaAvancada").on("keyup", function() {
-        var valor = $(this).val().toLowerCase();
-        var linhasVisiveis = $("#tabelaDocumentos tbody tr:visible");
-        linhasVisiveis.filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(valor) > -1);
-        });
-    });
+    }
+
+    // Função debounce genérica
+    function debounce(func, delay) {
+        let timeout;
+        return function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(), delay);
+        };
+    }
+
+    const aplicarFiltrosDebounce = debounce(aplicarFiltros, 300);
+
+    $("#pesquisaGeral").on("keyup", aplicarFiltrosDebounce);
+    $("#pesquisaAvancada").on("keyup", aplicarFiltrosDebounce);
 });
 </script>
+
 
 <style>
     .lista_geral{
