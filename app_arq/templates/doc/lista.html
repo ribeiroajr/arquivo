@@ -25,7 +25,9 @@
     <div class="card shadow-sm mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <input id="gfg" type="text" placeholder="Pesquisar documento" class="form-control mb-3">
+                <input id="pesquisaGeral" type="text" class="form-control" placeholder="Pesquisa geral...">
+                <br />
+                <input id="pesquisaAvancada" type="text" class="form-control" placeholder="Filtrar dentro dos resultados...">
                 
                 <table class="table table-hover" id="geeks">
                     <thead class="thead-dark">
@@ -87,13 +89,29 @@
 
     <script>
         $(document).ready(function() {
-            $("#gfg").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#geeks tbody tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            var linhasOriginais = $("#tabelaDocumentos tbody tr");
+            
+            // Pesquisa geral (primeiro filtro)
+            $("#pesquisaGeral").on("keyup", function() {
+                var valor = $(this).val().toLowerCase();
+                linhasOriginais.filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(valor) > -1);
+                });
+                
+                // Dispara o segundo filtro para atualizar os resultados
+                $("#pesquisaAvancada").trigger("keyup");
+            });
+            
+            // Pesquisa avançada (segundo filtro)
+            $("#pesquisaAvancada").on("keyup", function() {
+                var valor = $(this).val().toLowerCase();
+                var linhasVisiveis = $("#tabelaDocumentos tbody tr:visible");
+                
+                linhasVisiveis.filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(valor) > -1);
                 });
             });
         });
-    </script>
+        </script>
 {% endblock %}
 
