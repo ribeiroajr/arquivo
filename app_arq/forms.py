@@ -38,6 +38,7 @@ class CaixaForm(BaseForm):
         model = Caixa
         fields = '__all__'
         
+        
 class Tipo_guardaForm(BaseForm):
     class Meta:
         model = TipoGuarda
@@ -81,6 +82,7 @@ class DocsForm(BaseForm):
         #self.fields['fk_doc_destino'].widget.attrs['class'] = 'form-control'
         self.fields['fk_caixa'].widget.attrs['class'] = 'form-control'
         self.fields['fk_caixa'].queryset = Caixa.objects.filter(fk_status = 1)
+        self.fields['fk_caixa'].widget.attrs['required'] = 'required'
         
         self.fields['fk_tcu'].widget.attrs['class'] = 'form-control'
  
