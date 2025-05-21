@@ -45,7 +45,9 @@
                             <th class="text-center d-none d-lg-table-cell">Destinação</th>
                             
                             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <th style="text-align: center">Usuário</th>
                             <th class="text-center d-none d-md-table-cell">Ações</th>
+
                             {% endif %}
                         </tr>
                     </thead>
@@ -67,6 +69,7 @@
                             <td class="text-center d-none d-lg-table-cell">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao|default:"-" }}</td>
                             
                             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                            <td style="text-align: center">{{ data.fk_user }}</td>
                             <td class="text-center d-none d-md-table-cell">
                                 <div class="btn-group btn-group-sm">
                                     <a href="/doc_editar/{{ data.id }}/" class="btn btn-primary">Editar</a>
