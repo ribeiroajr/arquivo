@@ -60,24 +60,24 @@
                 {% for data in dataset %}
                 <tr>
                     
-                    <td>{{ data.fk_codigo }}</td>
-                    <td>{{ data.doc_numero }}</td>
-                    <td>{{ data.new_file_sigad }}</td>
-                    <td>{{ data.fk_tipo }}</td>
-                    <td style="text-align: center">{{ data.doc_data|date:"d/m/Y" }}</td>
-                    <td style="text-align: center">{{ data.fk_doc_origem }}</td>
-                    <td style="text-align: center">{{ data.fk_doc_destino }}</td>
-                    <td style="text-align: center">{{ data.doc_corrente_ano }}</td>
-                    <td style="text-align: center">{{ data.doc_intermediario_ano }}</td>
-                    <td style="text-align: center">{{ data.doc_eliminacao_ano }}</td>
-                    <td>{{ data.fk_caixa }}</td>
-                    <td>{{ data.fk_tcu }}</td>
-                    <td style="text-align: center">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
-                    <td style="text-align: center">{{ data.fk_user.id }}</td>
+                    <td style="vertical-align: middle;">{{ data.fk_codigo }}</td>
+                    <td style="vertical-align: middle;">{{ data.doc_numero }}</td>
+                    <td style="vertical-align: middle;">{{ data.new_file_sigad }}</td>
+                    <td style="vertical-align: middle;">{{ data.fk_tipo }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.doc_data|date:"d/m/Y" }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_doc_origem }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_doc_destino }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.doc_corrente_ano }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.doc_intermediario_ano }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.doc_eliminacao_ano }}</td>
+                    <td style="vertical-align: middle;">{{ data.fk_caixa }}</td>
+                    <td style="vertical-align: middle;">{{ data.fk_tcu }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_user.id }}</td>
                     
                     {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                    <td style="text-align: center">{{ data.fk_user }}</td>
-                    <td style="text-align: center">
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_user }}</td>
+                    <td style="text-align: center; vertical-align: middle;">
                         <div class="d-flex gap-1">
                             <a href="/doc_editar/{{ data.id }}/" class="btn btn-sm btn-primary">EDITAR</a>
                             <a href="/doc_delete/{{ data.id }}/" class="btn btn-sm btn-danger">EXCLUIR</a>
