@@ -19,6 +19,7 @@
         <div class="d-flex gap-2">
             <br />
             <p class="mb-0">Total de documentos: <strong>{{ qtd_docs }}</strong></p>
+            <br />
             <input id="pesquisaGeral" type="text" class="form-control" style="width: 200px;" placeholder="Pesquisa geral...">
             <input id="pesquisaAvancada" type="text" class="form-control" style="width: 200px;" placeholder="Filtrar resultados...">
         </div>
@@ -34,24 +35,24 @@
             <thead class="thead-dark sticky-top">
                 <tr>
                     
-                    <th style="width: 8%;">Código</th>
-                    <th style="width: 8%;">Número</th>
-                    <th style="width: 10%;">NewFile/SIGAD</th>
-                    <th style="width: 8%;">Tipo</th>
-                    <th style="width: 8%;">Data</th>
-                    <th style="width: 8%;">Origem</th>
-                    <th style="width: 8%;">Destino</th>
-                    <th style="width: 8%;">Fase corrente</th>
-                    <th style="width: 8%;">Fase interm.</th>
-                    <th style="width: 8%;">Ano elim.</th>
-                    <th style="width: 8%;">Caixa</th>
-                    <th style="width: 5%;">TCU</th>
-                    <th style="width: 10%;">Dest. final</th>
-                    <th style="width: 5%;">ID Usuário</th>
+                    <th style="text-align: center">Código</th>
+                    <th style="text-align: center">Número</th>
+                    <th style="text-align: center">NewFile/SIGAD</th>
+                    <th style="text-align: center">Tipo</th>
+                    <th style="text-align: center">Data</th>
+                    <th style="text-align: center">Origem</th>
+                    <th style="text-align: center">Destino</th>
+                    <th style="text-align: center">Fase corrente</th>
+                    <th style="text-align: center">Fase interm.</th>
+                    <th style="text-align: center">Ano elim.</th>
+                    <th style="text-align: center">Caixa</th>
+                    <th style="text-align: center">TCU</th>
+                    <th style="text-align: center">Dest. final</th>
+                    <th style="text-align: center">ID Usuário</th>
                     
                     {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                    <th style="width: 10%;">Nome Usuário</th>
-                    <th style="width: 10%;">Ações</th>
+                    <th style="text-align: center">Nome Usuário</th>
+                    <th style="text-align: center">Ações</th>
                     {% endif %}
                 </tr>
             </thead>
@@ -115,8 +116,8 @@ $(document).ready(function() {
 
 <style>
     .lista_geral{
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 </style>
 
