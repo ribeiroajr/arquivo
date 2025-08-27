@@ -48,8 +48,8 @@
                     <th style="text-align: center">Caixa</th>
                     <th style="text-align: center">TCU</th>
                     <th style="text-align: center">Dest. final</th>
-                    {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
                     <th style="text-align: center">Ações</th>
+                    {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
                     <th style="text-align: center">Nome Usuário</th>
                     {% endif %}
                 </tr>
@@ -60,18 +60,18 @@
     				    {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
 			        <td style="vertical-align: middle;"><input type="checkbox"> </td>
 			        {% endif %}                    
-                    <td style="vertical-align: middle;">{{ data.fk_codigo }}</td>
-                    <td style="vertical-align: middle;">{{ data.doc_numero }}</td>
-                    <td style="vertical-align: middle;">{{ data.new_file_sigad }}</td>
-                    <td style="vertical-align: middle;">{{ data.fk_tipo }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_codigo }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.doc_numero }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.new_file_sigad }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_tipo }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.doc_data|date:"d/m/Y" }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.fk_doc_origem }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.fk_doc_destino }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.doc_corrente_ano }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.doc_intermediario_ano }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.doc_eliminacao_ano }}</td>
-                    <td style="vertical-align: middle;">{{ data.fk_caixa }}</td>
-                    <td style="vertical-align: middle;">{{ data.fk_tcu }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_caixa }}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_tcu }}</td>
                     <td style="text-align: center; vertical-align: middle;">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
                                        
                     <td style="text-align: center; vertical-align: middle;">
