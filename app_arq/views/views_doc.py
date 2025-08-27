@@ -7,13 +7,28 @@ from django.http import JsonResponse
 from django.contrib import messages
 # Create your views here.
 
+# @login_required
+# def doc_lista(request):
+#     dataset = Docs.objects.all()
+#     #qtd de docs
+#     qtd_docs = dataset.count()
+#     context = {"dataset": dataset, 'qtd_docs' : qtd_docs}
+#     print(dataset)
+#     return render(request, 'doc/lista.html', context)
+
+from rolepermissions.checkers import has_role
+
 @login_required
 def doc_lista(request):
-    dataset = Docs.objects.all()
-    #qtd de docs
+    user = request.user  
+
+    if has_role(user, "sin") or has_role(user, "arq_admin"):
+        dataset = Docs.objects.all()
+    else:
+        dataset = Docs.objects.filter(fk_user=user)
+
     qtd_docs = dataset.count()
-    context = {"dataset": dataset, 'qtd_docs' : qtd_docs}
-    print(dataset)
+    context = {"dataset": dataset, "qtd_docs": qtd_docs}
     return render(request, 'doc/lista.html', context)
 
 ## ok
