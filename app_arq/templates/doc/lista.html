@@ -82,11 +82,13 @@
                             {% endif %}
                     
                             {# EXCLUIR: apenas papéis #}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                                <a href="{% url 'doc_delete' data.id %}" class="btn btn-sm btn-danger">EXCLUIR</a>
-                            {% endif %}
-                        </div>
+                          {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                          <a href="{% url 'doc_delete' data.id %}" class="btn btn-sm btn-danger">EXCLUIR</a>
+                     </div>
                     </td>
+                    <td style="text-align: center; vertical-align: middle;">{{ data.fk_user }}</td>
+                        {% endif %}
+              </tr>
                     
                 {% endfor %}
             </tbody>
