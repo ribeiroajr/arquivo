@@ -79,6 +79,8 @@ urlpatterns = [
     path('', views.pagination, name="pagination"),
 
     path('graficos/', gerar_graficos, name='gerar_graficos'),
+    
+    path('doc_toggle_status/<int:pk>/', views.toggle_status_doc, name='doc_toggle_status'),
 
 # ]  + statistics(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]

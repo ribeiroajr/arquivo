@@ -181,6 +181,8 @@ class Docs(BaseModel):
     doc_intermediario_ano = models.IntegerField(verbose_name="Fase intermediária anos", blank=True, null=True)
     doc_destinacao_final_ano = models.IntegerField(verbose_name="Destinação final anos", blank=True, null=True)
     doc_obs_ano = models.IntegerField(verbose_name="Observação ano", blank=True, null=True) 
+    
+    status_doc = models.BooleanField(default=False, verbose_name="Conferido")
 
     def __str__(self):
         return self.doc_numero

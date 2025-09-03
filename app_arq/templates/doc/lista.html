@@ -75,19 +75,25 @@
                                        
                     <td style="text-align: center; vertical-align: middle;">
                         <div class="d-flex gap-1">
-                          {# EDITAR: papéis OU dono do documento #}
-                          {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" or request.user.id == data.fk_user_id %}
-                            <a href="{% url 'doc_editar' data.id %}" class="btn btn-sm btn-primary">EDITAR</a>
-                          {% endif %}
-                      
-                          {# EXCLUIR: apenas papéis #}
-                          {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <a href="{% url 'doc_delete' data.id %}" class="btn btn-sm btn-danger">EXCLUIR</a>
-                       </div>
-                      </td>
-                      <td style="text-align: center; vertical-align: middle;">{{ data.fk_user }}</td>
-                          {% endif %}
-                </tr>
+                            {# Botão de status #}
+                            <button 
+                                class="btn btn-sm toggle-status-btn {% if data.status_doc %}btn-success{% else %}btn-warning{% endif %}" 
+                                data-id="{{ data.id }}">
+                                {% if data.status_doc %}Conferido{% else %}Conferir{% endif %}
+                            </button>
+                    
+                            {# EDITAR: papéis OU dono do documento #}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" or request.user.id == data.fk_user_id %}
+                                <a href="{% url 'doc_editar' data.id %}" class="btn btn-sm btn-primary">EDITAR</a>
+                            {% endif %}
+                    
+                            {# EXCLUIR: apenas papéis #}
+                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+                                <a href="{% url 'doc_delete' data.id %}" class="btn btn-sm btn-danger">EXCLUIR</a>
+                            {% endif %}
+                        </div>
+                    </td>
+                    
                 {% endfor %}
             </tbody>
         </table>
@@ -95,36 +101,63 @@
 </div>
 
 <script>
-$(document).ready(function () {
-    var linhasOriginais = $("#tabelaDocumentos tbody tr");
-
-    function aplicarFiltros() {
-        var valorGeral = $("#pesquisaGeral").val().toLowerCase();
-        var valorAvancado = $("#pesquisaAvancada").val().toLowerCase();
-
-        linhasOriginais.each(function () {
-            var texto = $(this).text().toLowerCase();
-            var correspondeGeral = texto.indexOf(valorGeral) > -1;
-            var correspondeAvancado = texto.indexOf(valorAvancado) > -1 || valorAvancado === "";
-
-            $(this).toggle(correspondeGeral && correspondeAvancado);
+    $(document).ready(function () {
+        var linhasOriginais = $("#tabelaDocumentos tbody tr");
+    
+        function aplicarFiltros() {
+            var valorGeral = $("#pesquisaGeral").val().toLowerCase();
+            var valorAvancado = $("#pesquisaAvancada").val().toLowerCase();
+    
+            linhasOriginais.each(function () {
+                var texto = $(this).text().toLowerCase();
+                var correspondeGeral = texto.indexOf(valorGeral) > -1;
+                var correspondeAvancado = texto.indexOf(valorAvancado) > -1 || valorAvancado === "";
+    
+                $(this).toggle(correspondeGeral && correspondeAvancado);
+            });
+        }
+    
+        // Função debounce genérica
+        function debounce(func, delay) {
+            let timeout;
+            return function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func(), delay);
+            };
+        }
+    
+        const aplicarFiltrosDebounce = debounce(aplicarFiltros, 300);
+    
+        $("#pesquisaGeral").on("keyup", aplicarFiltrosDebounce);
+        $("#pesquisaAvancada").on("keyup", aplicarFiltrosDebounce);
+    
+        // 🔥 Novo: AJAX para alternar status
+        $(".toggle-status-btn").on("click", function () {
+            var button = $(this);
+            var docId = button.data("id");
+    
+            $.ajax({
+                url: "/doc_toggle_status/" + docId + "/",
+                type: "POST",
+                headers: { "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val() },
+                success: function (response) {
+                    if (response.success) {
+                        if (response.status) {
+                            button.removeClass("btn-warning").addClass("btn-success");
+                            button.text("Conferido");
+                        } else {
+                            button.removeClass("btn-success").addClass("btn-warning");
+                            button.text("Conferir");
+                        }
+                    }
+                },
+                error: function () {
+                    alert("Erro ao atualizar status!");
+                }
+            });
         });
-    }
-
-    // Função debounce genérica
-    function debounce(func, delay) {
-        let timeout;
-        return function () {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func(), delay);
-        };
-    }
-
-    const aplicarFiltrosDebounce = debounce(aplicarFiltros, 300);
-
-    $("#pesquisaGeral").on("keyup", aplicarFiltrosDebounce);
-    $("#pesquisaAvancada").on("keyup", aplicarFiltrosDebounce);
-});
+    });
+    
 </script>
 
 

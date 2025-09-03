@@ -202,3 +202,25 @@ def doc_delete(request, id):
     
     return render(request, 'doc/excluir.html', context)
 
+
+# views.py
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+
+@login_required
+@require_POST
+def toggle_status_doc(request, pk):
+    try:
+        doc = Docs.objects.get(pk=pk)
+
+        # alterna o status
+        doc.status_doc = not doc.status_doc
+        doc.save()
+
+        return JsonResponse({
+            "success": True,
+            "status": doc.status_doc
+        })
+    except Docs.DoesNotExist:
+        return JsonResponse({"success": False, "error": "Documento não encontrado"}, status=404)
