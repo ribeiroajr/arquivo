@@ -75,18 +75,24 @@
         </li>
 
 
+        {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listar_logs' %}">Relatório</a>
+        </li>
+
+        {% endif %}
+
         {% if request.user|has_role:"sin" %}
 
-        
         <li class="nav-item">
           <a class="nav-link" href="{% url 'cadastro' %}">Cadastro</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'listar_logs' %}">Relatorio</a>
-        </li>
-        
-        
         {% endif %}
         {% endif %}
 

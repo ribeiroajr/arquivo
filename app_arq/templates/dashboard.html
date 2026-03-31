@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="container-fluid py-3 px-4">
+
+    <h4 class="mb-4">Dashboard</h4>
+
+    {# Cards de totais #}
+    <div class="row g-3 mb-4">
+        <div class="col-sm-4">
+            <div class="card border-0 bg-dark text-white text-center py-3">
+                <div class="fs-2 fw-bold">{{ totais.total_docs }}</div>
+                <div class="small">Total de documentos</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card border-0 bg-success text-white text-center py-3">
+                <div class="fs-2 fw-bold">{{ totais.docs_conferidos }}</div>
+                <div class="small">Conferidos</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card border-0 bg-primary text-white text-center py-3">
+                <div class="fs-2 fw-bold">{{ totais.docs_mes }}</div>
+                <div class="small">Cadastrados este mês</div>
+            </div>
+        </div>
+    </div>
+
+    {# Linha 1: tipo + produtividade #}
+    <div class="row g-3 mb-3">
+        <div class="col-lg-5">
+            <div class="card shadow-sm h-100">
+                <div class="card-body p-2">
+                    {{ graph_tipo|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="card shadow-sm h-100">
+                <div class="card-body p-2">
+                    {{ graph_prod|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Linha 2: evolução diária + por caixa #}
+    <div class="row g-3">
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body p-2">
+                    {{ graph_dia|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body p-2">
+                    {{ graph_caixa|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

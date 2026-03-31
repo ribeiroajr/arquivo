@@ -8,7 +8,7 @@
         <h4 class="mb-0">Produtividade por Usuário</h4>
     </div>
 
-    {# Filtro de período #}
+    {# Filtro de período e usuário #}
     <form method="GET" class="row g-2 align-items-end mb-4">
         <div class="col-auto">
             <label class="form-label form-label-sm mb-1">De</label>
@@ -19,13 +19,23 @@
             <input type="date" name="data_fim" value="{{ data_fim }}" class="form-control form-control-sm">
         </div>
         <div class="col-auto">
+            <label class="form-label form-label-sm mb-1">Usuário</label>
+            <select name="usuario" class="form-select form-select-sm" style="min-width: 160px;">
+                <option value="">Todos</option>
+                {% for u in usuarios %}
+                <option value="{{ u.id }}" {% if usuario_selecionado == u.id %}selected{% endif %}>
+                    {{ u.username }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto">
             <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
             <a href="{% url 'listar_logs' %}" class="btn btn-outline-secondary btn-sm">Limpar</a>
         </div>
     </form>
 
     {% if total_geral %}
-    <!-- Cards de resumo geral -->
     <div class="row g-3 mb-4">
         <div class="col-sm-4">
             <div class="card border-0 bg-success text-white text-center py-3">
@@ -53,9 +63,11 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-2">
             <span class="fw-semibold">{{ username }}</span>
-            <span class="badge bg-success me-1">{{ dados.total_cadastrou }} cadastros</span>
-            <span class="badge bg-primary me-1">{{ dados.total_editou }} edições</span>
-            <span class="badge bg-danger">{{ dados.total_deletou }} exclusões</span>
+            <div>
+                <span class="badge bg-success me-1">{{ dados.total_cadastrou }} cadastros</span>
+                <span class="badge bg-primary me-1">{{ dados.total_editou }} edições</span>
+                <span class="badge bg-danger">{{ dados.total_deletou }} exclusões</span>
+            </div>
         </div>
         <div class="card-body p-0">
             <table class="table table-sm table-striped table-hover mb-0">

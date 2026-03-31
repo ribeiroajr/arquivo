@@ -13,7 +13,7 @@ from app_arq.views.views_home import *
 from app_arq.views.views_tipo_guarada import *
 from app_arq.views.views_status import *
 from app_arq.views.views_log import *
-from app_arq.views.views_graficos import *
+from app_arq.views.views_graficos import gerar_graficos, dashboard
 from . import views
 
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -79,6 +79,7 @@ urlpatterns = [
     path('', views.pagination, name="pagination"),
 
     path('graficos/', gerar_graficos, name='gerar_graficos'),
+    path('dashboard/', dashboard, name='dashboard'),
     
     path('doc_toggle_status/<int:pk>/', views.toggle_status_doc, name='doc_toggle_status'),
 
