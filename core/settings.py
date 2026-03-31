@@ -32,7 +32,7 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://10.100.0.34', 'http://localhost', 'http://demeter.ciaer.interna',  'https://arq.ciaer.interna']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 # Application definition
 
@@ -70,7 +70,7 @@ SESSION_COOKIE_AGE = 3800
 ROOT_URLCONF = 'core.urls'
 
 
-INTERNAL_IPS = [
+IIIIIIL_IPS = [
     # ...
     '127.0.0.1',
     # ...
@@ -100,13 +100,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 from django_auth_ldap.config import *
 from django_auth_ldap.config import LDAPSearch
 
-AUTH_LDAP_SERVER_URI = "ldap://10.100.0.1:389"
-AUTH_LDAP_BIND_DN = "cn=django,ou=ciaer,dc=ciaer,dc=interna"
+AUTH_LDAP_SERVER_URI = "ldap://10.100.10.11:389"
+AUTH_LDAP_BIND_DN = "cn=django,ou=ccccc,dc=ccccc,dc=iiiiii"
 AUTH_LDAP_BIND_PASSWORD = "P0rM41s7"
 
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
-#            "ou=CIAER,dc=ciaer,dc=interna", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-            "ou=CIAER,dc=ciaer,dc=interna", ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)"
+#            "ou=CCCCC,dc=ccccc,dc=iiiiii", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
+            "ou=CCCCC,dc=ccccc,dc=iiiiii", ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)"
             )
 
 AUTH_LDAP_USER_ATTR_MAP = {
@@ -132,23 +132,14 @@ AUTHENTICATION_BACKENDS = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
-#   'default': {
-#       'ENGINE': 'django.db.backends.sqlite3',
-#       'NAME': BASE_DIR / 'db.sqlite3',
-#   }
-#}
-
 DATABASES = {
-      'default': {
-          'ENGINE': 'django.db.backends.mysql',
-          'NAME': 'arq',
-          'USER': 'demeterdb',
-          'PASSWORD': 'S1NdemeBD@01',
-          'HOST': 'localhost',
-          'PORT': '3306'
-      }
+  'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': BASE_DIR / 'db.sqlite3',
+  }
 }
+
+
 
 
 # Password validation
@@ -170,7 +161,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# Iiiiiitionalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-BR'
@@ -194,18 +185,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    # '/var/www/arq_staticfiles',
+    
 ]
 
 # Caminho para os arquivos de mídia
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/var/www/doc/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
-# Caminho para os arquivos de mídia
-#MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/var/www/doc/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 
 # Default primary key field type
