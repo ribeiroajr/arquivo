@@ -1,54 +1,107 @@
 {% extends 'base.html' %}
-{% block title %}Pagina Inicial{% endblock %}
+{% block title %}Relatório de Produtividade{% endblock %}
 {% block content %}
 
-{% csrf_token %}
+<div class="container-fluid py-3 px-4">
 
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                <div class="alert alert-success" role="alert">{{ message }}</div>
-                {% elif message.tags == 'error' %}
-                <div class="alert-error alert" role="alert">{{ message }}</div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        <div class="container">
-            <br />
-        <h1>Logs de Ações dos Usuários</h1>
-        <br />
-    
-        {% for username, logs_por_dia in logs_por_usuario_por_dia.items %}
-        <h2>{{ username }}</h2>
-        <ul>
-            {% for log_por_dia in logs_por_dia %}
-                <li>
-                    <h3>{{ log_por_dia.data|date:"d/m/Y" }}</h3>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Ação Realizada</th>
-                                <th>Quantidade</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Cadastrou</td>
-                                <td>{{ log_por_dia.cadastrou }}</td>
-                            </tr>
-                            <tr>
-                                <td>Editou</td>
-                                <td>{{ log_por_dia.editou }}</td>
-                            </tr>
-                            <tr>
-                                <td>Deletou</td>
-                                <td>{{ log_por_dia.deletou }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-0">Produtividade por Usuário</h4>
     </div>
+
+    {{# Filtro de período #}}
+    <form method="GET" class="row g-2 align-items-end mb-4">
+        <div class="col-auto">
+            <label class="form-label form-label-sm mb-1">De</label>
+            <input type="date" name="data_inicio" value="{{ data_inicio }}" class="form-control form-control-sm">
+        </div>
+        <div class="col-auto">
+            <label class="form-label form-label-sm mb-1">Até</label>
+            <input type="date" name="data_fim" value="{{ data_fim }}" class="form-control form-control-sm">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+            <a href="{% url 'listar_logs' %}" class="btn btn-outline-secondary btn-sm">Limpar</a>
+        </div>
+    </form>
+
+    {% if total_geral %}
+    <!-- Cards de resumo geral -->
+    <div class="row g-3 mb-4">
+        <div class="col-sm-4">
+            <div class="card border-0 bg-success text-white text-center py-3">
+                <div class="fs-2 fw-bold">{{ total_geral.cadastrou }}</div>
+                <div class="small">Cadastros no período</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card border-0 bg-primary text-white text-center py-3">
+                <div class="fs-2 fw-bold">{{ total_geral.editou }}</div>
+                <div class="small">Edições no período</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card border-0 bg-danger text-white text-center py-3">
+                <div class="fs-2 fw-bold">{{ total_geral.deletou }}</div>
+                <div class="small">Exclusões no período</div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if dados_usuarios %}
+    {% for username, dados in dados_usuarios.items %}
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-2">
+            <span class="fw-semibold">{{ username }}</span>
+            <span class="badge bg-success me-1">{{ dados.total_cadastrou }} cadastros</span>
+            <span class="badge bg-primary me-1">{{ dados.total_editou }} edições</span>
+            <span class="badge bg-danger">{{ dados.total_deletou }} exclusões</span>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-sm table-striped table-hover mb-0">
+                <thead class="table-secondary">
+                    <tr>
+                        <th class="ps-3">Data</th>
+                        <th class="text-center">Cadastrou</th>
+                        <th class="text-center">Editou</th>
+                        <th class="text-center">Deletou</th>
+                        <th class="text-center">Total do dia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dia in dados.dias %}
+                    <tr>
+                        <td class="ps-3">{{ dia.data|date:"d/m/Y" }}</td>
+                        <td class="text-center">
+                            {% if dia.cadastrou %}<span class="badge bg-success">{{ dia.cadastrou }}</span>{% else %}<span class="text-muted">—</span>{% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if dia.editou %}<span class="badge bg-primary">{{ dia.editou }}</span>{% else %}<span class="text-muted">—</span>{% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if dia.deletou %}<span class="badge bg-danger">{{ dia.deletou }}</span>{% else %}<span class="text-muted">—</span>{% endif %}
+                        </td>
+                        <td class="text-center fw-semibold">{{ dia.cadastrou|add:dia.editou|add:dia.deletou }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot class="table-light fw-semibold">
+                    <tr>
+                        <td class="ps-3">Total</td>
+                        <td class="text-center">{{ dados.total_cadastrou }}</td>
+                        <td class="text-center">{{ dados.total_editou }}</td>
+                        <td class="text-center">{{ dados.total_deletou }}</td>
+                        <td class="text-center">{{ dados.total_cadastrou|add:dados.total_editou|add:dados.total_deletou }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <div class="alert alert-info">Nenhuma atividade registrada no período selecionado.</div>
+    {% endif %}
+
+</div>
 {% endblock %}

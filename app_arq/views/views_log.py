@@ -2,16 +2,33 @@ from ..models import LogAcaoUsuario
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Sum
 from django.db.models.functions import TruncDate
 from collections import defaultdict
+from datetime import date, timedelta
 
 
 @login_required
 def listar_logs(request):
-    # Uma única query: todos os logs agrupados por usuário + dia
+    # Filtros de data via GET
+    hoje = date.today()
+    data_inicio_str = request.GET.get('data_inicio', '')
+    data_fim_str    = request.GET.get('data_fim', '')
+
+    try:
+        data_inicio = date.fromisoformat(data_inicio_str) if data_inicio_str else hoje - timedelta(days=30)
+    except ValueError:
+        data_inicio = hoje - timedelta(days=30)
+
+    try:
+        data_fim = date.fromisoformat(data_fim_str) if data_fim_str else hoje
+    except ValueError:
+        data_fim = hoje
+
+    # Uma única query: todos os logs no período, agrupados por usuário + dia
     rows = (
         LogAcaoUsuario.objects
+        .filter(create_at__date__gte=data_inicio, create_at__date__lte=data_fim)
         .select_related('fk_user')
         .annotate(data=TruncDate('create_at'))
         .values('fk_user__id', 'fk_user__username', 'data')
@@ -23,13 +40,27 @@ def listar_logs(request):
         .order_by('fk_user__username', 'data')
     )
 
-    # Reagrupa em {username: [linha_por_dia, ...]} para manter compatibilidade com o template
-    logs_por_usuario_por_dia = defaultdict(list)
+    # Reagrupa em {username: {dias: [...], totais: {...}}}
+    dados_usuarios = defaultdict(lambda: {'dias': [], 'total_cadastrou': 0, 'total_editou': 0, 'total_deletou': 0})
     for row in rows:
-        logs_por_usuario_por_dia[row['fk_user__username']].append(row)
+        u = row['fk_user__username']
+        dados_usuarios[u]['dias'].append(row)
+        dados_usuarios[u]['total_cadastrou'] += row['cadastrou']
+        dados_usuarios[u]['total_editou']    += row['editou']
+        dados_usuarios[u]['total_deletou']   += row['deletou']
+
+    # Total geral (todos os usuários no período)
+    total_geral = {
+        'cadastrou': sum(v['total_cadastrou'] for v in dados_usuarios.values()),
+        'editou':    sum(v['total_editou']    for v in dados_usuarios.values()),
+        'deletou':   sum(v['total_deletou']   for v in dados_usuarios.values()),
+    }
 
     context = {
-        'logs_por_usuario_por_dia': dict(logs_por_usuario_por_dia),
+        'dados_usuarios': dict(dados_usuarios),
+        'total_geral': total_geral,
+        'data_inicio': data_inicio.isoformat(),
+        'data_fim': data_fim.isoformat(),
     }
 
     return render(request, 'relatorio.html', context)
