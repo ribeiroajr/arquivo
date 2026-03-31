@@ -32,7 +32,7 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['http://localhost']
 
 # Application definition
 
@@ -124,10 +124,10 @@ AUTH_LDAP_USER_ATTR_MAP = {
 #             'django.contrib.auth.backends.ModelBackend',
 # ]
 
-AUTHENTICATION_BACKENDS = [
-            'core.backend.CustomLDAPBackend',
-                'django.contrib.auth.backends.ModelBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#             'core.backend.CustomLDAPBackend',
+#                 'django.contrib.auth.backends.ModelBackend',
+# ]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
