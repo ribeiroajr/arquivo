@@ -1,42 +1,255 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load permission_tags %}
-{% block title %}SARQ{% endblock %}
+{% block title %}S-ARQ — Início{% endblock %}
 {% block content %}
-<!-- Security token -->
-{% csrf_token %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <header>
-                <h1>Bem-Vindo ao Sistema de Gerenciamento do SPADAER</h1>
-            </header>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Descrição:</h2>
-            <p>O Sistema de Gerenciamento do SPADAER é uma aplicação web desenvolvida para facilitar o cadastro e controle dos documentos do SPADAER. Este sistema permite que os administradores cadastrem usúarios, associem.</p>
 
-            <h2>Funcionalidades do Sistema:</h2>
-            <ol>
-                <li><strong>Cadastro de Documentos:</strong> Os .</li>
-                <li><strong>Associação de Códigos:</strong> É possível associar .</li>
-                <li><strong>Geração de Relatórios:</strong> O sistema permite a geração automática </li>
-                <li><strong>Controle de Documentos:</strong> É possível acompanhar o status de cada </li>
-                <li><strong>Visualização de :</strong> Os administradores podem visualizar e baixar os certificados gerados para cada aluno.</li>
-                <li><strong>Segurança de Dados:</strong> O sistema prioriza a segurança dos dados dos alunos e dos certificados, garantindo que apenas usuários autorizados tenham acesso às informações sensíveis.</li>
-            </ol>
+{# ── HERO ─────────────────────────────────────────────────────────── #}
+<div class="sarq-hero">
+    <div class="sarq-hero-inner">
+        <div class="sarq-hero-badge">
+            <i class="fa fa-archive"></i>
+        </div>
+        <h1 class="sarq-hero-title">S-ARQ</h1>
+        <p class="sarq-hero-sub">Sistema de Gerenciamento de Documentos</p>
+        <p class="sarq-hero-org">Centro de Inteligência da Aeronáutica — CIAER</p>
 
-            <p>O Sistema de Gerenciamento do SPADAER foi desenvolvido para tornar o processo do SPADAER mais eficiente e organizado, proporcionando um ambiente seguro para o gerenciamento das informações dos Documentos.</p>
+        {% if user.is_authenticated %}
+        <div class="sarq-hero-actions">
+            <a href="{% url 'doc_novo' %}" class="btn btn-success btn-lg">
+                <i class="fa fa-plus me-1"></i> Cadastrar Documento
+            </a>
+            <a href="{% url 'doc_lista' %}" class="btn btn-outline-light btn-lg">
+                <i class="fa fa-list me-1"></i> Ver Documentos
+            </a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <footer>
-                <h5>Centro de Inteligência da Aeronáutica - CIAER</h5>
-            </footer>
+        {% else %}
+        <div class="sarq-hero-actions">
+            <a href="{% url 'login' %}" class="btn btn-success btn-lg">
+                <i class="fa fa-sign-in me-1"></i> Entrar no Sistema
+            </a>
         </div>
+        {% endif %}
     </div>
 </div>
-    
+
+{% if user.is_authenticated %}
+{# ── CARDS DE MÉTRICAS ────────────────────────────────────────────── #}
+<div class="container-fluid px-4 mt-4">
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="sarq-metric-card border-dark">
+                <div class="sarq-metric-icon bg-dark">
+                    <i class="fa fa-file-text"></i>
+                </div>
+                <div class="sarq-metric-value">{{ total_docs }}</div>
+                <div class="sarq-metric-label">Total de Documentos</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="sarq-metric-card border-success">
+                <div class="sarq-metric-icon bg-success">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="sarq-metric-value text-success">{{ docs_conferidos }}</div>
+                <div class="sarq-metric-label">Conferidos</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="sarq-metric-card border-warning">
+                <div class="sarq-metric-icon bg-warning">
+                    <i class="fa fa-inbox"></i>
+                </div>
+                <div class="sarq-metric-value text-warning">{{ caixas_abertas }}</div>
+                <div class="sarq-metric-label">Caixas Abertas</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="sarq-metric-card border-primary">
+                <div class="sarq-metric-icon bg-primary">
+                    <i class="fa fa-calendar-check-o"></i>
+                </div>
+                <div class="sarq-metric-value text-primary">{{ cadastros_hoje }}</div>
+                <div class="sarq-metric-label">Cadastros Hoje</div>
+            </div>
+        </div>
+    </div>
+
+    {# ── ACESSO RÁPIDO ────────────────────────────────────────────── #}
+    <h6 class="text-muted text-uppercase fw-semibold mb-3" style="letter-spacing:.08em;">Acesso Rápido</h6>
+    <div class="row g-3 mb-5">
+
+        <div class="col-sm-6 col-lg-4">
+            <a href="{% url 'doc_lista' %}" class="sarq-feature-card">
+                <div class="sarq-feature-icon" style="background:#1a1a2e;">
+                    <i class="fa fa-files-o"></i>
+                </div>
+                <div>
+                    <div class="sarq-feature-title">Documentos</div>
+                    <div class="sarq-feature-desc">Consulte, filtre e gerencie todos os documentos do acervo.</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <a href="{% url 'doc_novo' %}" class="sarq-feature-card">
+                <div class="sarq-feature-icon" style="background:#155724;">
+                    <i class="fa fa-plus-square"></i>
+                </div>
+                <div>
+                    <div class="sarq-feature-title">Cadastrar Documento</div>
+                    <div class="sarq-feature-desc">Registre novos documentos com código, tipo, origem e destino.</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <a href="{% url 'caixa_lista' %}" class="sarq-feature-card">
+                <div class="sarq-feature-icon" style="background:#856404;">
+                    <i class="fa fa-archive"></i>
+                </div>
+                <div>
+                    <div class="sarq-feature-title">Caixas</div>
+                    <div class="sarq-feature-desc">Controle as caixas físicas de armazenamento e seus status.</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <a href="{% url 'cod_lista' %}" class="sarq-feature-card">
+                <div class="sarq-feature-icon" style="background:#0c3547;">
+                    <i class="fa fa-barcode"></i>
+                </div>
+                <div>
+                    <div class="sarq-feature-title">Códigos</div>
+                    <div class="sarq-feature-desc">Tabela de temporalidade com fases corrente, intermediária e destinação final.</div>
+                </div>
+            </a>
+        </div>
+
+        {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+        <div class="col-sm-6 col-lg-4">
+            <a href="{% url 'dashboard' %}" class="sarq-feature-card">
+                <div class="sarq-feature-icon" style="background:#4a0072;">
+                    <i class="fa fa-bar-chart"></i>
+                </div>
+                <div>
+                    <div class="sarq-feature-title">Dashboard</div>
+                    <div class="sarq-feature-desc">Gráficos de acervo, produtividade por usuário e evolução diária.</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <a href="{% url 'listar_logs' %}" class="sarq-feature-card">
+                <div class="sarq-feature-icon" style="background:#3d1a00;">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div>
+                    <div class="sarq-feature-title">Relatório de Produtividade</div>
+                    <div class="sarq-feature-desc">Acompanhe cadastros, edições e exclusões por usuário e período.</div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}
+
+{# ── RODAPÉ ───────────────────────────────────────────────────────── #}
+<footer class="sarq-footer">
+    <i class="fa fa-shield me-1"></i>
+    Centro de Inteligência da Aeronáutica — CIAER &nbsp;|&nbsp; S-ARQ
+</footer>
+
+<style>
+/* ── Hero ─────────────────────────────────────────────────────────── */
+.sarq-hero {
+    background: linear-gradient(135deg, #0d1117 0%, #1a2744 60%, #0d2137 100%);
+    color: #fff;
+    padding: 3.5rem 1rem 3rem;
+    text-align: center;
+}
+.sarq-hero-inner { max-width: 640px; margin: 0 auto; }
+.sarq-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    border: 2px solid rgba(255,255,255,.25);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.sarq-hero-title  { font-size: 2.6rem; font-weight: 700; letter-spacing: .04em; margin-bottom: .25rem; }
+.sarq-hero-sub    { font-size: 1.1rem; opacity: .85; margin-bottom: .25rem; }
+.sarq-hero-org    { font-size: .85rem; opacity: .55; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.75rem; }
+.sarq-hero-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── Metric cards ─────────────────────────────────────────────────── */
+.sarq-metric-card {
+    background: #fff;
+    border-radius: .5rem;
+    border-left: 4px solid;
+    padding: 1.1rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.sarq-metric-icon {
+    width: 46px; height: 46px;
+    border-radius: .4rem;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.sarq-metric-value { font-size: 1.7rem; font-weight: 700; line-height: 1; }
+.sarq-metric-label { font-size: .75rem; color: #6c757d; margin-top: 2px; }
+
+/* ── Feature cards ────────────────────────────────────────────────── */
+.sarq-feature-card {
+    display: flex;
+    align-items: flex-start;
+    gap: .9rem;
+    background: #fff;
+    border-radius: .5rem;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .15s, transform .15s;
+    height: 100%;
+}
+.sarq-feature-card:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,.14);
+    transform: translateY(-2px);
+    color: inherit;
+}
+.sarq-feature-icon {
+    width: 44px; height: 44px;
+    border-radius: .4rem;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.sarq-feature-title { font-weight: 600; font-size: .95rem; margin-bottom: 3px; }
+.sarq-feature-desc  { font-size: .8rem; color: #6c757d; line-height: 1.4; }
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.sarq-footer {
+    text-align: center;
+    padding: 1.25rem;
+    font-size: .8rem;
+    color: #adb5bd;
+    border-top: 1px solid #e9ecef;
+    margin-top: 1rem;
+}
+</style>
+
 {% endblock %}
