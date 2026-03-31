@@ -32,7 +32,7 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost']
+CSRF_TRUSTED_ORIGINS = ['http://localhost', 'https://*.replit.dev', 'https://*.repl.co', 'https://*.replit.app']
 
 # Application definition
 
@@ -97,37 +97,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-from django_auth_ldap.config import *
-from django_auth_ldap.config import LDAPSearch
+# LDAP authentication disabled (not available in this environment)
+# AUTH_LDAP_SERVER_URI = "ldap://10.100.10.11:389"
 
-AUTH_LDAP_SERVER_URI = "ldap://10.100.10.11:389"
-AUTH_LDAP_BIND_DN = "cn=django,ou=ccccc,dc=ccccc,dc=iiiiii"
-AUTH_LDAP_BIND_PASSWORD = "P0rM41s7"
-
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-#            "ou=CCCCC,dc=ccccc,dc=iiiiii", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-            "ou=CCCCC,dc=ccccc,dc=iiiiii", ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)"
-            )
-
-AUTH_LDAP_USER_ATTR_MAP = {
-            "username": "sAMAccountName",
-#            "username": "uid",
-               "first_name": "name",
-                    "last_name": "physicalDeliveryOfficeName",
-			#"posto_nome": "cn",
-#                        "email": "mail",
-}
-
-
-# AUTHENTICATION_BACKENDS = [
-#             'django_auth_ldap.backend.LDAPBackend',
-#             'django.contrib.auth.backends.ModelBackend',
-# ]
-
-# AUTHENTICATION_BACKENDS = [
-#             'core.backend.CustomLDAPBackend',
-#                 'django.contrib.auth.backends.ModelBackend',
-# ]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
