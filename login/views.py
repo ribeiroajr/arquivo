@@ -72,26 +72,6 @@ def login(request):
 
 
 @login_required
-def reset(request):
-    if request.method == "GET":
-        users = User.objects.all()
-        return render(request, 'reset.html', {'users': users})
-    else:
-        username = request.POST.get('username')
-        password2 = request.POST.get('password2')
-        password = request.POST.get('password')
-        
-        if password == password2:
-            user = User.objects.get(username=username)
-            user.set_password(password)
-            user.save()
-            messages.add_message(request, messages.SUCCESS, 'Senha alterada com sucesso.')
-            return redirect('reset')
-        else:
-            messages.add_message(request, messages.ERROR, 'As senhas fornecidas não correspondem. Por favor, verifique e tente novamente.')
-            return redirect('reset')
-
-@login_required
 def custom_logout(request):
     logout(request)
     messages.add_message(request, messages.SUCCESS, 'Logged out successfully!')

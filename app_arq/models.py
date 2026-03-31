@@ -8,7 +8,7 @@ class BaseModel(models.Model):
     """
     id = models.AutoField(primary_key=True)
     fk_user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Usuário", default=1)
-    create_at = models.DateTimeField(auto_now_add=True, null=True)
+    create_at = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
 
     class Meta:
         abstract = True
@@ -161,12 +161,12 @@ class Docs(BaseModel):
     """
     Representa um documento.
     """
-    doc_data = models.DateField(verbose_name="Data do documento", blank=True, null=True)
+    doc_data = models.DateField(verbose_name="Data do documento", blank=True, null=True, db_index=True)
     fk_codigo = models.ForeignKey(Codigos, on_delete=models.CASCADE, verbose_name="Código", null=True, blank=True)
     doc_destinacao_final = models.CharField(max_length=50, verbose_name="Destinação final", blank=True)
     doc_corrente_ano = models.IntegerField(verbose_name="Fase corrente anos", blank=True, null=True)
 
-    doc_eliminacao_ano = models.IntegerField(verbose_name="Ano de eliminação", blank=True, null=True)
+    doc_eliminacao_ano = models.IntegerField(verbose_name="Ano de eliminação", blank=True, null=True, db_index=True)
     doc_numero = models.CharField(max_length=50, verbose_name="Número do documento", blank=True)
     new_file_sigad = models.CharField(max_length=50, verbose_name="NewFile/SIGAD", blank=True)
 
@@ -180,9 +180,9 @@ class Docs(BaseModel):
 
     doc_intermediario_ano = models.IntegerField(verbose_name="Fase intermediária anos", blank=True, null=True)
     doc_destinacao_final_ano = models.IntegerField(verbose_name="Destinação final anos", blank=True, null=True)
-    doc_obs_ano = models.IntegerField(verbose_name="Observação ano", blank=True, null=True) 
-    
-    status_doc = models.BooleanField(default=False, verbose_name="Conferido")
+    doc_obs_ano = models.IntegerField(verbose_name="Observação ano", blank=True, null=True)
+
+    status_doc = models.BooleanField(default=False, verbose_name="Conferido", db_index=True)
 
     def __str__(self):
         return self.doc_numero

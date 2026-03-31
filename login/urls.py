@@ -16,8 +16,6 @@ urlpatterns = [
     #path('login/', LoginView.as_view(), name='login'),
 
     # path('plataforma/', views.plataforma, name='plataforma'),
-    path('reset/', views.reset, name='reset'),
-
     path('perfil/', views.perfil_usuario, name='perfil_usuario'),
     
 ]

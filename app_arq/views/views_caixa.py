@@ -7,15 +7,14 @@ from ..models import Caixa
 #dataset = Caixa.objects.filter(fk_status=1)
 @login_required
 def caixa_lista(request):
-    dataset = Caixa.objects.all()
-    qtd_cx_aberta = Caixa.objects.filter(fk_status = 1).count()
-    qtd_cx_fechada = Caixa.objects.filter(fk_status = 2).count()
-    qtd_cx_conferida = Caixa.objects.filter(fk_status = 3).count()
-    context = {"dataset": dataset, 
-               "qtd_cx_aberta": qtd_cx_aberta,
-               "qtd_cx_fechada": qtd_cx_fechada,
-               "qtd_cx_conferida": qtd_cx_conferida}
-    # print(dataset)
+    from django.db.models import Count, Case, When, IntegerField
+    dataset = Caixa.objects.select_related('fk_ano', 'fk_status').all()
+    totais = Caixa.objects.aggregate(
+        qtd_cx_aberta=Count(Case(When(fk_status=1, then=1), output_field=IntegerField())),
+        qtd_cx_fechada=Count(Case(When(fk_status=2, then=1), output_field=IntegerField())),
+        qtd_cx_conferida=Count(Case(When(fk_status=3, then=1), output_field=IntegerField())),
+    )
+    context = {"dataset": dataset, **totais}
     return render(request, 'caixa/lista.html', context)
 
 @login_required

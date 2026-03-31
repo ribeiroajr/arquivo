@@ -87,6 +87,7 @@ def cod_delete(request, id):
 
 
 
+@login_required
 def sgc_ajax_load_related_data(request):
     codigo_id = int(request.GET.get('codigo_id'))
     print(f'codigo_id - {codigo_id}')

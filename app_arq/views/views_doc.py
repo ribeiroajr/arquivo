@@ -175,7 +175,7 @@ def doc_lista(request):
 # views.py
 
 
-#@login_required
+@login_required
 def get_codigo_details(request):
     codigo_id = request.GET.get('codigo_id', None)
     if codigo_id:
@@ -231,49 +231,43 @@ def doc_novo(request):
 
 @login_required
 def doc_editar(request, id):
-    user_id = request.user.id
     user = request.user
-
-    context ={}
     doc_ob = get_object_or_404(Docs, id=id)
+
+    # Apenas o dono do documento ou admins podem editar
+    if not (has_role(user, 'sin') or has_role(user, 'arq_admin') or doc_ob.fk_user == user):
+        messages.error(request, 'Você não tem permissão para editar este documento.')
+        return redirect('doc_lista')
+
     if request.method == 'POST':
         form = DocsForm(request.POST, instance=doc_ob)
         if form.is_valid():
-            # form.save()
             instance = form.save()
-            registrar_acao_usuario(request, instance, f'editou')  # Passa a instância do objeto Ano e a ação
-      
+            registrar_acao_usuario(request, instance, 'editou')
             return redirect('doc_lista')
     else:
-        # form = DocsForm(instance=doc_ob)
-        form = DocsForm(instance=doc_ob, initial={'fk_user': user_id})
-    context = {
-        'form': form,
-        'doc_ob': doc_ob
-    }
-    return render(request, 'doc/editar.html', context)
+        form = DocsForm(instance=doc_ob, initial={'fk_user': user.id})
+
+    return render(request, 'doc/editar.html', {'form': form, 'doc_ob': doc_ob})
+
 
 @login_required
 def doc_delete(request, id):
-    context ={}
+    user = request.user
     doc_ob = get_object_or_404(Docs, id=id)
-    if request.method == 'POST':
-        # doc_ob.delete()
-        instance = doc_ob  # Salva a instância antes de excluir
-        doc_id = instance.id  # Obtém o ID do objeto Ano antes de excluir
 
-        doc_ob.delete()
-        # registrar_acao_usuario(request, instance, 'deletou')  # Passa a instância do objeto Ano
-        registrar_acao_usuario_deletar(request, f'Docs', doc_id) 
-
-        # messages.success(request, 'Registro excluído com sucesso.')
+    # Apenas admins podem excluir
+    if not (has_role(user, 'sin') or has_role(user, 'arq_admin')):
+        messages.error(request, 'Você não tem permissão para excluir documentos.')
         return redirect('doc_lista')
-    
-    context = {
-        'doc_ob': doc_ob
-    }
-    
-    return render(request, 'doc/excluir.html', context)
+
+    if request.method == 'POST':
+        doc_id = doc_ob.id
+        doc_ob.delete()
+        registrar_acao_usuario_deletar(request, 'Docs', doc_id)
+        return redirect('doc_lista')
+
+    return render(request, 'doc/excluir.html', {'doc_ob': doc_ob})
 
 
 # views.py
