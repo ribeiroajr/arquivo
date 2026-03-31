@@ -1,89 +1,95 @@
 {% extends 'base.html' %}
-{% block title %}Pagina Inicial{% endblock %}
+{% load permission_tags %}
+{% block title %}Caixas{% endblock %}
 {% block content %}
-
 {% csrf_token %}
-<div class="container">
-    <div class="row">
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                <div class="alert alert-success" role="alert">{{ message }}</div>
-                {% elif message.tags == 'error' %}
-                <div class="alert-error alert" role="alert">{{ message }}</div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
 
-        <div class="col-md-15">
-            <br />
-            <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{% url 'caixa_novo' %}" class="btn btn-primary">NOVA CAIXA</a>
-            <p class="mb-0">Total de caixas abertas: <strong>{{ qtd_cx_aberta }}</strong></p>
-            <p class="mb-0">Total de caixas fechadas: <strong>{{ qtd_cx_fechada }}</strong></p>
-            <p class="mb-0">Total de caixas conferidas: <strong>{{ qtd_cx_conferida }}</strong></p>
+<div class="sarq-page mt-3">
+
+  {% if messages %}
+  <div class="sarq-messages">
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show py-2" role="alert">
+          <i class="fa fa-check-circle me-2"></i>{{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
-            
-
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th style="text-align: center">id</th>
-                            <th style="text-align: center">Ano</th>
-                            <th style="text-align: center">Status</th>
-                            <th style="text-align: center">Caixa</th>
-                            
-                            
-                            {% load permission_tags %}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <th style="text-align: center">Nome Usuario</th>
-                            <th style="text-align: center">Ações</th>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for data in dataset %}
-                        <tr>
-                            <td style="text-align: center">{{ data.id }}</td>
-                            <td style="text-align: center">{{ data.fk_ano }}</td>
-                            <td style="text-align: center">{{ data.fk_status }}</td>
-                            <td style="text-align: center">{{ data.caixa }}</td>
-                 
-                            {% load permission_tags %}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <td style="text-align: center">{{ data.fk_user }}</td>
-                            <td style="text-align: center">
-                                
-                                <a href="/caixa_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
-                                <a href="/caixa_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
-                            </td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-                <!-- Adicionar os links de navegação para as páginas -->
-                <!-- <div class="pagination">
-                    <span class="step-links">
-                        {% if dataset.has_previous %}
-                            <a href="?page=1">&laquo; primeira</a>
-                            <a href="?page={{ dataset.previous_page_number }}">anterior</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Página {{ dataset.number }} de {{ dataset.paginator.num_pages }}.
-                        </span>
-
-                        {% if dataset.has_next %}
-                            <a href="?page={{ dataset.next_page_number }}">próxima</a>
-                            <a href="?page={{ dataset.paginator.num_pages }}">última &raquo;</a>
-                        {% endif %}
-                    </span>
-                </div> -->
-            </div>
+      {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show py-2" role="alert">
+          <i class="fa fa-exclamation-circle me-2"></i>{{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-archive"></i> Caixas
+    </span>
+    <div class="sarq-page-header-actions">
+      <div class="sarq-stats">
+        <span class="sarq-stat-badge"><i class="fa fa-folder-open"></i> Abertas: <strong>{{ qtd_cx_aberta }}</strong></span>
+        <span class="sarq-stat-badge"><i class="fa fa-folder"></i> Fechadas: <strong>{{ qtd_cx_fechada }}</strong></span>
+        <span class="sarq-stat-badge"><i class="fa fa-check-square"></i> Conferidas: <strong>{{ qtd_cx_conferida }}</strong></span>
+      </div>
+      {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+      <a href="{% url 'caixa_novo' %}" class="sarq-btn-novo">
+        <i class="fa fa-plus"></i> Nova Caixa
+      </a>
+      {% endif %}
     </div>
-</div>
+  </div>
 
+  <div class="sarq-card">
+    <div class="table-responsive">
+      <table class="table sarq-table mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Ano</th>
+            <th>Status</th>
+            <th>Caixa</th>
+            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+            <th>Usuário</th>
+            <th>Ações</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in dataset %}
+          <tr>
+            <td>{{ data.id }}</td>
+            <td>{{ data.fk_ano }}</td>
+            <td>
+              <span class="badge" style="background:#0f3460; font-size:0.75rem;">{{ data.fk_status }}</span>
+            </td>
+            <td><strong>{{ data.caixa }}</strong></td>
+            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+            <td class="sarq-user-cell"><i class="fa fa-user me-1"></i>{{ data.fk_user }}</td>
+            <td>
+              <div class="sarq-actions">
+                <a href="/caixa_editar/{{ data.id }}/" class="sarq-btn-edit"><i class="fa fa-pencil"></i> Editar</a>
+                <a href="/caixa_delete/{{ data.id }}/" class="sarq-btn-delete"><i class="fa fa-trash"></i> Excluir</a>
+              </div>
+            </td>
+            {% endif %}
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6">
+              <div class="sarq-empty">
+                <i class="fa fa-archive"></i>
+                Nenhuma caixa cadastrada.
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
 {% endblock %}

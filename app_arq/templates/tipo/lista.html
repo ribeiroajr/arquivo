@@ -1,85 +1,84 @@
 {% extends 'base.html' %}
-{% block title %}Pagina Inicial{% endblock %}
+{% load permission_tags %}
+{% block title %}Tipo{% endblock %}
 {% block content %}
-
 {% csrf_token %}
-<div class="container">
-    <div class="row">
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                <div class="alert alert-success" role="alert">{{ message }}</div>
-                {% elif message.tags == 'error' %}
-                <div class="alert-error alert" role="alert">{{ message }}</div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
 
-        <div class="col-md-15">
-            <br />
-            <a href="{% url 'tipo_novo' %}" class="btn btn-primary">NOVO TIPO</a>
-            <div class="col-8 m-auto pt-4 pb-2 text-center">
+<div class="sarq-page mt-3">
 
-                <table class="table">
-                    <!-- Cabeçalho da tabela... -->
-                </table>
-
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th style="text-align: center">id</th>
-                            <th style="text-align: center">Tipo</th>
-                            
-                            
-                            {% load permission_tags %}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <th style="text-align: center">Nome Usuario</th>
-                            <th style="text-align: center">Ações</th>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for data in dataset %}
-                        <tr>
-                            <td style="text-align: center">{{ data.id }}</td>
-                            <td style="text-align: center">{{ data.tipo }}</td>
-                            
-                            
-                            {% load permission_tags %}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <td style="text-align: center">{{ data.fk_user }}</td>
-                            <td style="text-align: center">
-                                
-                                <a href="/tipo_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
-                                <a href="/tipo_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
-                            </td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-                <!-- Adicionar os links de navegação para as páginas -->
-                <!-- <div class="pagination">
-                    <span class="step-links">
-                        {% if dataset.has_previous %}
-                            <a href="?page=1">&laquo; primeira</a>
-                            <a href="?page={{ dataset.previous_page_number }}">anterior</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Página {{ dataset.number }} de {{ dataset.paginator.num_pages }}.
-                        </span>
-
-                        {% if dataset.has_next %}
-                            <a href="?page={{ dataset.next_page_number }}">próxima</a>
-                            <a href="?page={{ dataset.paginator.num_pages }}">última &raquo;</a>
-                        {% endif %}
-                    </span>
-                </div> -->
-            </div>
+  {% if messages %}
+  <div class="sarq-messages">
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show py-2" role="alert">
+          <i class="fa fa-check-circle me-2"></i>{{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
-    </div>
-</div>
+      {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show py-2" role="alert">
+          <i class="fa fa-exclamation-circle me-2"></i>{{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
 
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-tag"></i> Tipos de Documento
+    </span>
+    <div class="sarq-page-header-actions">
+      {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+      <a href="{% url 'tipo_novo' %}" class="sarq-btn-novo">
+        <i class="fa fa-plus"></i> Novo Tipo
+      </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="sarq-card">
+    <div class="table-responsive">
+      <table class="table sarq-table mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tipo</th>
+            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+            <th>Usuário</th>
+            <th>Ações</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in dataset %}
+          <tr>
+            <td>{{ data.id }}</td>
+            <td><strong>{{ data.tipo }}</strong></td>
+            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+            <td class="sarq-user-cell"><i class="fa fa-user me-1"></i>{{ data.fk_user }}</td>
+            <td>
+              <div class="sarq-actions">
+                <a href="/tipo_editar/{{ data.id }}/" class="sarq-btn-edit"><i class="fa fa-pencil"></i> Editar</a>
+                <a href="/tipo_delete/{{ data.id }}/" class="sarq-btn-delete"><i class="fa fa-trash"></i> Excluir</a>
+              </div>
+            </td>
+            {% endif %}
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4">
+              <div class="sarq-empty">
+                <i class="fa fa-tag"></i>
+                Nenhum tipo cadastrado.
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
 {% endblock %}

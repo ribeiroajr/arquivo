@@ -2,6 +2,332 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ===== SHARED LIST PAGE STYLES ===== */
+
+/* Page wrapper - use full width */
+.sarq-page {
+    padding: 0 1.25rem 2rem;
+}
+
+/* Page header bar */
+.sarq-page-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    border-left: 4px solid #e94560;
+    border-radius: 0 8px 8px 0;
+    padding: 0.85rem 1.25rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.sarq-page-header-title {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sarq-page-header-title i {
+    color: #e94560;
+}
+
+.sarq-page-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+/* Btn novo (primary action) */
+.sarq-btn-novo {
+    background-color: #e94560;
+    border: none;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.38rem 0.9rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.sarq-btn-novo:hover {
+    background-color: #c73652;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Stats badges (used in caixa) */
+.sarq-stats {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.sarq-stat-badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 0.3rem 0.75rem;
+    color: #c8cdd6;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sarq-stat-badge strong {
+    color: #ffffff;
+}
+
+/* Search input */
+.sarq-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sarq-search {
+    background: #f4f6fb;
+    border: 1px solid #d8dde6;
+    border-radius: 6px;
+    padding: 0.38rem 0.8rem 0.38rem 2rem;
+    font-size: 0.84rem;
+    width: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a95a3' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0.55rem center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sarq-search:focus {
+    outline: none;
+    border-color: #e94560;
+    box-shadow: 0 0 0 3px rgba(233,69,96,0.12);
+    background-color: #fff;
+}
+
+.sarq-search-label {
+    font-size: 0.78rem;
+    color: #8a95a3;
+    white-space: nowrap;
+}
+
+/* Total counter */
+.sarq-total {
+    font-size: 0.82rem;
+    color: #8a95a3;
+    white-space: nowrap;
+}
+
+.sarq-total strong {
+    color: #1a1a2e;
+}
+
+/* Card wrapper for table */
+.sarq-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(15,52,96,0.08);
+    overflow: hidden;
+}
+
+/* Table */
+.sarq-table {
+    margin: 0;
+    font-size: 0.83rem;
+    width: 100%;
+}
+
+.sarq-table thead th {
+    background: #1a1a2e;
+    color: #c8cdd6;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 0.65rem 0.75rem;
+    border: none;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sarq-table thead th:first-child {
+    border-left: 3px solid #e94560;
+}
+
+.sarq-table tbody tr {
+    transition: background 0.12s;
+}
+
+.sarq-table tbody tr:nth-child(odd) {
+    background-color: #fafbfd;
+}
+
+.sarq-table tbody tr:hover {
+    background-color: #f0f4ff !important;
+}
+
+.sarq-table td {
+    padding: 0.5rem 0.75rem;
+    border-color: #eef0f6;
+    text-align: center;
+    vertical-align: middle;
+    color: #2d3748;
+}
+
+/* ID cell - subtle */
+.sarq-table td:first-child {
+    color: #adb5bd;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Action buttons */
+.sarq-btn-edit {
+    background-color: #0f3460;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.76rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.18s;
+    white-space: nowrap;
+}
+
+.sarq-btn-edit:hover {
+    background-color: #16213e;
+    color: #fff;
+}
+
+.sarq-btn-delete {
+    background-color: transparent;
+    color: #e94560;
+    border: 1px solid #e94560;
+    border-radius: 5px;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.76rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+}
+
+.sarq-btn-delete:hover {
+    background-color: #e94560;
+    color: #fff;
+}
+
+.sarq-actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* User cell */
+.sarq-user-cell {
+    font-size: 0.75rem;
+    color: #8a95a3;
+}
+
+/* Messages */
+.sarq-messages {
+    margin-bottom: 0.75rem;
+}
+
+/* Conferir / Conferido buttons (doc table) */
+.sarq-btn-conferir {
+    background-color: #ffc107;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 5px;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: background 0.18s;
+    white-space: nowrap;
+}
+
+.sarq-btn-conferir:hover {
+    background-color: #e0a800;
+}
+
+.sarq-btn-conferido {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: background 0.18s;
+    white-space: nowrap;
+}
+
+.sarq-btn-conferido:hover {
+    background-color: #218838;
+}
+
+/* Pagination override to match theme */
+.pagination .page-link {
+    color: #0f3460;
+    border-color: #d8dde6;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.55rem;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #e94560;
+    border-color: #e94560;
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background-color: #f0f4ff;
+    color: #e94560;
+}
+
+/* Empty state */
+.sarq-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #adb5bd;
+}
+
+.sarq-empty i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    color: #d8dde6;
+}
+
 /* ===== NAVBAR ===== */
 .sarq-navbar {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);

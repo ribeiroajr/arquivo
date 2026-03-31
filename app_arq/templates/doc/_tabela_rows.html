@@ -1,38 +1,46 @@
 {% load permission_tags %}
 {% for data in page_obj %}
 <tr>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_codigo }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.doc_numero }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.new_file_sigad }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_tipo }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.doc_data|date:"d/m/Y" }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_doc_origem }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_doc_destino }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.doc_corrente_ano }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.doc_intermediario_ano }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.doc_eliminacao_ano }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_caixa }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_tcu }}</td>
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
-    <td style="text-align: center; vertical-align: middle;">
-        <div class="d-flex gap-1 justify-content-center">
+    <td>{{ data.fk_codigo }}</td>
+    <td>{{ data.doc_numero }}</td>
+    <td>{{ data.new_file_sigad }}</td>
+    <td>{{ data.fk_tipo }}</td>
+    <td>{{ data.doc_data|date:"d/m/Y" }}</td>
+    <td>{{ data.fk_doc_origem }}</td>
+    <td>{{ data.fk_doc_destino }}</td>
+    <td>{{ data.doc_corrente_ano }}</td>
+    <td>{{ data.doc_intermediario_ano }}</td>
+    <td>{{ data.doc_eliminacao_ano }}</td>
+    <td>{{ data.fk_caixa }}</td>
+    <td>{{ data.fk_tcu }}</td>
+    <td>{{ data.fk_codigo.fk_tipo_guarda.tipo_guarda_descricao }}</td>
+    <td>
+        <div class="sarq-actions">
             <button
-                class="btn btn-sm toggle-status-btn {% if data.status_doc %}btn-success{% else %}btn-warning{% endif %}"
+                class="toggle-status-btn {% if data.status_doc %}sarq-btn-conferido{% else %}sarq-btn-conferir{% endif %}"
                 data-id="{{ data.id }}">
+                <i class="fa {% if data.status_doc %}fa-check{% else %}fa-clock-o{% endif %}"></i>
                 {% if data.status_doc %}Conferido{% else %}Conferir{% endif %}
             </button>
             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" or request.user.id == data.fk_user_id %}
-                <a href="{% url 'doc_editar' data.id %}" class="btn btn-sm btn-primary">EDITAR</a>
+            <a href="{% url 'doc_editar' data.id %}" class="sarq-btn-edit"><i class="fa fa-pencil"></i> Editar</a>
             {% endif %}
             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                <a href="{% url 'doc_delete' data.id %}" class="btn btn-sm btn-danger">EXCLUIR</a>
+            <a href="{% url 'doc_delete' data.id %}" class="sarq-btn-delete"><i class="fa fa-trash"></i> Excluir</a>
             {% endif %}
         </div>
     </td>
     {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-    <td style="text-align: center; vertical-align: middle;">{{ data.fk_user }}</td>
+    <td class="sarq-user-cell"><i class="fa fa-user me-1"></i>{{ data.fk_user }}</td>
     {% endif %}
 </tr>
 {% empty %}
-<tr><td colspan="15" class="text-center text-muted py-3">Nenhum documento encontrado.</td></tr>
+<tr>
+    <td colspan="15">
+        <div class="sarq-empty">
+            <i class="fa fa-file-text"></i>
+            Nenhum documento encontrado.
+        </div>
+    </td>
+</tr>
 {% endfor %}

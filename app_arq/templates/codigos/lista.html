@@ -1,146 +1,137 @@
 {% extends 'base.html' %}
-{% block title %}Pagina Inicial{% endblock %}
+{% load permission_tags %}
+{% block title %}Códigos{% endblock %}
 {% block content %}
-
 {% csrf_token %}
-<div class="container">
-    <div class="row">
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                <div class="alert alert-success" role="alert">{{ message }}</div>
-                {% elif message.tags == 'error' %}
-                <div class="alert-error alert" role="alert">{{ message }}</div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+
+<div class="sarq-page mt-3">
+
+  {% if messages %}
+  <div class="sarq-messages">
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show py-2" role="alert">
+          <i class="fa fa-check-circle me-2"></i>{{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show py-2" role="alert">
+          <i class="fa fa-exclamation-circle me-2"></i>{{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-barcode"></i> Códigos
+    </span>
+    <div class="sarq-page-header-actions">
+      <div class="sarq-search-wrap">
+        <input id="gfg" type="text" class="sarq-search" placeholder="Pesquisar código...">
+      </div>
+      {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+      <a href="{% url 'cod_novo' %}" class="sarq-btn-novo">
+        <i class="fa fa-plus"></i> Novo Código
+      </a>
+      {% endif %}
     </div>
+  </div>
 
-        
+  <div class="sarq-card">
+    <div class="table-responsive">
+      <table class="table sarq-table mb-0" id="geeks">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Código</th>
+            <th>Descritor</th>
+            <th>F. Corrente (ano)</th>
+            <th>F. Corrente (desc.)</th>
+            <th>F. Intermediária (ano)</th>
+            <th>F. Intermediária (desc.)</th>
+            <th>Tipo de Guarda</th>
+            <th>Dest. Final (ano)</th>
+            <th>Dest. Final (desc.)</th>
+            <th>Observações (ano)</th>
+            <th>Observações (desc.)</th>
+            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+            <th>Usuário</th>
+            <th>Ações</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in dataset %}
+          <tr>
+            <td>{{ data.id }}</td>
+            <td><strong>{{ data.codigo }}</strong></td>
+            <td style="text-align:left; max-width:180px;">{{ data.descritor_do_codigo }}</td>
+            <td>{{ data.fase_corrente_ano }}</td>
+            <td style="text-align:left; max-width:140px;">{{ data.fase_corrente_desc }}</td>
+            <td>{{ data.fase_intermediaria_ano }}</td>
+            <td style="text-align:left; max-width:140px;">{{ data.fase_intermediaria_desc }}</td>
+            <td>{{ data.fk_tipo_guarda.tipo_guarda_descricao }}</td>
+            <td>{{ data.destinacao_final_ano }}</td>
+            <td style="text-align:left; max-width:140px;">{{ data.destinacao_final_desc }}</td>
+            <td>{{ data.observacoes_ano }}</td>
+            <td style="text-align:left; max-width:140px;">{{ data.observacoes_desc }}</td>
+            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
+            <td class="sarq-user-cell"><i class="fa fa-user me-1"></i>{{ data.fk_user }}</td>
+            <td>
+              <div class="sarq-actions">
+                <a href="/cod_editar/{{ data.id }}/" class="sarq-btn-edit"><i class="fa fa-pencil"></i> Editar</a>
+                <a href="/cod_delete/{{ data.id }}/" class="sarq-btn-delete"><i class="fa fa-trash"></i> Excluir</a>
+              </div>
+            </td>
+            {% endif %}
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="14">
+              <div class="sarq-empty">
+                <i class="fa fa-barcode"></i>
+                Nenhum código cadastrado.
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-        <div class="col-md-15" style="width: 100%;">
-            <br />     
-            {% load permission_tags %} 
-        {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-        
-        <a href="{% url 'cod_novo' %}" class="btn btn-primary">NOVO CÓDIGO</a>
-        <p>&nbsp;</p>
-        {% endif %}
-        
-        <input id="gfg" type="text" placeholder="Pesquisar  ...">
-    </p>
-   
-        <br />
-        
-            <!-- <a href="{% url 'cod_novo' %}" class="btn btn-primary">NOVO ANO</a> -->
-            
+</div>
 
+<script>
+$(document).ready(function () {
+    $("#gfg").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#geeks tbody tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
 
-                <table class="table" id="geeks">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th style="text-align: center">id</th>
-                            <th style="text-align: center">Código</th>
-                            <th style="text-align: center">Descritor do código</th>
-                            <th style="text-align: center">Fase corrente ano</th>
-                            <th style="text-align: center">Fase corrente descrição</th>
-                            <th style="text-align: center">Fase intermediária ano</th>
-                            <th style="text-align: center">Fase intermediária descrição</th>
-                            <th style="text-align: center">Tipo de Guarda</th>
-                            <th style="text-align: center">Destinação final ano</th>
-                            <th style="text-align: center">Destinação final descrição</th>
-                            <th style="text-align: center">Observações ano</th>
-                            <th style="text-align: center">Observações descrição</th>
-                            {% load permission_tags %}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <th style="text-align: center">Nome Usuario</th>
-                            <th style="text-align: center">Ações</th>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for data in dataset %}
-                        <tr>
-                            <td style="text-align: center">{{ data.id }}</td>
-                            <td style="text-align: center">{{ data.codigo }}</td>
-                            <td style="text-align: center">{{ data.descritor_do_codigo }}</td>
-                            <td style="text-align: center">{{ data.fase_corrente_ano }}</td>
-                            <td style="text-align: center">{{ data.fase_corrente_desc }}</td>
-                            <td style="text-align: center">{{ data.fase_intermediaria_ano }}</td>
-                            <td style="text-align: center">{{ data.fase_intermediaria_desc }}</td>
-                            <td style="text-align: center">{{ data.fk_tipo_guarda.tipo_guarda_descricao }}</td>
-                            <td style="text-align: center">{{ data.destinacao_final_ano }}</td>
-                            <td style="text-align: center">{{ data.destinacao_final_desc }}</td>
-                            <td style="text-align: center">{{ data.observacoes_ano }}</td>
-                            <td style="text-align: center">{{ data.observacoes_desc }}</td>
-                            {% load permission_tags %}
-                            {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
-                            <td style="text-align: center">{{ data.fk_user }}</td>
-                            <td style="text-align: center">
-                                
-                                <a href="/cod_editar/{{ data.id }}/" class="btn btn-primary">EDITAR</a>
-                                <a href="/cod_delete/{{ data.id }}/" class="btn btn-danger">EXCLUIR</a>
-                            </td>
-                            {% endif %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                </div>
-                
-                
-                
-                <script>
-                    $(document).ready(function() {
-                        $("#gfg").on("keyup", function() {
-                            var value = $(this).val().toLowerCase();
-                            $("#geeks tr").filter(function() {
-                                // Mantém o cabeçalho sempre visível
-                                if (!$(this).find('th').length) {
-                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                                }
-                            });
-                        });
-                    });
-
-                    $(function () {
-
-                    $("td").dblclick(function () {
-
-                        var conteudoOriginal = $(this).text();
-
-                        $(this).addClass("celulaEmEdicao");
-
-                        $(this).html("<input type='text' value='" + conteudoOriginal + "' />");
-
-                        $(this).children().first().focus();
-
-                         $(this).children().first().keypress(function (e) {
-
-                            if (e.which == 13) {
-
-                                var novoConteudo = $(this).val();
-
-                                $(this).parent().text(novoConteudo);
-
-                                $(this).parent().removeClass("celulaEmEdicao");
-
-                            }
-
-                        });
-
-                    $(this).children().first().blur(function(){
-
-                    $(this).parent().text(conteudoOriginal);
-
-                    $(this).parent().removeClass("celulaEmEdicao");
-
-                    });
-
-                });
-
-                });
-                    
-                </script>
+    $("td").dblclick(function () {
+        var conteudoOriginal = $(this).text();
+        $(this).addClass("celulaEmEdicao");
+        $(this).html("<input type='text' value='" + conteudoOriginal + "' />");
+        $(this).children().first().focus();
+        $(this).children().first().keypress(function (e) {
+            if (e.which == 13) {
+                var novoConteudo = $(this).val();
+                $(this).parent().text(novoConteudo);
+                $(this).parent().removeClass("celulaEmEdicao");
+            }
+        });
+        $(this).children().first().blur(function () {
+            $(this).parent().text(conteudoOriginal);
+            $(this).parent().removeClass("celulaEmEdicao");
+        });
+    });
+});
+</script>
 
 {% endblock %}
