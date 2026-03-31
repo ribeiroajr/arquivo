@@ -53,7 +53,8 @@ class DateInput(forms.DateInput):
     input_type = "date"
 
     def __init__(self, **kwargs):
-        kwargs["format"] = "%d-%m-%Y"
+        # type="date" exige YYYY-MM-DD para renderizar o valor corretamente
+        kwargs["format"] = "%Y-%m-%d"
         super().__init__(**kwargs)
 
 class DocsForm(BaseForm):
@@ -66,8 +67,8 @@ class DocsForm(BaseForm):
 
     def __init__(self, *args, **kwargs):
         super(DocsForm, self).__init__(*args, **kwargs)
-        self.fields["doc_data"].widget = forms.DateInput(attrs={'type': 'date'})
-        self.fields['doc_data'].widget.attrs['class'] = 'form-control'
+        self.fields["doc_data"].widget = DateInput(attrs={'type': 'date', 'class': 'form-control'})
+        self.fields["doc_data"].input_formats = ['%Y-%m-%d', '%d/%m/%Y', '%d-%m-%Y']
         
         self.fields['fk_codigo'].widget.attrs['class'] = 'form-control'
         self.fields['fk_tipo'].widget.attrs['class'] = 'form-control'

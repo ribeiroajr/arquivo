@@ -1,93 +1,111 @@
 {% extends 'base.html' %}
-{% block title %}Pagina Inicial{% endblock %}
+{% block title %}Cadastrar Documento{% endblock %}
 {% block content %}
-    {% if messages %}
-    {% for message in messages %}
-        {% if message.tags == 'success' %}
-        <div class="alert alert-success" role="alert">{{ message }}</div>
-        {% elif message.tags == 'error' %}
-        <div class="alert-error alert" role="alert">{{ message }}</div>
-        {% endif %}
-    {% endfor %}
+
+{% if messages %}
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% elif message.tags == 'error' %}
+    <div class="alert alert-danger" role="alert">{{ message }}</div>
     {% endif %}
-<div class="container">
+{% endfor %}
+{% endif %}
 
-
-    <form id="docsForm" data-related-url="{% url 'sgc_ajax_load_related_data' %}" enctype="multipart/form-data" method="POST">
-
-    <!-- Security token -->
-    {% csrf_token %}
- 
-    <!-- Using the formset -->
-    {{ form.as_p }}
-     
-    <input type="submit" class="btn btn-success" value="Salvar">
-    <a href="{% url 'doc_lista' %}" class="btn btn-danger">Cancelar</a>
-</form>
+<div class="container py-3">
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Cadastrar Documento</h5>
+            <a href="{% url 'doc_lista' %}" class="btn btn-sm btn-outline-light">← Voltar</a>
+        </div>
+        <div class="card-body">
+            <form id="docsForm" data-related-url="{% url 'sgc_ajax_load_related_data' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-doc-grid">
+                    {{ form.as_p }}
+                </div>
+                <div class="mt-3 d-flex gap-2">
+                    <input type="submit" class="btn btn-success" value="Salvar">
+                    <a href="{% url 'doc_lista' %}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
+<style>
+    .form-doc-grid p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.75rem;
+    }
+    .form-doc-grid label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 2px;
+    }
+    .form-doc-grid input,
+    .form-doc-grid select,
+    .form-doc-grid textarea {
+        font-size: 0.9rem;
+    }
+</style>
+
 <script>
+    function getAnoFromDateField(selector) {
+        var val = $(selector).val();
+        if (!val) return 0;
+        return parseInt(val.split('-')[0]) || 0;
+    }
+
+    function calcularEPreencherAnos(data) {
+        var ano = getAnoFromDateField("#id_doc_data");
+
+        var somaCorrente      = ano  + parseInt(data.doc_corrente_ano      || 0);
+        var somaIntermediaria = somaCorrente + parseInt(data.doc_intermediario_ano || 0);
+        var somaFinal         = somaIntermediaria + parseInt(data.doc_destinacao_final_ano || 0);
+        var somaObs           = somaFinal + parseInt(data.doc_obs_ano || 0);
+
+        $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
+
+        if (data.fk_tipo_guarda === 1) {
+            $("#id_doc_corrente_ano").val(somaCorrente);
+            $("#id_doc_intermediario_ano").val(somaIntermediaria);
+            $("#id_doc_destinacao_final_ano").val(somaFinal);
+            $("#id_doc_obs_ano").val(somaObs);
+            $("#id_doc_eliminacao_ano").val(somaObs);
+        } else if (data.fk_tipo_guarda === 2) {
+            $("#id_doc_corrente_ano").val(somaCorrente);
+            $("#id_doc_intermediario_ano").val(somaIntermediaria);
+            $("#id_doc_destinacao_final_ano").val(somaFinal);
+            $("#id_doc_obs_ano").val(somaObs);
+            $("#id_doc_eliminacao_ano").val(0);
+        }
+    }
+
+    function carregarCodigo(codigoId, callback) {
+        $.ajax({
+            url: $("#docsForm").attr("data-related-url"),
+            data: { 'codigo_id': codigoId },
+            success: callback
+        });
+    }
+
     $("#id_fk_codigo").change(function () {
-        const codigoId = $(this).val();
-        if (codigoId) {  // Verifica se o valor de codigoId não está vazio
-            const url = $("#docsForm").attr("data-related-url");
-
-            $.ajax({
-                url: url,
-                data: {
-                    'codigo_id': codigoId
-                },
-                success: function (data) {
-                    $("#id_doc_corrente_ano").val(data.doc_corrente_ano);
-                    $("#id_doc_intermediario_ano").val(data.doc_intermediario_ano);
-                    $("#id_doc_destinacao_final_ano").val(data.doc_destinacao_final_ano);
-                    $("#id_doc_obs_ano").val(data.doc_obs_ano);
-                    $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
-                    // $("#id_doc_eliminacao_ano").val(data.doc_eliminacao_ano);
-
-
-                    var idDocDataValue = parseInt($("#id_doc_data").val());
-                    // var docEliminacaoAnoValue = parseInt(data.doc_eliminacao_ano);
-                    // var soma = idDocDataValue + docEliminacaoAnoValue;
-                        
-                    // Calcula as somas adicionais
-                    var somaCorrente = idDocDataValue + parseInt($("#id_doc_corrente_ano").val());
-                    var somaIntermediaria = somaCorrente + parseInt($("#id_doc_intermediario_ano").val());
-                    var somaFinal = somaIntermediaria + parseInt($("#id_doc_destinacao_final_ano").val());
-                    var somaObs = somaFinal + parseInt($("#id_doc_obs_ano").val());
-                    
-                    // Verifica o valor de fk_tipo_guarda
-                    // Se fk_tipo_guarda for 1, faz a soma
-                    if (data.fk_tipo_guarda === 1) {                  
-                        // Preenche os campos com as somas adicionais
-                        $("#id_doc_corrente_ano").val(somaCorrente);
-                        $("#id_doc_intermediario_ano").val(somaIntermediaria);
-                        $("#id_doc_destinacao_final_ano").val(somaFinal);
-                        $("#id_doc_obs_ano").val(somaObs);
-
-                        // Preenche o campo id_doc_eliminacao_ano com a soma
-                        $("#id_doc_eliminacao_ano").val(somaObs);
-                        $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
-                    } else if (data.fk_tipo_guarda === 2) {
-                        // Se fk_tipo_guarda for 2, substitui o valor de id_doc_eliminacao_ano pelo tipo_guarda_descricao
-                        $("#id_doc_destinacao_final").val(data.tipo_guarda_descricao);
-                        $("#id_doc_eliminacao_ano").val(0);
-                        $("#id_doc_corrente_ano").val(somaCorrente);
-                        $("#id_doc_intermediario_ano").val(somaIntermediaria);
-                        $("#id_doc_destinacao_final_ano").val(somaFinal);
-                        $("#id_doc_obs_ano").val(somaObs);
-                    }
-                }
-            });
+        var codigoId = $(this).val();
+        if (codigoId) {
+            carregarCodigo(codigoId, calcularEPreencherAnos);
         } else {
-            // Limpa os campos se o valor de codigoId estiver vazio
-            $("#id_doc_corrente_ano").val('');
-            $("#id_doc_intermediario_ano").val('');
-            $("#id_doc_destinacao_final_ano").val('');
-            $("#id_doc_obs_ano").val('');
-            $("#id_doc_destinacao_final").val('');
+            $("#id_doc_corrente_ano, #id_doc_intermediario_ano, #id_doc_destinacao_final_ano, #id_doc_obs_ano, #id_doc_destinacao_final, #id_doc_eliminacao_ano").val('');
+        }
+    });
+
+    $("#id_doc_data").change(function () {
+        var codigoId = $("#id_fk_codigo").val();
+        if (codigoId) {
+            carregarCodigo(codigoId, calcularEPreencherAnos);
         }
     });
 </script>
 {% endblock %}
-

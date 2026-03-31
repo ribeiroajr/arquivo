@@ -5,30 +5,103 @@ from ..forms import DocsForm
 from ..models import Docs, Codigos
 from django.http import JsonResponse
 from django.contrib import messages
-# Create your views here.
-
-# @login_required
-# def doc_lista(request):
-#     dataset = Docs.objects.all()
-#     #qtd de docs
-#     qtd_docs = dataset.count()
-#     context = {"dataset": dataset, 'qtd_docs' : qtd_docs}
-#     print(dataset)
-#     return render(request, 'doc/lista.html', context)
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 from rolepermissions.checkers import has_role
 
 @login_required
 def doc_lista(request):
-    user = request.user  
+    user = request.user
 
     if has_role(user, "sin") or has_role(user, "arq_admin"):
-        dataset = Docs.objects.all()
+        qs = Docs.objects.select_related(
+            'fk_codigo', 'fk_tipo', 'fk_doc_origem', 'fk_doc_destino',
+            'fk_caixa', 'fk_tcu', 'fk_codigo__fk_tipo_guarda', 'fk_user'
+        ).all()
     else:
-        dataset = Docs.objects.filter(fk_user=user)
+        qs = Docs.objects.select_related(
+            'fk_codigo', 'fk_tipo', 'fk_doc_origem', 'fk_doc_destino',
+            'fk_caixa', 'fk_tcu', 'fk_codigo__fk_tipo_guarda', 'fk_user'
+        ).filter(fk_user=user)
 
-    qtd_docs = dataset.count()
-    context = {"dataset": dataset, "qtd_docs": qtd_docs}
+    q  = request.GET.get('q', '').strip()
+    q2 = request.GET.get('q2', '').strip()
+
+    if q:
+        qs = qs.filter(
+            Q(doc_numero__icontains=q) |
+            Q(new_file_sigad__icontains=q) |
+            Q(fk_codigo__codigo__icontains=q) |
+            Q(fk_tipo__tipo__icontains=q) |
+            Q(fk_doc_origem__om__icontains=q) |
+            Q(fk_doc_destino__om__icontains=q) |
+            Q(fk_caixa__caixa__icontains=q) |
+            Q(fk_tcu__tcu__icontains=q) |
+            Q(doc_data__icontains=q)
+        )
+
+    if q2:
+        qs = qs.filter(
+            Q(doc_numero__icontains=q2) |
+            Q(new_file_sigad__icontains=q2) |
+            Q(fk_codigo__codigo__icontains=q2) |
+            Q(fk_tipo__tipo__icontains=q2) |
+            Q(fk_doc_origem__om__icontains=q2) |
+            Q(fk_doc_destino__om__icontains=q2) |
+            Q(fk_caixa__caixa__icontains=q2) |
+            Q(fk_tcu__tcu__icontains=q2) |
+            Q(doc_data__icontains=q2)
+        )
+
+    qtd_total = qs.count()
+
+    per_page_options = [20, 50, 100, 200]
+    try:
+        per_page = int(request.GET.get('per_page', 50))
+        if per_page not in per_page_options:
+            per_page = 50
+    except (ValueError, TypeError):
+        per_page = 50
+
+    paginator = Paginator(qs, per_page)
+    page_num  = request.GET.get('page', 1)
+    page_obj  = paginator.get_page(page_num)
+
+    # Resposta AJAX: retorna HTML parcial da tabela + metadados de paginação
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        from django.template.loader import render_to_string
+        tabela_html = render_to_string(
+            'doc/_tabela_rows.html',
+            {'page_obj': page_obj, 'request': request},
+            request=request,
+        )
+        paginacao_html = render_to_string(
+            'doc/_paginacao.html',
+            {
+                'page_obj': page_obj,
+                'per_page': per_page,
+                'per_page_options': per_page_options,
+                'q': q,
+                'q2': q2,
+                'qtd_total': qtd_total,
+            },
+            request=request,
+        )
+        return JsonResponse({
+            'tabela_html': tabela_html,
+            'paginacao_html': paginacao_html,
+            'qtd_total': qtd_total,
+        })
+
+    context = {
+        "page_obj": page_obj,
+        "qtd_docs": qtd_total,
+        "per_page": per_page,
+        "per_page_options": per_page_options,
+        "q": q,
+        "q2": q2,
+    }
     return render(request, 'doc/lista.html', context)
 
 ## ok
