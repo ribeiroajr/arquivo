@@ -1,63 +1,166 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .navbar {
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .navbar a {
-    float: left;
-    font-size: 16px;
-    color: white;
+}
+
+/* ===== NAVBAR ===== */
+.sarq-navbar {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid #e94560;
+}
+
+.sarq-brand {
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.sarq-brand:hover {
+    color: #e94560 !important;
+}
+
+.sarq-brand i {
+    color: #e94560;
+}
+
+/* Nav links */
+.sarq-nav-link {
+    color: #c8cdd6 !important;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.55rem 0.8rem !important;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.sarq-nav-link:hover,
+.sarq-nav-link:focus {
+    color: #ffffff !important;
+    background-color: rgba(233, 69, 96, 0.15) !important;
+}
+
+.sarq-nav-link.show,
+.sarq-nav-link.active {
+    color: #ffffff !important;
+    background-color: rgba(233, 69, 96, 0.2) !important;
+}
+
+/* Admin link highlight */
+.sarq-admin-link {
+    color: #ffc107 !important;
+}
+
+.sarq-admin-link:hover {
+    color: #fff !important;
+    background-color: rgba(255, 193, 7, 0.15) !important;
+}
+
+/* Dropdown menu */
+.sarq-dropdown {
+    background-color: #1e2940;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    min-width: 210px;
+    padding: 0.4rem 0;
+    margin-top: 4px !important;
+}
+
+.sarq-dropdown-item {
+    color: #c8cdd6 !important;
+    font-size: 0.875rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    transition: background 0.15s, color 0.15s, padding-left 0.15s;
+}
+
+.sarq-dropdown-item:hover,
+.sarq-dropdown-item:focus {
+    color: #ffffff !important;
+    background-color: rgba(233, 69, 96, 0.18) !important;
+    padding-left: 1.4rem;
+}
+
+.sarq-dropdown-item i {
+    width: 18px;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
+    flex-shrink: 0;
+}
+
+.sarq-dropdown .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 0.3rem 0;
+}
+
+/* Navbar toggler */
+.sarq-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.sarq-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28200,205,214,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* User badge */
+.sarq-user-badge {
+    color: #8a95a3;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.sarq-user-badge i {
+    color: #e94560;
+    font-size: 1rem;
+}
+
+/* Auth buttons */
+.sarq-btn-logout {
+    background-color: transparent;
+    border: 1px solid #e94560;
+    color: #e94560 !important;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.sarq-btn-logout:hover {
+    background-color: #e94560;
+    color: #ffffff !important;
+}
+
+.sarq-btn-login {
+    background-color: transparent;
+    border: 1px solid #28a745;
+    color: #28a745 !important;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.sarq-btn-login:hover {
+    background-color: #28a745;
+    color: #ffffff !important;
+}
