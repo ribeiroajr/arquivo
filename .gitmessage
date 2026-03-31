@@ -1,0 +1,22 @@
+# Formato: <tipo>: <resumo curto> (máx 72 chars)
+#
+# Tipos:
+#   feat     nova funcionalidade
+#   fix      correção de bug
+#   refactor refatoração sem mudança de comportamento
+#   perf     melhoria de performance
+#   style    CSS / formatação visual
+#   docs     documentação
+#   chore    tarefas de manutenção (deps, config, deploy)
+#
+# Exemplos:
+#   feat: adicionar paginação na lista de documentos
+#   fix: corrigir campo data vazio no formulário de edição
+#   perf: substituir N+1 queries em listar_logs por query única
+#   style: melhorar layout dos formulários de cadastro
+#
+# Corpo opcional (deixe uma linha em branco após o resumo):
+#
+# Explique o "porquê" da mudança, não o "o quê" (o diff já mostra isso).
+#
+# -----------------------------------------------------------------------
