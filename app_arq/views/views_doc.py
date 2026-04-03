@@ -56,7 +56,7 @@ def doc_lista(request):
 
     qtd_total = qs.count()
 
-    per_page_options = [20, 50, 100, 200]
+    per_page_options = [20, 50, 100, 200, 0]   # 0 = Tudo
     try:
         per_page = int(request.GET.get('per_page', 50))
         if per_page not in per_page_options:
@@ -64,7 +64,9 @@ def doc_lista(request):
     except (ValueError, TypeError):
         per_page = 50
 
-    paginator = Paginator(qs, per_page)
+    # Quando per_page == 0 mostra tudo em uma única página
+    paginate_by = qtd_total if per_page == 0 else per_page
+    paginator = Paginator(qs, max(paginate_by, 1))
     page_num  = request.GET.get('page', 1)
     page_obj  = paginator.get_page(page_num)
 
