@@ -295,7 +295,22 @@ body {
     background-color: #218838;
 }
 
-/* Pagination override to match theme */
+/* ===== STICKY THEAD — tabela de documentos ===== */
+#doc-table-scroll {
+    max-height: calc(100vh - 220px);
+    overflow: auto;   /* x e y — necessário para sticky funcionar */
+}
+
+/* thead fixo dentro do scroll */
+#tabelaDocumentos thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #1a1a2e;   /* repete a cor para cobrir as linhas por baixo */
+    box-shadow: 0 2px 0 rgba(233,69,96,0.5); /* linha vermelha embaixo do header fixo */
+}
+
+/* ===== Pagination override to match theme ===== */
 .pagination .page-link {
     color: #0f3460;
     border-color: #d8dde6;
