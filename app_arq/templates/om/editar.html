@@ -1,19 +1,42 @@
 {% extends 'base.html' %}
-{% block title %}Editar Registro{% endblock %}
+{% block title %}Editar Origem/Destino{% endblock %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h3>Editar Registro</h3>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                <a href="{% url 'om_lista' %}" class="btn btn-danger">Cancelar</a>
-            </form>
-        </div>
-    </div>
-</div>
+<div class="sarq-page mt-3" style="max-width: 520px;">
 
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-building"></i> Editar Origem / Destino
+      <small class="sarq-page-header-sub ms-2">#{{ om_ob.id }}</small>
+    </span>
+    <a href="{% url 'om_lista' %}" class="sarq-btn-edit">
+      <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <div class="sarq-card p-4">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.fk_user }}
+
+      <div class="sarq-form-group">
+        <label class="sarq-form-label">
+          <i class="fa fa-building"></i> Organização Militar
+        </label>
+        {{ form.om }}
+        {% if form.om.errors %}<div class="sarq-field-error">{{ form.om.errors }}</div>{% endif %}
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="sarq-btn-novo">
+          <i class="fa fa-check"></i> Salvar Alterações
+        </button>
+        <a href="{% url 'om_lista' %}" class="sarq-btn-delete">
+          <i class="fa fa-times"></i> Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+
+</div>
 {% endblock %}
