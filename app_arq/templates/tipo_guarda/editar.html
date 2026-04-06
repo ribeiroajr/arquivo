@@ -1,15 +1,42 @@
 {% extends 'base.html' %}
-{% block title %}Editar Registro{% endblock %}
+{% block title %}Editar Tipo de Guarda{% endblock %}
 {% block content %}
 
+<div class="sarq-page mt-3" style="max-width: 520px;">
 
-            <h3>Editar Registro</h3>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                <a href="{% url 'tipo_guarda_lista' %}" class="btn btn-danger">Cancelar</a>
-            </form>
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-shield-alt"></i> Editar Tipo de Guarda
+      <small class="sarq-page-header-sub ms-2">#{{ tipo_guarda_ob.id }}</small>
+    </span>
+    <a href="{% url 'tipo_guarda_lista' %}" class="sarq-btn-edit">
+      <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+  </div>
 
+  <div class="sarq-card p-4">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.fk_user }}
 
+      <div class="sarq-form-group">
+        <label class="sarq-form-label">
+          <i class="fa fa-shield-alt"></i> Descrição do Tipo de Guarda
+        </label>
+        {{ form.tipo_guarda_descricao }}
+        {% if form.tipo_guarda_descricao.errors %}<div class="sarq-field-error">{{ form.tipo_guarda_descricao.errors }}</div>{% endif %}
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="sarq-btn-novo">
+          <i class="fa fa-check"></i> Salvar Alterações
+        </button>
+        <a href="{% url 'tipo_guarda_lista' %}" class="sarq-btn-delete">
+          <i class="fa fa-times"></i> Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+
+</div>
 {% endblock %}

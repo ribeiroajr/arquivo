@@ -1,23 +1,41 @@
 {% extends 'base.html' %}
 {% block title %}Novo Ano{% endblock %}
 {% block content %}
-<div class="container py-4" style="max-width: 540px;">
-    <div class="card shadow-sm">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Novo Ano</h5>
-            <a href="{% url 'ano_lista' %}" class="btn btn-sm btn-outline-light">← Voltar</a>
-        </div>
-        <div class="card-body">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-simple-grid">{{ form.as_p }}</div>
-                <div class="mt-3 d-flex gap-2">
-                    <input type="submit" class="btn btn-success" value="Salvar">
-                    <a href="{% url 'ano_lista' %}" class="btn btn-secondary">Cancelar</a>
-                </div>
-            </form>
-        </div>
-    </div>
+
+<div class="sarq-page mt-3" style="max-width: 520px;">
+
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-calendar-alt"></i> Novo Ano
+    </span>
+    <a href="{% url 'ano_lista' %}" class="sarq-btn-edit">
+      <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <div class="sarq-card p-4">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.fk_user }}
+
+      <div class="sarq-form-group">
+        <label class="sarq-form-label">
+          <i class="fa fa-calendar-alt"></i> Ano
+        </label>
+        {{ form.ano }}
+        {% if form.ano.errors %}<div class="sarq-field-error">{{ form.ano.errors }}</div>{% endif %}
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="sarq-btn-novo">
+          <i class="fa fa-check"></i> Salvar
+        </button>
+        <a href="{% url 'ano_lista' %}" class="sarq-btn-delete">
+          <i class="fa fa-times"></i> Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+
 </div>
-{% include 'partials/form_style.html' %}
 {% endblock %}
