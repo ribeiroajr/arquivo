@@ -54,7 +54,11 @@
           {% for data in dataset %}
           <tr>
             <td>{{ data.id }}</td>
-            <td><strong>{{ data.status }}</strong></td>
+            <td>
+              <span class="badge px-3 py-2" style="background-color:{{ data.cor|default:'#6c757d' }}; color:#fff; font-size:0.85rem;">
+                {{ data.status }}
+              </span>
+            </td>
             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}
             <td class="sarq-user-cell"><i class="fa fa-user me-1"></i>{{ data.fk_user }}</td>
             <td>

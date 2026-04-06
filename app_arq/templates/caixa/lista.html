@@ -63,7 +63,9 @@
             <td>{{ data.id }}</td>
             <td>{{ data.fk_ano }}</td>
             <td>
-              <span class="badge" style="background:#0f3460; font-size:0.75rem;">{{ data.fk_status }}</span>
+              <span class="badge" style="background-color:{{ data.fk_status.cor|default:'#6c757d' }}; font-size:0.75rem; color:#fff;">
+                {{ data.fk_status }}
+              </span>
             </td>
             <td><strong>{{ data.caixa }}</strong></td>
             {% if request.user|has_role:"sin" or request.user|has_role:"arq_admin" %}

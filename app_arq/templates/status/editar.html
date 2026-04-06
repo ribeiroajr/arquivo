@@ -1,19 +1,99 @@
 {% extends 'base.html' %}
-{% block title %}Editar Registro{% endblock %}
+{% load static %}
+{% block title %}Editar Status{% endblock %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h3>Editar Registro</h3>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                <a href="{% url 'status_lista' %}" class="btn btn-danger">Cancelar</a>
-            </form>
+<div class="sarq-page mt-3" style="max-width: 520px;">
+
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-pencil"></i> Editar Status
+    </span>
+    <a href="{% url 'status_lista' %}" class="sarq-btn-edit">
+      <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <div class="sarq-card p-4">
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Nome do Status</label>
+        {{ form.status }}
+        {% if form.status.errors %}
+          <div class="text-danger small mt-1">{{ form.status.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Cor do Badge</label>
+        <div class="d-flex align-items-center gap-3">
+          {{ form.cor }}
+          <span id="cor-preview" class="badge px-3 py-2 fs-6" style="background-color: {{ form.cor.value|default:'#6c757d' }}; color:#fff; min-width:100px; text-align:center;">
+            {{ status_ob.status }}
+          </span>
         </div>
-    </div>
+        <small class="text-muted">{{ form.cor.help_text }}</small>
+        {% if form.cor.errors %}
+          <div class="text-danger small mt-1">{{ form.cor.errors }}</div>
+        {% endif %}
+      </div>
+
+      {{ form.fk_user }}
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="sarq-btn-novo"><i class="fa fa-check"></i> Salvar Alterações</button>
+        <a href="{% url 'status_lista' %}" class="sarq-btn-delete"><i class="fa fa-times"></i> Cancelar</a>
+      </div>
+    </form>
+  </div>
+
 </div>
+
+<script>
+(function () {
+  var colorInput  = document.querySelector('input[type="color"]');
+  var statusInput = document.querySelector('input[name="status"]');
+  var preview     = document.getElementById('cor-preview');
+
+  if (!colorInput || !preview) return;
+
+  function updatePreview() {
+    preview.style.backgroundColor = colorInput.value;
+    if (statusInput && statusInput.value.trim()) {
+      preview.textContent = statusInput.value.trim();
+    }
+  }
+
+  colorInput.addEventListener('input', updatePreview);
+  if (statusInput) statusInput.addEventListener('input', updatePreview);
+  updatePreview();
+})();
+</script>
+
+<style>
+  input[name="status"] {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid #d8dde6;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+  input[name="status"]:focus {
+    outline: none;
+    border-color: #e94560;
+    box-shadow: 0 0 0 3px rgba(233,69,96,0.12);
+  }
+  .form-control-color {
+    width: 56px !important;
+    height: 42px;
+    padding: 2px 4px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+</style>
 
 {% endblock %}

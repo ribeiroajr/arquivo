@@ -34,6 +34,12 @@ class Status(BaseModel):
     Representa o status de um objeto.
     """
     status = models.CharField(max_length=10, verbose_name="Status")
+    cor = models.CharField(
+        max_length=7,
+        default='#6c757d',
+        verbose_name="Cor",
+        help_text="Cor do badge exibido nas listagens (ex: #28a745)"
+    )
 
     def __str__(self):
         return self.status

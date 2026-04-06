@@ -45,6 +45,14 @@ class Tipo_guardaForm(BaseForm):
         fields = '__all__'
 
 class StatusForm(BaseForm):
+    cor = forms.CharField(
+        label="Cor do badge",
+        max_length=7,
+        initial='#6c757d',
+        widget=forms.TextInput(attrs={'type': 'color', 'class': 'form-control form-control-color'}),
+        help_text="Escolha a cor que será exibida no badge deste status."
+    )
+
     class Meta:
         model = Status
         fields = '__all__'
@@ -79,7 +87,7 @@ class DocsForm(BaseForm):
         self.fields['fk_doc_destino'].widget.attrs['class'] = 'form-control'
 
 
-	    #self.fields['fk_doc_origem'].widget.attrs['class'] = 'form-control'
+            #self.fields['fk_doc_origem'].widget.attrs['class'] = 'form-control'
         #self.fields['fk_doc_destino'].widget.attrs['class'] = 'form-control'
         self.fields['fk_caixa'].widget.attrs['class'] = 'form-control'
         self.fields['fk_caixa'].queryset = Caixa.objects.filter(fk_status = 1)
