@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from .views_log import registrar_acao_usuario, registrar_acao_usuario_deletar
 from ..forms import CaixaForm
-from ..models import Caixa
+from ..models import Caixa, Status
 
 #dataset = Caixa.objects.filter(fk_status=1)
 @login_required
@@ -34,7 +34,7 @@ def caixa_novo(request):
         form = CaixaForm(initial={'fk_user': user_id})
         
     
-    return render(request, 'caixa/criar.html', {'form': form})
+    return render(request, 'caixa/criar.html', {'form': form, 'status_list': Status.objects.all()})
 
 
 # @login_required
@@ -62,7 +62,8 @@ def caixa_editar(request, id):
 
     context = {
         'form': form,
-        'caixa_ob': caixa_ob
+        'caixa_ob': caixa_ob,
+        'status_list': Status.objects.all(),
     }
     return render(request, 'caixa/editar.html', context)
 

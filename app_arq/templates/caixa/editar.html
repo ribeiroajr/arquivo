@@ -1,19 +1,139 @@
 {% extends 'base.html' %}
-{% block title %}Editar Registro{% endblock %}
+{% block title %}Editar Caixa{% endblock %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h3>Editar Registro</h3>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                <a href="{% url 'caixa_lista' %}" class="btn btn-danger">Cancelar</a>
-            </form>
+<div class="sarq-page mt-3" style="max-width: 560px;">
+
+  <div class="sarq-page-header">
+    <span class="sarq-page-header-title">
+      <i class="fa fa-archive"></i> Editar Caixa
+      <small class="sarq-page-header-sub ms-2">#{{ caixa_ob.id }}</small>
+    </span>
+    <a href="{% url 'caixa_lista' %}" class="sarq-btn-edit">
+      <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <div class="sarq-card p-4">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.fk_user }}
+
+      <div class="sarq-form-group">
+        <label class="sarq-form-label">
+          <i class="fa fa-calendar-alt"></i> Ano
+        </label>
+        {{ form.fk_ano }}
+        {% if form.fk_ano.errors %}<div class="sarq-field-error">{{ form.fk_ano.errors }}</div>{% endif %}
+      </div>
+
+      <div class="sarq-form-group">
+        <label class="sarq-form-label">
+          <i class="fa fa-toggle-on"></i> Status
+        </label>
+        <div id="status-wrapper" class="d-flex align-items-center gap-3">
+          {{ form.fk_status }}
+          <span id="status-badge" class="badge px-3 py-2"
+                style="font-size:0.85rem; color:#fff; background-color:#6c757d; min-width:90px; text-align:center;">
+            {{ caixa_ob.fk_status }}
+          </span>
         </div>
-    </div>
+        {% if form.fk_status.errors %}<div class="sarq-field-error">{{ form.fk_status.errors }}</div>{% endif %}
+      </div>
+
+      <div class="sarq-form-group">
+        <label class="sarq-form-label">
+          <i class="fa fa-box"></i> Nome da Caixa
+        </label>
+        {{ form.caixa }}
+        {% if form.caixa.errors %}<div class="sarq-field-error">{{ form.caixa.errors }}</div>{% endif %}
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="sarq-btn-novo">
+          <i class="fa fa-check"></i> Salvar Alterações
+        </button>
+        <a href="{% url 'caixa_lista' %}" class="sarq-btn-delete">
+          <i class="fa fa-times"></i> Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+
 </div>
+
+<script>
+(function () {
+  var STATUS_COLORS = {
+    {% for s in status_list %}
+    "{{ s.id }}": { "label": "{{ s.status }}", "cor": "{{ s.cor|default:'#6c757d' }}" }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  };
+
+  var select = document.querySelector('select[name="fk_status"]');
+  var badge  = document.getElementById('status-badge');
+
+  function updateBadge() {
+    var val = select ? select.value : '';
+    if (STATUS_COLORS[val]) {
+      badge.style.backgroundColor = STATUS_COLORS[val].cor;
+      badge.textContent = STATUS_COLORS[val].label;
+    } else {
+      badge.style.backgroundColor = '#6c757d';
+      badge.textContent = '—';
+    }
+  }
+
+  if (select) {
+    select.addEventListener('change', updateBadge);
+    updateBadge();
+  }
+})();
+</script>
+
+<style>
+.sarq-form-group {
+  margin-bottom: 1.2rem;
+}
+.sarq-form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 5px;
+}
+.sarq-form-label i {
+  color: #e94560;
+  margin-right: 4px;
+}
+.sarq-form-group input:not([type=hidden]),
+.sarq-form-group select,
+.sarq-form-group textarea {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid #d8dde6;
+  border-radius: 6px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+.sarq-form-group input:focus,
+.sarq-form-group select:focus,
+.sarq-form-group textarea:focus {
+  outline: none;
+  border-color: #e94560;
+  box-shadow: 0 0 0 3px rgba(233,69,96,0.12);
+}
+.sarq-field-error {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 3px;
+}
+#status-wrapper select {
+  flex: 1;
+}
+</style>
 
 {% endblock %}
