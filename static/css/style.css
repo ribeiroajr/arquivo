@@ -128,12 +128,13 @@ body {
 /* Total counter */
 .sarq-total {
     font-size: 0.82rem;
-    color: #8a95a3;
+    color: #a8b5c4;
     white-space: nowrap;
 }
 
 .sarq-total strong {
-    color: #1a1a2e;
+    color: #ffffff;
+    font-size: 0.95rem;
 }
 
 /* Card wrapper for table */
